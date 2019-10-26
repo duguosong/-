@@ -25,6 +25,7 @@
           offset="9"
           class="iconfont icon-talk"
           style="font-size:0.58rem;font-weight:500;color:white;line-height:0.84rem"
+          @click="$router.push({name:'Message'})"
         ></van-col>
       </van-row>
       <van-row>
@@ -111,8 +112,9 @@
       <productsList></productsList>
       <Products></Products>
       <Products></Products>
+      <div class="guadi"></div>
     </section>
-    <dibu></dibu>
+    <dibu style=" position: fixed;bottom:0rem"></dibu>
   </div>
 </template>
 
@@ -133,6 +135,9 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 4.18rem;
 }
+.guadi {
+  height: 1.42rem;
+}
 .van-grid-item div {
   display: inline-block;
   width: 1.04rem;
@@ -146,5 +151,14 @@ export default {
   height: 1.2rem;
   line-height: 1.2rem;
   border-radius: 50% !important;
+}
+.home {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  flex-direction: column;
+}
+.section {
+  flex: 1;
 }
 </style>

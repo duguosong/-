@@ -12,3 +12,8 @@ export default {
   name: 'dibu'
 }
 </script>
+<style scoped>
+.van-tabbar {
+  height: 1.42rem;
+}
+</style>

@@ -63,8 +63,6 @@
       </div>
     </div>
     <div class="user-bottom"></div>
-
-    <dibu></dibu>
   </div>
 </template>
 
@@ -81,7 +79,7 @@ export default {
 
 <style scoped>
 .user {
-  height: 100%;
+  height: 22ren;
   background: red;
   position: relative;
 }
