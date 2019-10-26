@@ -19,6 +19,7 @@
           offset="1"
           span="5"
           style="font-size:0.47rem;font-weight:700;color:white;line-height:0.84rem"
+          @click="$router.push({name:'Limit'})"
         >免费领取</van-col>
         <van-col
           span="1"

@@ -22,7 +22,7 @@ const routes = [
     component: Home
   },
   {
-    path: 'message',
+    path: '/message',
 
     name: 'Message',
 
