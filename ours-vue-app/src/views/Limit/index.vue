@@ -18,12 +18,7 @@
           </div>
           <div class="name_right">
             <span>{{isShow?"已完善":"未完善"}}</span>
-            <van-icon
-              class="arrow"
-              name="arrow"
-              size="0.42rem"
-              @click="$router.push({name:'protol'})"
-            />
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show=!isShow" />
             <van-overlay :show="show" @click="show=false">
               <div class="ceng">
                 <div class="title">
@@ -104,7 +99,8 @@ export default {
       alive: false,
       data: false,
       credit: false,
-      empower: false
+      empower: false,
+      test: none //测试
     }
   },
   components: {
