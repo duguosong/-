@@ -47,6 +47,7 @@ const routes = [
     component: () => import('@/views/Task/index')
   },
   {
+    // 我的
     path: '/user',
     name: 'User',
     component: () => import('@/views/User/index')
@@ -56,10 +57,24 @@ const routes = [
     name: 'Discover',
     component: () => import('@/views/Discover/index')
   },
+
   {
+    // 登录
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login/index')
+  },
+  {
+    // 登录 跳转到 服务协议
+    path: '/protocol',
+    name: 'Protocol',
+    component: () => import('@/components/Protocol')
+  },
+  {
+    // 我的 跳转到  设置
+    path: '/Setting',
+    name: 'Setting',
+    component: () => import('@/views/User/Setting')
   }
 
   // {

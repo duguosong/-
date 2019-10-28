@@ -13,7 +13,7 @@
           </div>
 
           <div class="setting">
-            <span class="iconfont icon-shezhi"></span>
+            <span class="iconfont icon-shezhi" @click="toSetting"></span>
           </div>
         </div>
       </div>
@@ -74,6 +74,11 @@ export default {
   name: 'User',
   components: {
     dibu
+  },
+  methods: {
+    toSetting() {
+      this.$router.push({ path: '/Setting' })
+    }
   }
 }
 </script>

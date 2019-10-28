@@ -1,25 +1,16 @@
 <template>
-  <div class="login">
+  <div class="settingBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>登录</p>
+      <p>设置</p>
     </div>
-    <userMsgs v-if="false"></userMsgs>
-    <userMsgs2></userMsgs2>
   </div>
 </template>
-   
 <script>
-import userMsgs from './userMsg'
-import userMsgs2 from './userMsg2'
 export default {
-  name: 'login',
-  components: {
-    userMsgs,
-    userMsgs2
-  },
+  name: 'setting',
   methods: {
     lastStep() {
       window.history.go(-1)

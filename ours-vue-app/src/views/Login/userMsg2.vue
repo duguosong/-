@@ -5,9 +5,8 @@
       <input type="text" placeholder="请输入手机号" />
     </div>
     <div class="userMsg-btm common">
-      <p>验证码</p>
-      <input type="text" placeholder="请输入验证码" />
-      <button @click="sendCode">发送验证码</button>
+      <p>登录密码</p>
+      <input type="text" placeholder="请输入登录密码" />
     </div>
     <div class="protocol">
       <span class="iconfont icon-choosehandle"></span>
@@ -18,13 +17,13 @@
       <button @click="loginBtn">登陆</button>
     </div>
     <div class="handover">
-      <p>切换至密码登录</p>
+      <p>切换至验证码登录</p>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'userMsgs',
+  name: 'userMsgs2',
   methods: {
     sendCode() {
       console.log(1111111)
