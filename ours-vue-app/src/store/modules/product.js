@@ -14,7 +14,10 @@ export default {
   },
   mutations: {
     save(state, payload) {
-      state.list = payload
+      for (let i = 0; i < 4; i++) {
+        state.list.push(payload[i])
+      }
+      //state.list = payload
       console.log(payload)
     }
   }
