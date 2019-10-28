@@ -58,7 +58,6 @@ const routes = [
 
   {
     // 我的
-
     path: '/user',
 
     name: 'User',
@@ -76,7 +75,6 @@ const routes = [
 
   {
     // 登录
-
     path: '/login',
 
     name: 'Login',
