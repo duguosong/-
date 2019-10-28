@@ -1,22 +1,20 @@
 <template>
-  <div class="login">
+  <div class="cPwd">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>登录</p>
+      <p>修改密码</p>
     </div>
-    <userMsgs></userMsgs>
+    <changePwd></changePwd>
   </div>
 </template>
-   
 <script>
-import userMsgs from './userMsg'
-
+import changePwd from './changePassword-cont'
 export default {
-  name: 'login',
+  name: 'changePassword',
   components: {
-    userMsgs
+    changePwd
   },
   methods: {
     lastStep() {
@@ -27,7 +25,7 @@ export default {
 </script>
 
 <style scoped>
-.login {
+.cPwd {
   width: 100%;
   height: 100%;
   background: #efefef;

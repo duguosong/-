@@ -1,22 +1,32 @@
 <template>
-  <div class="login">
+  <div class="addressBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>登录</p>
+      <p>地址管理</p>
     </div>
-    <userMsgs></userMsgs>
+    <div style="flex:1;overflow:auto;">
+      <addressMsg></addressMsg>
+    </div>
+    <div class="btm">
+      <van-button
+        type="primary"
+        size="large"
+        color="linear-gradient(to right, #fe6d04, #fb9806)"
+        @click="$router.push({path:'/user/address/addAddress'})"
+      >添加地址</van-button>
+    </div>
   </div>
 </template>
-   
 <script>
-import userMsgs from './userMsg'
-
+import addAddress from './addAddress'
+import addressMsg from './addressMsg'
 export default {
-  name: 'login',
+  name: 'address',
   components: {
-    userMsgs
+    addAddress,
+    addressMsg
   },
   methods: {
     lastStep() {
@@ -25,12 +35,13 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-.login {
+.addressBox {
   width: 100%;
   height: 100%;
   background: #efefef;
+  display: flex;
+  flex-direction: column;
 }
 .title {
   width: 100%;
@@ -49,5 +60,8 @@ export default {
   position: absolute;
   left: 0.48rem;
   top: 0.5rem;
+}
+.btm {
+  font-size: 0.4rem;
 }
 </style>

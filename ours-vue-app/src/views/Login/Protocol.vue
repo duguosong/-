@@ -1,22 +1,20 @@
 <template>
-  <div class="login">
+  <div>
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>登录</p>
+      <p>产品服务协议</p>
     </div>
-    <userMsgs></userMsgs>
+    <protocolTxt></protocolTxt>
   </div>
 </template>
-   
 <script>
-import userMsgs from './userMsg'
-
+import protocolTxt from '../Login/protocolTxt'
 export default {
-  name: 'login',
+  name: 'protocol',
   components: {
-    userMsgs
+    protocolTxt
   },
   methods: {
     lastStep() {
@@ -25,17 +23,11 @@ export default {
   }
 }
 </script>
-
 <style scoped>
-.login {
-  width: 100%;
-  height: 100%;
-  background: #efefef;
-}
 .title {
   width: 100%;
   height: 1.38rem;
-  background: #fff;
+  background: #efefef;
   font-size: 0.48rem;
   display: flex;
   justify-content: center;

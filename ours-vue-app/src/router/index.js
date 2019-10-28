@@ -89,34 +89,58 @@ const routes = [
 
     name: 'Protocol',
 
-    component: () => import('@/components/Protocol')
+    component: () => import('@/views/Login/Protocol')
   },
 
   {
     // 我的 跳转到  设置
 
-    path: '/Setting',
+    path: '/user/Setting',
 
     name: 'Setting',
 
-    component: () => import('@/views/User/Setting')
+    component: () => import('@/views/User/Setting/Setting')
+  },
+  {
+    // 设置 -> 修改密码页面
+    path: '/user/Setting/changePassword',
+
+    name: 'changePassword',
+
+    component: () => import('@/views/User/Setting/changePassword')
+  },
+  {
+    // 设置 -> 关于我们
+    path: '/user/Setting/aboutUs',
+
+    name: 'aboutUs',
+
+    component: () => import('@/views/User/Setting/aboutUs')
+  },
+  {
+    // 我的 -> 我的订单
+    path: '/user/orders',
+    name: 'Orders',
+    component: () => import('@/views/User/orders/index')
+  },
+  {
+    // 我的 -> 收货地址管理
+
+    path: '/user/address',
+
+    name: 'Address',
+
+    component: () => import('@/views/User/address/index')
+  },
+  {
+    // 收货地址管理 -> 添加收货地址
+
+    path: '/user/address/addAddress',
+
+    name: 'addAddress',
+
+    component: () => import('@/views/User/address/addAddress')
   }
-
-  // {
-
-  //   path: '/about',
-
-  //   name: 'about',
-
-  //   // route level code-splitting
-
-  //   // this generates a separate chunk (about.[hash].js) for this route
-
-  //   // which is lazy-loaded when the route is visited.
-
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-
-  // }
 ]
 
 const router = new VueRouter({

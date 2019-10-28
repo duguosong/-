@@ -19,16 +19,16 @@
       </div>
     </div>
     <div class="user-order">
-      <div class="user-order-top com2">
+      <div class="user-order-top com2" @click="$router.push({path:'/user/orders'})">
         <p>我的订单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
       <div class="user-order-bottom">
         <van-grid :border="false" :column-num="5" default>
-          <van-grid-item icon="balance-pay" text="待付款"></van-grid-item>
-          <van-grid-item icon="logistics" text="待发货"></van-grid-item>
-          <van-grid-item icon="todo-list-o" text="待收货"></van-grid-item>
-          <van-grid-item icon="share" text="可晒单"></van-grid-item>
+          <van-grid-item icon="balance-pay" text="待付款" @click="obligation"></van-grid-item>
+          <van-grid-item icon="logistics" text="待发货" @click="shipments"></van-grid-item>
+          <van-grid-item icon="todo-list-o" text="待收货" @click="receiving"></van-grid-item>
+          <van-grid-item icon="share" text="可晒单" @click="shaiDan"></van-grid-item>
           <van-grid-item icon="phone-circle-o" text="售后"></van-grid-item>
         </van-grid>
       </div>
@@ -42,7 +42,7 @@
         <p>我的收藏</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon com2">
+      <div class="userCommon com2" @click="$router.push({path:'/user/address'})">
         <p>地址管理</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="user-bottom"></div>
 
-    <dibu></dibu>
+    <dibu style="position:fixed;bottom:0;"></dibu>
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     toSetting() {
-      this.$router.push({ path: '/Setting' })
+      this.$router.push({ path: '/user/Setting' })
     }
   }
 }
@@ -85,9 +85,10 @@ export default {
 
 
 <style scoped>
-.user {
+#user {
   height: 100%;
-  background: red;
+  height: 100%;
+  background: #efefef;
   position: relative;
 }
 .user-top {
@@ -153,7 +154,7 @@ export default {
   width: 8.66rem;
   height: 1.28rem;
   box-sizing: border-box;
-  background: #efefef;
+  background: #fff;
   border-bottom: 0.02rem solid #ccc;
 }
 
@@ -170,7 +171,7 @@ export default {
 .user-order {
   width: 9.6rem;
   height: 3.6rem;
-  background: #efefef;
+  background: #fff;
   border-radius: 0.11rem;
   box-sizing: border-box;
   position: absolute;
@@ -202,7 +203,7 @@ export default {
 .user-bill {
   width: 9.6rem;
   height: 5.08rem;
-  background: #efefef;
+  background: #fff;
   border-radius: 0.11rem;
   box-sizing: border-box;
   position: absolute;
@@ -215,7 +216,7 @@ export default {
 .user-feedback {
   width: 9.6rem;
   height: 2.54rem;
-  background: #efefef;
+  background: #fff;
   border-radius: 0.11rem;
   box-sizing: border-box;
   position: absolute;
