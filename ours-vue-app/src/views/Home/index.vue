@@ -111,7 +111,7 @@
     </div>
     <section>
       <productsList></productsList>
-      <Products></Products>
+      <product></product>
       <Products></Products>
       <div class="guadi"></div>
     </section>
@@ -121,11 +121,12 @@
 
 <script>
 import productsList from './productsList'
+import product from './product'
 import Products from './products'
 import dibu from '../../components/dibu'
 export default {
   name: 'home',
-  components: { productsList, Products, dibu }
+  components: { productsList, product, Products, dibu }
 }
 </script>
 <style scoped>

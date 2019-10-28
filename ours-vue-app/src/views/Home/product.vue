@@ -9,7 +9,7 @@
       <van-col
         span="7"
         style="font-size:0.38rem;color:#e86709;height:0.71rem;text-align:center;line-height:0.71rem;"
-      >黄金饰品推荐</van-col>
+      >电子数码推荐</van-col>
 
       <van-col span="5" offset="7" style="font-size:0.38rem;color:#e86709;color:#818183">查看更多>></van-col>
     </van-row>
@@ -43,23 +43,22 @@
     </van-grid>
   </div>
 </template>
-
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'Products',
+  name: 'product',
   created() {
+    // 发起ajsx的函数
     this.loadData()
   },
   methods: {
-    ...mapActions('products', ['loadData'])
+    ...mapActions('product', ['loadData'])
   },
   computed: {
-    ...mapState('products', ['list'])
+    ...mapState('product', ['list'])
   }
 }
 </script>
 
-<style scoped>
-</style>
+
 
