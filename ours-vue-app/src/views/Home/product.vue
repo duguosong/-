@@ -44,7 +44,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'product',
+  name: 'productS',
   created() {
     // 发起ajsx的函数
     this.loadData()

@@ -14,6 +14,7 @@ import Protol from '../views/Limit/Protol.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // 首页
   {
     path: '/',
 
@@ -21,12 +22,19 @@ const routes = [
 
     component: Home
   },
+  // 消息
   {
     path: '/message',
 
     name: 'Message',
 
     component: () => import('@/views/Home/message')
+  },
+  // 列表
+  {
+    path: '/newPhone/:product_category/:descriptions',
+    name: 'NewPhone',
+    component: () => import('@/views/Home/newPhone')
   },
 
   {

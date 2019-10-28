@@ -80,7 +80,9 @@
       <van-row>
         <van-col span="20" offset="2">
           <van-grid :border="false" :column-num="4">
-            <van-grid-item>
+            <van-grid-item
+              @click="$router.push({name:'NewPhone',params:{product_category:'5db2e5635def0f05c8a70ac9'}})"
+            >
               <div class="app" style="background:orange;color:white">
                 <van-icon name="gold-coin" size="0.76rem" />
               </div>
@@ -103,7 +105,11 @@
               <div class="app" style="background:#d6b159;color:white">
                 <van-icon name="graphic" size="0.76rem" />
               </div>
-              <span style="font-size:0.33rem;width:100%;text-align:center">3万额度</span>
+
+              <span
+                style="font-size:0.33rem;width:100%;text-align:center"
+                @click="$router.push({name:'Limit'})"
+              >3万额度</span>
             </van-grid-item>
           </van-grid>
         </van-col>
@@ -124,9 +130,11 @@ import productsList from './productsList'
 import product from './product'
 import Products from './products'
 import dibu from '../../components/dibu'
+import { products } from '@/services/service'
 export default {
   name: 'home',
-  components: { productsList, product, Products, dibu }
+  components: { productsList, product, Products, dibu },
+  created() {}
 }
 </script>
 <style scoped>
