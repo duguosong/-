@@ -66,7 +66,6 @@ const routes = [
 
   {
     // 我的
-
     path: '/user',
 
     name: 'User',
@@ -84,7 +83,6 @@ const routes = [
 
   {
     // 登录
-
     path: '/login',
 
     name: 'Login',
@@ -110,7 +108,7 @@ const routes = [
     name: 'Setting',
 
     component: () => import('@/views/User/Setting')
-  }
+  },
 
   // {
 
@@ -126,7 +124,15 @@ const routes = [
 
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
 
-  // }
+  // },
+  {
+    // 详情
+    path: '/detail/:id',
+
+    name: 'Detail',
+
+    component: () => import('@/views/Detail/detail')
+  }
 ]
 
 const router = new VueRouter({

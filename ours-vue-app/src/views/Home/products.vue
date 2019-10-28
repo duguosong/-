@@ -19,6 +19,9 @@
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
         v-for="i in list"
         :key="i._id"
+        :to="{name:'Detail',params:{
+          id:i._id
+        }}"
       >
         <van-image :src="i.coverImg" style="width:1.73rem" />
         <van-tag

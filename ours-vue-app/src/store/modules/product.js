@@ -19,7 +19,6 @@ export default {
         state.list.push(payload[i])
       }
       //state.list = payload
-      console.log(payload)
     }
   }
 }

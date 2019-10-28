@@ -1,24 +1,24 @@
 <template>
   <div>
-    <van-card v-for="item in list" :key="item._id" :price="item.price" :thumb="item.coverImg">
+    <van-tabs line-width="2rem">
+      <van-tab v-for="(item, index) in oee" :key="item._id">
+        <div slot="title" style="font-size:0.2rem" ref="dd" @click="tabHandle(index)">
+          <van-icon name="fire" color="red" />
+          {{item}}
+        </div>
+      </van-tab>
+    </van-tabs>
+    <van-card
+      v-for="item in list"
+      :key="item._id"
+      :price="item.price"
+      desc="描述信息"
+      title="商品标题"
+      :thumb="item.coverImg"
+    >
       <div slot="tags">
-        <van-tag
-          style="display
-          inline-block;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
-        >
-          <em style="font-size:0.25rem;color:#f3ad58">假一赔十</em>
-        </van-tag>
-        <van-tag
-          style="display inline-block;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
-        >
-          <em style="font-size:0.25rem;color:#f3ad58">金店验货</em>
-        </van-tag>
-        <van-tag
-          style="display inline-block;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
-        >
-          <em style="font-size:0.25rem;color:#f3ad58">999足金</em>
-        </van-tag>
-        <p>sdasd</p>
+        <van-tag plain type="danger">标签</van-tag>
+        <van-tag plain type="danger">标签</van-tag>
       </div>
     </van-card>
   </div>
@@ -31,25 +31,40 @@ export default {
   name: 'Tabs',
   data() {
     return {
-      list: []
+      list: [],
+      oee: [],
+      text: [],
+      descriptions: '',
+      product_category: ''
     }
   },
   created() {
     // this.loadData()
     this.foo()
+    this.product_category = this.$route.params.product_category
+    this.descriptions = this.$route.params.descriptions
+    console.log(this.descriptions)
+    console.log(this.product_category)
+    const one = this.descriptions.split('&')
+    // console.log(one)
+    this.oee = one
+    console.log(this.list)
   },
   methods: {
-    onClick(name, title) {
-      //   console.log(this.list)
-    },
     // ...mapActions('product', ['loadData']),
     async foo() {
       const result = await products({
-        product_category: '5db2e5635def0f05c8a70ac9',
-        name: '华为'
+        product_category: this.product_category,
+        name: this.text
       })
       console.log(result)
       this.list = result.data.products
+    },
+    tabHandle(obj) {
+      //   console.log(this.$refs.dd[obj].innerText)
+      this.text = this.$refs.dd[obj].innerText
+      console.log(this.text)
+      this.foo()
     }
   },
   computed: {
