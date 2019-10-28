@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import dibu from '../../components/dibu'
+import dibu from '../../components/dibu' //../../components/dibu
 export default {
   name: 'User',
   components: {

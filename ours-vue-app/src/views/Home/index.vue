@@ -19,12 +19,14 @@
           offset="1"
           span="5"
           style="font-size:0.47rem;font-weight:700;color:white;line-height:0.84rem"
+          @click="$router.push({name:'Limit'})"
         >免费领取</van-col>
         <van-col
           span="1"
           offset="9"
           class="iconfont icon-talk"
           style="font-size:0.58rem;font-weight:500;color:white;line-height:0.84rem"
+          @click="$router.push({name:'Message'})"
         ></van-col>
       </van-row>
       <van-row>
@@ -109,20 +111,22 @@
     </div>
     <section>
       <productsList></productsList>
+      <product></product>
       <Products></Products>
-      <Products></Products>
+      <div class="guadi"></div>
     </section>
-    <dibu></dibu>
+    <dibu style=" position: fixed;bottom:0rem"></dibu>
   </div>
 </template>
 
 <script>
 import productsList from './productsList'
+import product from './product'
 import Products from './products'
 import dibu from '../../components/dibu'
 export default {
   name: 'home',
-  components: { productsList, Products, dibu }
+  components: { productsList, product, Products, dibu }
 }
 </script>
 <style scoped>
@@ -132,6 +136,9 @@ export default {
   background-image: url(../../assets/Home001.png) !important;
   background-repeat: no-repeat;
   background-size: 100% 4.18rem;
+}
+.guadi {
+  height: 1.42rem;
 }
 .van-grid-item div {
   display: inline-block;
@@ -146,5 +153,14 @@ export default {
   height: 1.2rem;
   line-height: 1.2rem;
   border-radius: 50% !important;
+}
+.home {
+  display: flex;
+  flex: 1;
+  overflow: auto;
+  flex-direction: column;
+}
+.section {
+  flex: 1;
 }
 </style>

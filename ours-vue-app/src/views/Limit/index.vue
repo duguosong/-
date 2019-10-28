@@ -5,90 +5,91 @@
       <p>完成以下四项认证，5分钟内即出额度</p>
       <p>全款购买商品无需完成以下认证</p>
     </div>
-    <ul id="main">
-      <li class="main_name">
-        <div class="name_left">
-          <em class="iconfont icon-shimingyanzheng"></em>
-          <div class="news">
-            <h4>实名认证</h4>
-            <span>必选</span>
-            <p>验证身份证</p>
-          </div>
-        </div>
-        <div class="name_right">
-          待完善
-          <van-icon class="arrow" name="arrow" size="0.42rem" @click="show = true" />
-          <van-overlay :show="show" @click="show = false">
-            <div class="ceng">
-              <div>
-                <h4>授权提醒</h4>
-                <p>
-                  你必须同意《个人信息使用授权书》才可以进行下一步操作，如果你已经阅读协议请
-                  点击同意授权按钮后提交资料。
-                </p>
-              </div>
-              <van-tabs>
-                <van-tab title="阅读协议"></van-tab>
-                <van-tab title="同意"></van-tab>
-              </van-tabs>
+    <div class="total-bottom">
+      <ul id="main">
+        <li class="main_name">
+          <div class="name_left">
+            <em class="iconfont icon-shimingyanzheng"></em>
+            <div class="news">
+              <h4>实名认证</h4>
+              <span>必选</span>
+              <p>验证身份证</p>
             </div>
-          </van-overlay>
-        </div>
-      </li>
-      <li class="main_name main_do">
-        <div class="name_left">
-          <em class="iconfont icon-wanshanziliao"></em>
-          <div class="news">
-            <h4>完善资料</h4>
-            <span>必选</span>
-            <p>完善个人信息</p>
           </div>
-        </div>
-        <div class="name_right">
-          待完善
-          <van-icon class="arrow" name="arrow" size="0.42rem" />
-        </div>
-      </li>
-      <li class="main_name main_cart">
-        <div class="name_left">
-          <em class="iconfont icon-xinyongqiarenzheng"></em>
-          <div class="news">
-            <h4>信用卡认证</h4>
-            <span>必选</span>
-            <p>验证信用卡信息</p>
+          <div class="name_right">
+            待完善
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show = true" />
+            <van-overlay :show="show" @click="show = false">
+              <div class="ceng">
+                <div class="title">
+                  <h4>授权提醒</h4>
+                  <p>
+                    你必须同意《个人信息使用授权书》才可以进行下一步操作，如果你已经阅读协议请
+                    点击同意授权按钮后提交资料。
+                  </p>
+                </div>
+                <van-tabs>
+                  <van-button type="default" @click="$router.push({name:'protol'})">默认按钮</van-button>
+                  <van-button type="default" @click="$router.push({name:'protol'})">默认按钮</van-button>
+                  <!-- <van-tab title="阅读协议"></van-tab>
+                  <van-tab title="同意"></van-tab>-->
+                </van-tabs>
+              </div>
+            </van-overlay>
           </div>
-        </div>
-        <div class="name_right">
-          待完善
-          <van-icon class="arrow" name="arrow" size="0.42rem" />
-        </div>
-      </li>
-      <li class="main_name main_shouquan">
-        <div class="name_left">
-          <em class="iconfont icon-shouquanguanli"></em>
-          <div class="news">
-            <h4>授权协议</h4>
-            <span>必选</span>
-            <p>签订征信授权协议</p>
+        </li>
+        <li class="main_name main_do">
+          <div class="name_left">
+            <em class="iconfont icon-wanshanziliao"></em>
+            <div class="news">
+              <h4>完善资料</h4>
+              <span>必选</span>
+              <p>完善个人信息</p>
+            </div>
           </div>
-        </div>
-        <div class="name_right">
-          待完善
-          <van-icon class="arrow" name="arrow" size="0.42rem" />
-        </div>
-      </li>
-    </ul>
-    <div id="read">
-      <van-icon name="passed" size="0.4rem" style="margin: 0.7rem 0.3rem 0 0.6rem;" />
-      <p>我已阅读并同意《个人信息使用授权书》《个人征信查询授权书》《数字证书服务协议》</p>
+          <div class="name_right">
+            待完善
+            <van-icon class="arrow" name="arrow" size="0.42rem" />
+          </div>
+        </li>
+        <li class="main_name main_cart">
+          <div class="name_left">
+            <em class="iconfont icon-xinyongqiarenzheng"></em>
+            <div class="news">
+              <h4>信用卡认证</h4>
+              <span>必选</span>
+              <p>验证信用卡信息</p>
+            </div>
+          </div>
+          <div class="name_right">
+            待完善
+            <van-icon class="arrow" name="arrow" size="0.42rem" />
+          </div>
+        </li>
+        <li class="main_name main_shouquan">
+          <div class="name_left">
+            <em class="iconfont icon-shouquanguanli"></em>
+            <div class="news">
+              <h4>授权协议</h4>
+              <span>必选</span>
+              <p>签订征信授权协议</p>
+            </div>
+          </div>
+          <div class="name_right">
+            待完善
+            <van-icon class="arrow" name="arrow" size="0.42rem" />
+          </div>
+        </li>
+      </ul>
+      <div id="read">
+        <van-icon name="passed" size="0.4rem" style="margin: 0.7rem 0.3rem 0 0.6rem;" />
+        <p>我已阅读并同意《个人信息使用授权书》《个人征信查询授权书》《数字证书服务协议》</p>
+      </div>
     </div>
-    <dibu></dibu>
   </div>
 </template>
 
 <script>
-import dibu from '../../components/dibu'
-
 export default {
   name: 'Limit',
   data() {
@@ -96,14 +97,18 @@ export default {
       // isShow: false,
       show: false
     }
-  },
-  components: {
-    dibu
   }
 }
 </script>
 
 <style scoped>
+#total {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+}
 .ceng {
   position: absolute;
   top: 50%;
@@ -114,6 +119,24 @@ export default {
   height: 5rem;
   border-radius: 0.2rem;
   background: #fff;
+}
+.ceng .title {
+  padding: 0 0.4rem;
+}
+.ceng .title h4 {
+  padding-top: 0.4rem;
+  height: 0.6rem;
+  font-size: 0.5rem;
+  line-height: 0.6rem;
+  text-align: center;
+  color: rgb(243, 126, 30);
+}
+.ceng .title p {
+  margin-top: 0.2rem;
+  font-size: 0.28rem;
+  line-height: 0.48rem;
+  border-bottom: 0.02rem solid #cecece;
+  padding-bottom: 0.4rem;
 }
 #total {
   display: flex;
@@ -233,5 +256,19 @@ export default {
 #read p {
   margin-top: 0.5rem;
   width: 8.7rem;
+}
+.total-top {
+  width: 100%;
+  height: 2rem;
+  background: yellow;
+}
+.total-bottom {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: auto;
+}
+.box {
+  height: 1000px;
 }
 </style>

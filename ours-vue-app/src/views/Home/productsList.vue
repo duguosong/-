@@ -27,28 +27,31 @@
     <van-grid :border="false" :column-num="2" class="aa">
       <van-grid-item
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
+        v-for="item in list"
+        :key="item._id"
       >
-        <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" style="width:1.73rem" />
+        <van-image :src="item.coverImg" style="width:1.73rem" />
         <van-tag
           style="margin:0.5rem 1.9rem 0 0;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
         >
           <em style="font-size:0.25rem;color:#f3ad58">假一赔十</em>
         </van-tag>
-        <p
-          style="font-size:0.31rem;box-sizing: border-box;padding: 0.31rem 0.7rem "
-        >Apple iPhone 11Pro Max 64GB/256GB/5...</p>
+        <p style="font-size:0.31rem;box-sizing: border-box;padding: 0.31rem 0.7rem ">{{item.name}}</p>
         <div style="width:100%;height:0.8rem">
           <div
             style="font-size:0.33rem;margin-left:0.7rem;color:#ff6a00;display: inline-block;float:left"
           >月付</div>&nbsp;
           <div style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left">￥</div>
-          <div style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left">2139.76</div>&nbsp;&nbsp;
+          <div
+            style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left"
+          >{{(item.price/6).toFixed(2)}}</div>&nbsp;&nbsp;
           <div
             style="font-size:0.33rem;color:#989898;display: inline-block;float:left;margin-left:0.2rem"
           >×6期</div>
         </div>
       </van-grid-item>
-      <van-grid-item
+
+      <!-- <van-grid-item
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
       >
         <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" style="width:1.73rem" />
@@ -116,19 +119,27 @@
             style="font-size:0.33rem;color:#989898;display: inline-block;float:left;margin-left:0.2rem"
           >×6期</div>
         </div>
-      </van-grid-item>
+      </van-grid-item>-->
     </van-grid>
   </div>
 </template>
-
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'productsList'
+  name: 'productsList',
+  created() {
+    this.loadData(130)
+    console.log(this.list)
+  },
+  methods: {
+    ...mapActions('productsList', ['loadData'])
+  },
+  computed: {
+    ...mapState('productsList', ['list'])
+  }
 }
 </script>
 
 <style scoped>
-img {
-}
 </style>
 
