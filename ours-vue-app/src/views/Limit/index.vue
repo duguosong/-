@@ -17,9 +17,14 @@
             </div>
           </div>
           <div class="name_right">
-            待完善
-            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show = true" />
-            <van-overlay :show="show" @click="show = false">
+            <span>{{isShow?"已完善":"未完善"}}</span>
+            <van-icon
+              class="arrow"
+              name="arrow"
+              size="0.42rem"
+              @click="$router.push({name:'protol'})"
+            />
+            <van-overlay :show="show" @click="show=false">
               <div class="ceng">
                 <div class="title">
                   <h4>授权提醒</h4>
@@ -28,12 +33,10 @@
                     点击同意授权按钮后提交资料。
                   </p>
                 </div>
-                <van-tabs>
-                  <van-button type="default" @click="$router.push({name:'protol'})">默认按钮</van-button>
-                  <van-button type="default" @click="$router.push({name:'protol'})">默认按钮</van-button>
-                  <!-- <van-tab title="阅读协议"></van-tab>
-                  <van-tab title="同意"></van-tab>-->
-                </van-tabs>
+                <div class="tiaozhuan">
+                  <p @click="$router.push({name:'protol'})">阅读协议</p>
+                  <p @click="$router.push({name:'Protol_name'})">同意</p>
+                </div>
               </div>
             </van-overlay>
           </div>
@@ -48,8 +51,8 @@
             </div>
           </div>
           <div class="name_right">
-            待完善
-            <van-icon class="arrow" name="arrow" size="0.42rem" />
+            <span>{{data?"已完善":"未完善"}}</span>
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
           </div>
         </li>
         <li class="main_name main_cart">
@@ -62,8 +65,8 @@
             </div>
           </div>
           <div class="name_right">
-            待完善
-            <van-icon class="arrow" name="arrow" size="0.42rem" />
+            <span>{{credit?"已完善":"未完善"}}</span>
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
           </div>
         </li>
         <li class="main_name main_shouquan">
@@ -76,8 +79,8 @@
             </div>
           </div>
           <div class="name_right">
-            待完善
-            <van-icon class="arrow" name="arrow" size="0.42rem" />
+            <span>{{empower?"已完善":"未完善"}}</span>
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
           </div>
         </li>
       </ul>
@@ -86,16 +89,39 @@
         <p>我已阅读并同意《个人信息使用授权书》《个人征信查询授权书》《数字证书服务协议》</p>
       </div>
     </div>
+    <dibu></dibu>
   </div>
 </template>
 
 <script>
+import dibu from "../../components/dibu"
 export default {
-  name: 'Limit',
+  name: "Limit",
   data() {
     return {
-      // isShow: false,
-      show: false
+      show: false,
+      isShow: false,
+      alive: false,
+      data: false,
+      credit: false,
+      empower: false
+    }
+  },
+  components: {
+    dibu
+  },
+  methods: {
+    getNews() {
+      var cart = JSON.parse(localStorage.getItem("cart"))
+      var cartName = JSON.parse(localStorage.getItem("cartName"))
+      var cartImg = JSON.parse(localStorage.getItem("cartImg"))
+      console.log(cart, cartName, cartImg)
+      if (cart && cartName && cartImg !== "") {
+        this.isShow = true
+      } else {
+        this.isShow = false
+        this.$toast({ message: "你的身份未验证" })
+      }
     }
   }
 }
@@ -138,6 +164,21 @@ export default {
   border-bottom: 0.02rem solid #cecece;
   padding-bottom: 0.4rem;
 }
+
+.ceng .tiaozhuan {
+  padding-top: 0.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.ceng .tiaozhuan p:first-child {
+  border-right: 1px solid #ccc;
+  padding-right: 0.5rem;
+}
+
+.ceng .tiaozhuan p:last-child {
+  color: #ff7633;
+}
 #total {
   display: flex;
   flex-direction: column;
@@ -157,6 +198,9 @@ export default {
   background: #efefef;
   color: #999;
   font-size: 0.32rem;
+}
+#total .total-bottom {
+  position: relative;
 }
 
 #main {
@@ -270,5 +314,20 @@ export default {
 }
 .box {
   height: 1000px;
+}
+.yincang {
+  position: absolute;
+  left: 4.5rem;
+  top: 0.2rem;
+  margin: 0 auto;
+  width: 3.6rem;
+  height: 1.3rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  background: rgba(107, 109, 106, 0.8);
+  font-size: 0.34rem;
+  line-height: 1.3rem;
+  text-align: center;
+  display: none;
 }
 </style>

@@ -10,6 +10,7 @@ import Information from '../views/Limit/Information.vue'
 
 import Accredit from '../views/Limit/Accredit.vue'
 import Protol from '../views/Limit/Protol.vue'
+import Protol_name from '../views/Limit/Protol_name'
 
 Vue.use(VueRouter)
 
@@ -37,7 +38,7 @@ const routes = [
     component: () => import('@/views/Limit/index')
   },
   {
-    //协议
+    //额度协议
     path: '/protol',
     name: 'protol',
     component: Protol
@@ -47,6 +48,12 @@ const routes = [
     path: '/limit',
     name: 'Limit',
     component: () => import('@/views/Limit/index')
+  },
+  {
+    //额度同意协议后，跳转至实名拍照认证
+    path: '/protol_name',
+    name: 'Protol_name',
+    component: Protol_name
   },
   {
     path: '/task',
