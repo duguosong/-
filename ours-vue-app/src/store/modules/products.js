@@ -6,7 +6,6 @@ export default {
   },
   actions: {
     async loadData({ commit }, payload) {
-      console.log(payload)
       const result = await products({
         product_category: '5db29f6ee6d9ba15f812611c'
       })
@@ -15,8 +14,11 @@ export default {
   },
   mutations: {
     save(state, payload) {
-      console.log(payload)
-      state.list = payload
+      state.list = []
+      for (let i = 0; i < 4; i++) {
+        state.list.push(payload[i])
+      }
+      //state.list = payload
     }
   }
 }
