@@ -10,10 +10,8 @@
         span="7"
         style="font-size:0.38rem;color:#e86709;height:0.71rem;text-align:center;line-height:0.71rem;"
       >电子数码推荐</van-col>
-
       <van-col span="5" offset="7" style="font-size:0.38rem;color:#e86709;color:#818183">查看更多>></van-col>
     </van-row>
-
     <van-grid :border="false" :column-num="2" class="aa">
       <van-grid-item
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
