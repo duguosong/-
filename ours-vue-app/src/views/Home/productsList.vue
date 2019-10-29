@@ -29,6 +29,9 @@
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
         v-for="item in list"
         :key="item._id"
+        :to="{name:'Detail',params:{
+          id:item._id
+        }}"
       >
         <van-image :src="item.coverImg" style="width:1.73rem" />
         <van-tag
@@ -129,7 +132,6 @@ export default {
   name: 'productsList',
   created() {
     this.loadData(130)
-    console.log(this.list)
   },
   methods: {
     ...mapActions('productsList', ['loadData'])

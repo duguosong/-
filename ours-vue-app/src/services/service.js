@@ -59,3 +59,18 @@ export function userReg(model) {
 export function userLogin(model) {
   return post('/api/v1/auth/login', model)
 }
+
+/**
+ * 根据id获取详情
+ * @param {*} id
+ */
+export function detailById(id) {
+  return get(`/api/v1/products/${id}`)
+}
+
+/**
+ * 用户获取商品分类id
+ */
+export function categoriesList() {
+  return get('api/v1/product_categories')
+}
