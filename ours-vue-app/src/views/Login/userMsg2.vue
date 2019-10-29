@@ -1,5 +1,5 @@
 <template>
-  <div class="userMsg">
+  <div class="userMsg2">
     <div class="userMsg-top common">
       <p>手机号</p>
       <input type="text" placeholder="请输入手机号" />

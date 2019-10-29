@@ -1,35 +1,35 @@
-import Vue from 'vue'
+import Vue from "vue"
 
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router"
 
-import Home from '../views/Home/index.vue'
+import Home from "../views/Home/index.vue"
 
-import Cart from '../views/Limit/Cart.vue'
+import Cart from "../views/Limit/Cart.vue"
 
-import Information from '../views/Limit/Information.vue'
+import Information from "../views/Limit/Information.vue"
 
-import Accredit from '../views/Limit/Accredit.vue'
-import Protol from '../views/Limit/Protol.vue'
-import Protol_name from '../views/Limit/Protol_name'
+import Accredit from "../views/Limit/Accredit.vue"
+import Protol from "../views/Limit/Protol.vue"
+import Protol_name from "../views/Limit/Protol_name"
 
 Vue.use(VueRouter)
 
 const routes = [
   // 首页
   {
-    path: '/',
+    path: "/",
 
-    name: 'home',
+    name: "home",
 
     component: Home
   },
   // 消息
   {
-    path: '/message',
+    path: "/message",
 
-    name: 'Message',
+    name: "Message",
 
-    component: () => import('@/views/Home/message')
+    component: () => import("@/views/Home/message")
   },
   // 列表
   {
@@ -39,106 +39,128 @@ const routes = [
   },
 
   {
-    path: '/limit',
+    path: "/limit",
 
-    name: 'Limit',
+    name: "Limit",
 
-    component: () => import('@/views/Limit/index')
+    component: () => import("@/views/Limit/index")
   },
   {
     //额度协议
-    path: '/protol',
-    name: 'protol',
+    path: "/protol",
+    name: "protol",
     component: Protol
   },
   {
     //额度
-    path: '/limit',
-    name: 'Limit',
-    component: () => import('@/views/Limit/index')
+    path: "/limit",
+    name: "Limit",
+    component: () => import("@/views/Limit/index")
   },
   {
     //额度同意协议后，跳转至实名拍照认证
-    path: '/protol_name',
-    name: 'Protol_name',
+    path: "/protol_name",
+    name: "Protol_name",
     component: Protol_name
   },
   {
-    path: '/task',
+    path: "/task",
 
-    name: 'Task',
+    name: "Task",
 
-    component: () => import('@/views/Task/index')
+    component: () => import("@/views/Task/index")
   },
 
   {
     // 我的
-    path: '/user',
+    path: "/user",
 
-    name: 'User',
+    name: "User",
 
-    component: () => import('@/views/User/index')
+    component: () => import("@/views/User/index")
   },
 
   {
-    path: '/discover',
+    path: "/discover",
 
-    name: 'Discover',
+    name: "Discover",
 
-    component: () => import('@/views/Discover/index')
+    component: () => import("@/views/Discover/index")
   },
 
   {
     // 登录
-    path: '/login',
+    path: "/login",
 
-    name: 'Login',
+    name: "Login",
 
-    component: () => import('@/views/Login/index')
+    component: () => import("@/views/Login/index")
   },
 
   {
     // 登录 跳转到 服务协议
 
-    path: '/protocol',
+    path: "/protocol",
 
-    name: 'Protocol',
+    name: "Protocol",
 
-    component: () => import('@/components/Protocol')
+    component: () => import("@/views/Login/Protocol")
   },
 
   {
     // 我的 跳转到  设置
 
-    path: '/Setting',
+    path: "/user/Setting",
 
-    name: 'Setting',
+    name: "Setting",
 
-    component: () => import('@/views/User/Setting')
+    component: () => import("@/views/User/Setting/Setting")
   },
+  {
+    // 设置 -> 修改密码页面
+    path: "/user/Setting/changePassword",
 
-  // {
+    name: "changePassword",
 
-  //   path: '/about',
+    component: () => import("@/views/User/Setting/changePassword")
+  },
+  {
+    // 设置 -> 关于我们
+    path: "/user/Setting/aboutUs",
 
-  //   name: 'about',
+    name: "aboutUs",
 
-  //   // route level code-splitting
+    component: () => import("@/views/User/Setting/aboutUs")
+  },
+  {
+    // 我的 -> 我的订单
+    path: "/user/orders",
+    name: "Orders",
+    component: () => import("@/views/User/orders/index")
+  },
+  {
+    // 我的 -> 收货地址管理
 
-  //   // this generates a separate chunk (about.[hash].js) for this route
+    path: "/user/address",
 
-  //   // which is lazy-loaded when the route is visited.
+    name: "Address",
 
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import("@/views/User/address/index")
+  },
+  {
+    // 收货地址管理 -> 添加收货地址
 
-  // },
+    path: "/user/address/addAddress",
+
+    name: "addAddress"
+  },
   {
     // 详情
-    path: '/detail/:id',
+    path: "/detail/:id",
 
-    name: 'Detail',
+    name: "Detail",
 
-    component: () => import('@/views/Detail/detail')
+    component: () => import("@/views/Detail/detail")
   }
 ]
 

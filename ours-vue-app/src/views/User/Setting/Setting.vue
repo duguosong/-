@@ -6,11 +6,16 @@
       </div>
       <p>设置</p>
     </div>
+    <settingCont></settingCont>
   </div>
 </template>
 <script>
+import settingCont from './Setting-cont'
 export default {
   name: 'setting',
+  components: {
+    settingCont
+  },
   methods: {
     lastStep() {
       window.history.go(-1)
@@ -20,10 +25,15 @@ export default {
 </script>
 
 <style scoped>
+.settingBox {
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+}
 .title {
   width: 100%;
   height: 1.38rem;
-  background: #efefef;
+  background: #fff;
   font-size: 0.48rem;
   display: flex;
   justify-content: center;

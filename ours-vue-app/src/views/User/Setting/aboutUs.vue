@@ -1,33 +1,38 @@
 <template>
-  <div>
+  <div class="about">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>产品服务协议</p>
+      <p>关于我们</p>
     </div>
-    <protocolTxt></protocolTxt>
+    <aboutUsCont></aboutUsCont>
   </div>
 </template>
 <script>
-import protocolTxt from '../components/protocolTxt'
+import aboutUsCont from './aboutUsCont'
 export default {
-  name: 'protocol',
-  components: {
-    protocolTxt
-  },
+  name: 'aboutUs',
   methods: {
     lastStep() {
       window.history.go(-1)
     }
+  },
+  components: {
+    aboutUsCont
   }
 }
 </script>
 <style scoped>
+.about {
+  width: 100%;
+  min-height: 100%;
+  background: #efefef;
+}
 .title {
   width: 100%;
   height: 1.38rem;
-  background: #efefef;
+  background: #fff;
   font-size: 0.48rem;
   display: flex;
   justify-content: center;

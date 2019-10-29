@@ -1,36 +1,50 @@
 <template>
-  <div class="login">
+  <div class="addAddressBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>登录</p>
+      <p>添加地址</p>
+      <!-- <span class="save" @click="onSave">保存</span> -->
     </div>
-    <userMsgs></userMsgs>
+    <van-address-edit
+      :area-list="areaList"
+      show-set-default
+      show-search-result
+      :search-result="searchResult"
+      @save="onSave"
+    />
   </div>
 </template>
-   
 <script>
-import userMsgs from './userMsg'
-
+import addACont from './addAddressCont'
+import areaList from '../../../assets/areaList.js'
 export default {
-  name: 'login',
+  name: 'addAddress',
+  data() {
+    return {
+      areaList,
+      searchResult: []
+    }
+  },
   components: {
-    userMsgs
+    addACont
   },
   methods: {
     lastStep() {
       window.history.go(-1)
-    }
+    },
+    onSave() {}
   }
 }
 </script>
-
 <style scoped>
-.login {
+.addAddressBox {
   width: 100%;
   height: 100%;
   background: #efefef;
+  display: flex;
+  flex-direction: column;
 }
 .title {
   width: 100%;
@@ -49,5 +63,9 @@ export default {
   position: absolute;
   left: 0.48rem;
   top: 0.5rem;
+}
+.save {
+  position: absolute;
+  right: 0.48rem;
 }
 </style>
