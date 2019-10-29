@@ -124,11 +124,10 @@ export default {
 
 <style scoped>
 #total {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  flex: 1;
-  overflow: auto;
-  display: flex;
 }
 .ceng {
   position: absolute;
@@ -174,10 +173,7 @@ export default {
 .ceng .tiaozhuan p:last-child {
   color: #ff7633;
 }
-#total {
-  display: flex;
-  flex-direction: column;
-}
+
 .limit-top {
   width: 10.8rem;
   height: 6.19rem;
