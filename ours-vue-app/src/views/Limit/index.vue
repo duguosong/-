@@ -99,8 +99,7 @@ export default {
       alive: false,
       data: false,
       credit: false,
-      empower: false,
-      test: none //测试
+      empower: false
     }
   },
   components: {
