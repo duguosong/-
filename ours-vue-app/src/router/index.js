@@ -33,9 +33,9 @@ const routes = [
   },
   // 列表
   {
-    path: '/newPhone/:product_category/:descriptions',
-    name: 'NewPhone',
-    component: () => import('@/views/Home/newPhone')
+    path: "/newPhone/:product_category/:descriptions",
+    name: "NewPhone",
+    component: () => import("@/views/Home/newPhone")
   },
 
   {
@@ -63,12 +63,17 @@ const routes = [
     name: "Protol_name",
     component: Protol_name
   },
+  // 任务
   {
     path: "/task",
-
     name: "Task",
-
     component: () => import("@/views/Task/index")
+  },
+  {
+    // 任务 -> 活动协议页面
+    path: "/huodong",
+    name: "huodong",
+    component: () => import("@/views/Task/huodong")
   },
 
   {

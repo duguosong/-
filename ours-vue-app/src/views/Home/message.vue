@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: 'Message',
+  name: "Message",
   methods: {
     onClickLeft() {
       window.history.go(-1)

@@ -15,21 +15,21 @@
     <van-grid :border="false" :column-num="2" class="aa">
       <van-grid-item
         style="border-bottom: #efefef solid 1px; border-right: #efefef solid 1px;display:flex"
-        v-for="i in list"
-        :key="i._id"
+        v-for="item in list"
+        :key="item._id"
         :to="{name:'Detail',params:{
-          id:i._id
+          id:item._id
         }}"
       >
-        <van-image :src="i.coverImg" style="width:1.73rem" />
+        <van-image :src="item.coverImg" style="width:1.73rem" />
         <van-tag
-          style="margin:0.5rem 1.9rem 0 0;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
+          style="margin:0.5rem 1.9rem 0.3rem 0;width:1.rem;height:0.3rem;text-align: center;border-radius: 0.3rem;background:white;border: #dead84 solid 0.02rem;"
         >
           <em style="font-size:0.25rem;color:#f3ad58">假一赔十</em>
         </van-tag>
         <div
-          style="font-size:0.31rem;box-sizing: border-box;padding: 0rem 0.7rem;width:4.4rem;height:0.91rem;overflow: hidden;"
-        >{{i.name}}</div>
+          style="font-size:0.31rem;box-sizing: border-box;padding: 0rem 0.7rem;width:4.4rem;height:0.85rem;overflow: hidden;"
+        >{{item.name}}</div>
         <div style="width:100%;height:0.8rem">
           <div
             style="font-size:0.33rem;margin-left:0.7rem;color:#ff6a00;display: inline-block;float:left"
@@ -37,7 +37,7 @@
           <div style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left">￥</div>
           <div
             style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left"
-          >{{(i.price/3).toFixed(2)}}</div>&nbsp;&nbsp;
+          >{{(item.price/6).toFixed(2)}}</div>&nbsp;&nbsp;
           <div
             style="font-size:0.33rem;color:#989898;display: inline-block;float:left;margin-left:0.2rem"
           >×6期</div>
@@ -47,18 +47,18 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from "vuex"
 export default {
-  name: 'productS',
+  name: "productS",
   created() {
     // 发起ajsx的函数
     this.loadData()
   },
   methods: {
-    ...mapActions('product', ['loadData'])
+    ...mapActions("product", ["loadData"])
   },
   computed: {
-    ...mapState('product', ['list'])
+    ...mapState("product", ["list"])
   }
 }
 </script>
