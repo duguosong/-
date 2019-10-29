@@ -1,11 +1,6 @@
 <template>
   <div id="main">
-    <van-nav-bar
-      title="疯狂!黄金狂飙超40美元原油跌近8% 今夜非农驾到"
-      left-arrow
-      @click-left="onClickLeft"
-      class="biaoti"
-    />
+    <van-nav-bar title="疯狂!黄金狂飙超40美元原油跌近8% 今夜非农驾到" left-arrow @click-left="onClickLeft" />
     <h2>疯狂!黄金狂飙超40美元原油跌近8% 今夜非农驾到</h2>
     <span class="time">2019-08-02&nbsp;&nbsp;08:11&nbsp;&nbsp;&nbsp;&nbsp;新浪财经</span>
     <div id="news">
@@ -55,15 +50,6 @@ export default {
   padding: 0 0.42rem;
   display: flex;
   flex-direction: column;
-}
-
-#main .biaoti {
-  height: 1.4rem;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  flex-shrink: 0;
 }
 
 #main h2 {
@@ -120,5 +106,18 @@ export default {
   height: 1.94rem;
   background: url(../../assets/discover/discovery.png) no-repeat;
   background-size: cover;
+}
+</style>
+<style>
+.van-nav-bar {
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
 }
 </style>

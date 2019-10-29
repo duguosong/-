@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <van-nav-bar title="正常运营数量跌破800家..." left-arrow @click-left="onClickLeft" class="biaoti" />
+    <van-nav-bar title="正常运营数量跌破800家..." left-arrow @click-left="onClickLeft" />
     <h2>
       正常运营平台数量跌破
       <b>800</b>家&nbsp;&nbsp;
@@ -131,14 +131,6 @@ export default {
   flex-direction: column;
 }
 
-#main .biaoti {
-  height: 1.4rem;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
 #main h2 {
   height: 2rem;
   font-size: 0.7rem;
@@ -193,5 +185,18 @@ export default {
   height: 1.94rem;
   background: url(../../assets/discover/discovery.png) no-repeat;
   background-size: cover;
+}
+</style>
+<style>
+.van-nav-bar {
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
 }
 </style>
