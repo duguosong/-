@@ -110,6 +110,10 @@ export default {
 </style>
 <style>
 .van-nav-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
   height: 1.2rem;
   line-height: 1.2rem;
 }
