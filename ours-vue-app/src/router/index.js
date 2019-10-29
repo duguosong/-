@@ -11,6 +11,13 @@ import Information from "../views/Limit/Information.vue"
 import Accredit from "../views/Limit/Accredit.vue"
 import Protol from "../views/Limit/Protol.vue"
 import Protol_name from "../views/Limit/Protol_name"
+import Discover from "../views/Discover/index.vue"
+import NewsOne from "../views/Discover/NewsOne.vue"
+import NewsTwo from "../views/Discover/NewsTwo.vue"
+import NewsThree from "../views/Discover/NewsThree.vue"
+import NewsFour from "../views/Discover/NewsFour.vue"
+import NewsFive from "../views/Discover/NewsFive.vue"
+import NewsSix from "../views/Discover/NewsSix.vue"
 
 Vue.use(VueRouter)
 
@@ -86,13 +93,47 @@ const routes = [
   },
 
   {
+    // 发现
     path: "/discover",
-
     name: "Discover",
-
     component: () => import("@/views/Discover/index")
   },
-
+  {
+    // 发现 第1条新闻页面
+    path: "/discover/newsone",
+    name: "NewsOne",
+    component: () => import("@/views/Discover/NewsOne")
+  },
+  {
+    // 发现 第2条新闻页面
+    path: "/discover/newstwo",
+    name: "NewsTwo",
+    component: () => import("@/views/Discover/NewsTwo")
+  },
+  {
+    // 发现 第3条新闻页面
+    path: "/discover/newsthree",
+    name: "NewsThree",
+    component: () => import("@/views/Discover/NewsThree")
+  },
+  {
+    // 发现 第4条新闻页面
+    path: "/discover/newsfour",
+    name: "NewsFour",
+    component: () => import("@/views/Discover/NewsFour")
+  },
+  {
+    // 发现 第5条新闻页面
+    path: "/discover/newsfive",
+    name: "NewsFive",
+    component: () => import("@/views/Discover/NewsFive")
+  },
+  {
+    // 发现 第6条新闻页面
+    path: "/discover/newssix",
+    name: "NewsSix",
+    component: () => import("@/views/Discover/NewsSix")
+  },
   {
     // 登录
     path: "/login",

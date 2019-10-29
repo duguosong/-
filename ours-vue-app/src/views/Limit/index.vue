@@ -18,12 +18,7 @@
           </div>
           <div class="name_right">
             <span>{{isShow?"已完善":"未完善"}}</span>
-            <van-icon
-              class="arrow"
-              name="arrow"
-              size="0.42rem"
-              @click="$router.push({name:'protol'})"
-            />
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show=!isShow" />
             <van-overlay :show="show" @click="show=false">
               <div class="ceng">
                 <div class="title">
@@ -129,11 +124,10 @@ export default {
 
 <style scoped>
 #total {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  flex: 1;
-  overflow: auto;
-  display: flex;
 }
 .ceng {
   position: absolute;
@@ -179,10 +173,7 @@ export default {
 .ceng .tiaozhuan p:last-child {
   color: #ff7633;
 }
-#total {
-  display: flex;
-  flex-direction: column;
-}
+
 .limit-top {
   width: 10.8rem;
   height: 6.19rem;
