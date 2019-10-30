@@ -8,8 +8,13 @@
           </div>
 
           <div class="userName">
-            <p class="tel">188****1161</p>
-            <p class="certification">未认证</p>
+            <div v-if="false">
+              <p class="tel"></p>
+              <p class="certification">未认证</p>
+            </div>
+            <div style="font-size:0.5rem;color:#fff;height:1.22rem;">
+              <p style="height:1.22rem;line-height:1.22rem;">未登录</p>
+            </div>
           </div>
 
           <div class="setting">
@@ -19,26 +24,75 @@
       </div>
     </div>
     <div class="user-order">
-      <div class="user-order-top com2" @click="$router.push({path:'/user/orders'})">
+      <div
+        class="user-order-top com2"
+        @click="$router.push({path:'/user/orders', name: 'Orders',params:{
+              id:0,
+            }})"
+      >
         <p>我的订单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
       <div class="user-order-bottom">
         <van-grid :border="false" :column-num="5" default>
-          <van-grid-item icon="balance-pay" text="待付款" @click="obligation"></van-grid-item>
-          <van-grid-item icon="logistics" text="待发货" @click="shipments"></van-grid-item>
-          <van-grid-item icon="todo-list-o" text="待收货" @click="receiving"></van-grid-item>
-          <van-grid-item icon="share" text="可晒单" @click="shaiDan"></van-grid-item>
-          <van-grid-item icon="phone-circle-o" text="售后"></van-grid-item>
+          <van-grid-item
+            icon="balance-pay"
+            text="待付款"
+            @click="$router.push({
+            path:'/user/orders',
+            name: 'Orders',
+            params:{
+              id:1,
+            }
+          })"
+          ></van-grid-item>
+          <van-grid-item
+            icon="logistics"
+            text="待发货"
+            @click="$router.push({
+            path:'/user/orders',
+            name: 'Orders',
+            params:{
+              id:2,
+            }
+          })"
+          ></van-grid-item>
+          <van-grid-item
+            icon="todo-list-o"
+            text="待收货"
+            @click="$router.push({
+            path:'/user/orders',
+            name: 'Orders',
+            params:{
+              id:3,
+            }
+          })"
+          ></van-grid-item>
+          <van-grid-item
+            icon="share"
+            text="可晒单"
+            @click="$router.push({
+            path:'/user/orders',
+            name: 'Orders',
+            params:{
+              id:4,
+            }
+          })"
+          ></van-grid-item>
+          <van-grid-item
+            icon="phone-circle-o"
+            text="售后"
+            @click="$router.push({path:'/user/afterSale'})"
+          ></van-grid-item>
         </van-grid>
       </div>
     </div>
     <div class="user-bill">
-      <div class="userCommon com2">
+      <div class="userCommon com2" @click="$router.push({path:'/user/bill'})">
         <p>我的账单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon com2">
+      <div class="userCommon com2" @click="$router.push({path:'/user/collect'})">
         <p>我的收藏</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
@@ -46,13 +100,13 @@
         <p>地址管理</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon special com2">
+      <div class="userCommon special com2" @click="$router.push({path:'/user/redPack'})">
         <p>我的红包</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
     </div>
     <div class="user-feedback">
-      <div class="userCommon com2">
+      <div class="userCommon com2" @click="$router.push({path:'/user/feedback'})">
         <p>意见反馈</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
@@ -69,15 +123,21 @@
 </template>
 
 <script>
-import dibu from '../../components/dibu' //../../components/dibu
+import dibu from "../../components/dibu" //../../components/dibu
+import { getToken } from "../../utils/auth"
 export default {
-  name: 'User',
+  name: "User",
+  data() {
+    return {
+      userName: ""
+    }
+  },
   components: {
     dibu
   },
   methods: {
     toSetting() {
-      this.$router.push({ path: '/user/Setting' })
+      this.$router.push({ path: "/user/Setting" })
     }
   }
 }
@@ -242,5 +302,15 @@ export default {
   position: absolute;
   left: 0.6rem;
   top: 16rem;
+}
+</style>
+
+<style>
+.van-icon {
+  font-size: 0.75rem;
+  color: #fe6d02;
+}
+.van-grid-item__text {
+  font-size: 0.34rem;
 }
 </style>

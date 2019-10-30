@@ -1,24 +1,22 @@
 <template>
-  <!-- 全部 -->
-  <div class="allorderBox">
+  <!-- 收藏 -->
+  <div class="collectContBox">
     <wuMsg></wuMsg>
-    <div class="allordersMsg"></div>
   </div>
 </template>
 <script>
 import wuMsg from "../components/wuMsg"
 export default {
-  name: "allorder",
+  name: "collectCont",
   components: {
     wuMsg
   }
 }
 </script>
 <style scoped>
-.allorderBox {
+.collectContBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 </style>

@@ -1,24 +1,23 @@
 <template>
-  <!-- 全部 -->
-  <div class="allorderBox">
+  <!-- 已还账单 -->
+  <div class="yHBillBox">
     <wuMsg></wuMsg>
-    <div class="allordersMsg"></div>
   </div>
 </template>
 <script>
 import wuMsg from "../components/wuMsg"
+
 export default {
-  name: "allorder",
+  name: "YiHBill",
   components: {
     wuMsg
   }
 }
 </script>
 <style scoped>
-.allorderBox {
+.yHBillBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 </style>

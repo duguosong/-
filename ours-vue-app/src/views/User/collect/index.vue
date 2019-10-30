@@ -1,42 +1,32 @@
 <template>
-  <div class="addressBox">
+  <div class="collectBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>地址管理</p>
+      <p>我的收藏</p>
     </div>
-    <div style="flex:1;overflow:auto;">
-      <addressMsg></addressMsg>
-    </div>
-    <div class="btm">
-      <van-button
-        type="primary"
-        size="large"
-        color="linear-gradient(to right, #fe6d04, #fb9806)"
-        @click="$router.push({path:'/user/address/addAddress'})"
-      >添加地址</van-button>
+    <div class="collectCont">
+      <collectCont></collectCont>
     </div>
   </div>
 </template>
 <script>
-import addAddress from "./addAddress"
-import addressMsg from "./addressMsg"
+import collectCont from "./collectCont"
 export default {
-  name: "address",
+  name: "collect",
   components: {
-    addAddress,
-    addressMsg
+    collectCont
   },
   methods: {
     lastStep() {
-      window.history.go(-1)
+      this.$router.push({ path: "/user" })
     }
   }
 }
 </script>
 <style scoped>
-.addressBox {
+.collectBox {
   width: 100%;
   height: 100%;
   background: #efefef;
@@ -54,15 +44,10 @@ export default {
   position: relative;
   box-sizing: border-box;
   padding: 0 0.48rem;
-  margin-bottom: 0.3rem;
 }
 .van-icon-arrow-left {
   position: absolute;
   left: 0.48rem;
   top: 0.5rem;
-}
-
-.btm {
-  font-size: 0.4rem;
 }
 </style>

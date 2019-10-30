@@ -126,9 +126,54 @@ const routes = [
   },
   {
     // 我的 -> 我的订单
-    path: "/user/orders",
+    path: "/user/orders/:id",
     name: "Orders",
     component: () => import("@/views/User/orders/index")
+  },
+  {
+    // 我的 -> 我的账单
+    path: "/user/bill",
+    //  name: "Bill",
+    // redirect: "/user/bill/allBill",
+    component: () => import("@/views/User/bill/index"),
+    children: [
+      {
+        //  我的账单 -> 全部账单
+        path: "",
+        name: "AllBill",
+        component: () => import("@/views/User/bill/allBill")
+      },
+      {
+        //  我的账单 -> 待还账单
+        path: "daiHBill",
+        name: "DaiHBill",
+        component: () => import("@/views/User/bill/daiHuanBill")
+      },
+      {
+        // 我的账单 -> 已还账单
+        path: "yiHBill",
+        name: "YiHBill",
+        component: () => import("@/views/User/bill/yiHuanBill")
+      }
+    ]
+  },
+  {
+    // 我的 ->  售后
+
+    path: "/user/afterSale",
+
+    name: "afterSale",
+
+    component: () => import("@/views/User/afterSale/index")
+  },
+  {
+    // 我的 ->  我的收藏
+
+    path: "/user/collect",
+
+    name: "Collect",
+
+    component: () => import("@/views/User/collect/index")
   },
   {
     // 我的 -> 收货地址管理
@@ -144,7 +189,39 @@ const routes = [
 
     path: "/user/address/addAddress",
 
-    name: "addAddress"
+    name: "addAddress",
+    component: () => import("@/views/User/address/addAddress")
+  },
+  {
+    // 我的 -> 红包
+    path: "/user/redPack",
+    component: () => import("@/views/User/redPack/index"),
+    children: [
+      {
+        // 我的红包-> 未使用
+        path: "",
+        name: "Unused",
+        component: () => import("@/views/User/redPack/unused")
+      },
+      {
+        // 我的红包 -> 已使用
+        path: "used",
+        name: "Used",
+        component: () => import("@/views/User/redPack/used")
+      },
+      {
+        // 我的红包 -> 已过期
+        path: "expired",
+        name: "Expired",
+        component: () => import("@/views/User/redPack/expired")
+      }
+    ]
+  },
+  {
+    // 我的 -> 意见反馈
+    path: "/user/feedback",
+    name: "Feedback",
+    component: () => import("@/views/User/feedback/index")
   },
   {
     // 详情
