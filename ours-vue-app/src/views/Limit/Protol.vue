@@ -98,6 +98,7 @@ export default {
 .xieyi .main {
   flex: 1;
   overflow: auto;
+  padding-top: 1rem;
 }
 .xieyi h4 {
   text-align: center;
@@ -106,12 +107,12 @@ export default {
   padding: 0.2rem 0;
 }
 .xieyi p {
-  font-size: 0.2rem;
+  font-size: 0.36rem;
   line-height: 0.8rem;
   text-indent: 1rem;
 }
 .xieyi .tongyi {
-  font-size: 0.24rem;
+  font-size: 0.36rem;
   width: 2rem;
   height: 0.8rem;
   background: #f00;
@@ -119,5 +120,23 @@ export default {
   text-align: center;
   line-height: 0.8rem;
   color: #fff;
+}
+</style>
+<style>
+.van-nav-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  border-bottom: 1px solid #ccc;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
 }
 </style>
