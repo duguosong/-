@@ -1,16 +1,17 @@
 <template>
   <div class="SettingCont">
-    <div class="settingCont1" v-if="false">
+    <!-- 根据 cookie 内是否存在 userName_token 来判断显示那个模块 -->
+    <div class="settingCont1" v-if="token==undefined?true:false">
       <div class="banBen com1">
         <p>当前版本</p>
         <span>V 4.0.8</span>
       </div>
-      <div class="guanYu com1">
+      <div class="guanYu com1" @click="$router.push({path:'/user/Setting/aboutUs'})">
         <p>关于我们</p>
         <van-icon name="arrow" size="0.42rem;" color="gainsboro" />
       </div>
     </div>
-    <div class="settingCont1 settingCont2">
+    <div class="settingCont1 settingCont2" v-else>
       <div class="banBen com1">
         <p>当前版本</p>
         <span>V 4.0.8</span>
@@ -28,12 +29,25 @@
   </div>
 </template>
 <script>
+import { getToken, removeToken } from "../../../utils/auth"
+import { Toast } from "vant" // 提示框
+
 export default {
-  name: 'settingCont',
+  name: "settingCont",
+  data() {
+    return {
+      token: getToken()
+    }
+  },
   methods: {
     tuiChu() {
-      console.log('点击了退出按钮!')
-      this.$router.push({ path: '/user' })
+      console.log("点击了退出按钮!")
+      removeToken()
+      localStorage.removeItem("token")
+      Toast("退出成功!")
+      setTimeout(() => {
+        this.$router.push({ path: "/user" })
+      }, 800)
     }
   }
 }

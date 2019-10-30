@@ -25,11 +25,3 @@ export function logout() {
     method: "post"
   })
 }
-
-// export function products() {
-//   return request({
-//     url: "/api/v1/admin/products",
-//     method: "get",
-//     params: { per, page, name }
-//   })
-// }

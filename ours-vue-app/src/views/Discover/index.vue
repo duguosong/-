@@ -84,12 +84,11 @@ section {
 }
 
 #main li {
-  width: 100%;
   height: 2.55rem;
   border-bottom: 1px solid #bdbebd;
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0.5rem 0 0.5rem;
+  padding: 0.2rem 0.3rem;
 }
 #main li h4 {
   font-size: 0.5rem;
@@ -115,7 +114,7 @@ section {
   width: 2.4rem;
   height: 1.8rem;
   margin-top: 0.3rem;
-  margin-right: 0.8rem;
+  margin-right: 0.2rem;
   border: 1px solid #ccc;
 }
 
