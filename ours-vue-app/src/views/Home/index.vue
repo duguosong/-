@@ -48,27 +48,6 @@
             <van-swipe-item v-for="(item,index) in list" :key="index">
               <img :src="item.coverImg" alt style="width:100%" />
             </van-swipe-item>
-            <!-- <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>-->
           </van-swipe>
         </van-col>
       </van-row>
@@ -132,28 +111,28 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import productsList from './productsList'
-import product from './product'
-import Products from './products'
-import dibu from '../../components/dibu'
-import { products } from '@/services/service'
+import { mapState, mapActions } from "vuex"
+import productsList from "./productsList"
+import product from "./product"
+import Products from "./products"
+import dibu from "../../components/dibu"
+import { products } from "@/services/service"
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       obj: {}
     }
   },
   computed: {
-    ...mapState('categoriesList', ['list'])
+    ...mapState("categoriesList", ["list"])
   },
   created() {
     this.loadData()
   },
   components: { productsList, product, Products, dibu },
   methods: {
-    ...mapActions('categoriesList', ['loadData'])
+    ...mapActions("categoriesList", ["loadData"])
   }
 }
 </script>

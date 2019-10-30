@@ -10,7 +10,7 @@
     <div
       style="color:white;font-size:0.34rem;text-align:center;line-height:0.6rem; border-radius: 0.1rem;width:2.16rem;height:0.6rem;border:white solid 0.04rem;;position:absolute;top:0.32rem;right:0.54rem"
     >
-      <van-icon name="eye" style="font-size:0.36rem;line-height:0.6rem;" />奖励明细
+      <van-icon name="eye" style="font-size:0.36rem;line-height:0.1rem;" />奖励明细
     </div>
   </div>
 </template>
