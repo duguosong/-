@@ -4,11 +4,10 @@ import VueRouter from "vue-router"
 
 import Home from "../views/Home/index.vue"
 
-import Cart from "../views/Limit/Cart.vue"
-
 import Information from "../views/Limit/Information.vue"
+import Search from "../views/Limit/Search.vue"
+import Number from "../views/Limit/Number.vue"
 
-import Accredit from "../views/Limit/Accredit.vue"
 import Protol from "../views/Limit/Protol.vue"
 import Protol_name from "../views/Limit/Protol_name"
 import Discover from "../views/Discover/index.vue"
@@ -71,6 +70,24 @@ const routes = [
     component: Protol_name
   },
   // 任务
+  {
+    //额度 个人信息使用授权书
+    path: "/limit/information",
+    name: "Information",
+    component: () => import("@/views/Limit/Information")
+  },
+  {
+    //额度 个人征信查询授权书
+    path: "/limit/search",
+    name: "Search",
+    component: () => import("@/views/Limit/Search")
+  },
+  {
+    //额度 数字证书服务协议
+    path: "/limit/number",
+    name: "Number",
+    component: () => import("@/views/Limit/Number")
+  },
   {
     path: "/task",
     name: "Task",
