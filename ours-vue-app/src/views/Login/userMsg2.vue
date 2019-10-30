@@ -1,12 +1,27 @@
 <template>
+  <!-- 登录页面组件 -->
   <div class="userMsg2">
     <div class="userMsg-top common">
       <p>手机号</p>
-      <input type="text" placeholder="请输入手机号" />
+      <input
+        type="text"
+        v-model="tel"
+        minlength="11"
+        maxlength="11"
+        placeholder="请输入手机号"
+        @blur="sendCode"
+      />
     </div>
     <div class="userMsg-btm common">
       <p>登录密码</p>
-      <input type="text" placeholder="请输入登录密码" />
+      <input
+        type="text"
+        v-model="pwd"
+        minlength="6"
+        maxlength="20"
+        placeholder="请输入6~20位登录密码"
+        @blur="changIn($event)"
+      />
     </div>
     <div class="protocol">
       <span class="iconfont icon-choosehandle"></span>
@@ -14,25 +29,73 @@
       <div class="protocol-btm" @click="xieYi">《产品服务协议》</div>
     </div>
     <div class="loginBtn">
-      <button @click="loginBtn">登陆</button>
+      <button @click="loginBtn" ref="loginBtn">登陆</button>
     </div>
-    <div class="handover">
-      <p>切换至验证码登录</p>
+    <div class="handover" @click="toReg">
+      <p>还没账号?点击立即注册</p>
     </div>
   </div>
 </template>
 <script>
+import { reg, login } from "../../api/user"
+import { setToken } from "../../utils/auth"
+import { Toast } from "vant" // 提示框
 export default {
-  name: 'userMsgs2',
+  name: "userMsgs2",
+  data() {
+    return {
+      tel: "",
+      pwd: "",
+      yanzheng: false
+    }
+  },
   methods: {
     sendCode() {
-      console.log(1111111)
+      //  手机号输入正确之后 才能点击 "发送验证码" 按钮
+      if (
+        /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/.test(
+          this.tel
+        )
+      ) {
+        this.yanzheng = true
+      }
     },
     loginBtn() {
-      console.log(2222222)
+      // 当 手机号和密码 都不为空 可以点击 登录按钮
+      if (this.tel != "" && this.pwd != "" && this.yanzheng == true) {
+        console.log("点击了登录按钮")
+        login({
+          userName: this.tel,
+          password: this.pwd
+        }).then(res => {
+          console.log(res.data.code)
+          if (res.data.code == "success") {
+            Toast("登陆成功!")
+            localStorage.setItem("token", res.data.token)
+            setToken(this.tel)
+            setTimeout(() => {
+              this.$router.push({ path: "/user" })
+            }, 800)
+          } else {
+            Toast(res.data.message)
+          }
+        })
+      }
     },
     xieYi() {
-      this.$router.push({ path: '/protocol' })
+      this.$router.push({ path: "/protocol" })
+    },
+    toReg() {
+      this.$router.push({ path: "/reg" })
+    },
+    changIn(e) {
+      // console.log(this.pwd)
+      if (this.pwd != "" && this.yanzheng == true) {
+        this.$refs.loginBtn.style.backgroundColor = "#ff6c00"
+      } else {
+        Toast("请输入正确的账户和密码!")
+        this.$refs.loginBtn.style.backgroundColor = "#f4c897"
+      }
     }
   }
 }
@@ -49,7 +112,7 @@ export default {
   box-sizing: border-box;
   font-size: 0.44rem;
   padding: 0 0.48rem;
-  background: #efefef;
+  background: #fff;
 }
 .common p {
   box-sizing: border-box;
@@ -59,7 +122,7 @@ export default {
 .common input {
   border: 0;
   height: 1.4rem;
-  background: #efefef;
+  background: #fff;
 }
 .userMsg-top {
   border-bottom: 0.02rem solid #ccc;

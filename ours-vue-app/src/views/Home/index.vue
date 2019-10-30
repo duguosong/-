@@ -100,13 +100,12 @@
         </van-col>
       </van-row>
     </div>
-    <section>
+    <div style="flex:1;overflow: auto;">
       <productsList></productsList>
       <product></product>
       <Products></Products>
-      <div class="guadi"></div>
-    </section>
-    <dibu style=" position: fixed;bottom:0rem"></dibu>
+    </div>
+    <dibu></dibu>
   </div>
 </template>
 
@@ -139,14 +138,12 @@ export default {
 <style scoped>
 .nav {
   width: 100%;
-  height: 9.8rem;
+  height: 10rem;
   background-image: url(../../assets/Home001.png) !important;
   background-repeat: no-repeat;
   background-size: 100% 4.18rem;
 }
-.guadi {
-  height: 1.42rem;
-}
+
 .van-grid-item div {
   display: inline-block;
   width: 1.04rem;
@@ -160,15 +157,13 @@ export default {
   height: 1.2rem;
   line-height: 1.2rem;
   border-radius: 50% !important;
+  margin-bottom: 0.3rem;
 }
 .home {
   display: flex;
+  flex-direction: column;
   flex: 1;
   overflow: auto;
-  flex-direction: column;
-}
-.section {
-  flex: 1;
 }
 .van-swipe__track img {
   width: 9.6rem;

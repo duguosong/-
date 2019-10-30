@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-  name: 'dibu'
+  name: "dibu"
 }
 </script>
 <style scoped>

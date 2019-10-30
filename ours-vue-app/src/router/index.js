@@ -159,6 +159,15 @@ const routes = [
 
     component: () => import("@/views/Login/index")
   },
+  ,
+  {
+    // 登录
+    path: "/reg",
+
+    name: "Reg",
+
+    component: () => import("@/views/Login/reg")
+  },
 
   {
     // 登录 跳转到 服务协议
@@ -201,32 +210,37 @@ const routes = [
     name: "Orders",
     component: () => import("@/views/User/orders/index")
   },
+  // {
+  //   // 我的 -> 我的账单
+  //   path: "/user/bill",
+  //   //  name: "Bill",
+  //   // redirect: "/user/bill/allBill",
+  //   component: () => import("@/views/User/bill/index"),
+  //   children: [
+  //     {
+  //       //  我的账单 -> 全部账单
+  //       path: "",
+  //       name: "AllBill",
+  //       component: () => import("@/views/User/bill/allBill")
+  //     },
+  //     {
+  //       //  我的账单 -> 待还账单
+  //       path: "daiHBill",
+  //       name: "DaiHBill",
+  //       component: () => import("@/views/User/bill/daiHuanBill")
+  //     },
+  //     {
+  //       // 我的账单 -> 已还账单
+  //       path: "yiHBill",
+  //       name: "YiHBill",
+  //       component: () => import("@/views/User/bill/yiHuanBill")
+  //     }
+  //   ]
+  // },
   {
-    // 我的 -> 我的账单
-    path: "/user/bill",
-    //  name: "Bill",
-    // redirect: "/user/bill/allBill",
-    component: () => import("@/views/User/bill/index"),
-    children: [
-      {
-        //  我的账单 -> 全部账单
-        path: "",
-        name: "AllBill",
-        component: () => import("@/views/User/bill/allBill")
-      },
-      {
-        //  我的账单 -> 待还账单
-        path: "daiHBill",
-        name: "DaiHBill",
-        component: () => import("@/views/User/bill/daiHuanBill")
-      },
-      {
-        // 我的账单 -> 已还账单
-        path: "yiHBill",
-        name: "YiHBill",
-        component: () => import("@/views/User/bill/yiHuanBill")
-      }
-    ]
+    path: "/cart",
+    name: "Cart",
+    component: () => import("@/views/User/Cart/index")
   },
   {
     // 我的 ->  售后

@@ -1,7 +1,6 @@
 <template>
   <!-- 待收货 -->
   <div class="receivingBox">
-    <h1>待收货</h1>
     <wuMsg></wuMsg>
   </div>
 </template>

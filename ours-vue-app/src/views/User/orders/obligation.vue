@@ -1,7 +1,6 @@
 <template>
   <!-- 待付款  -->
   <div class="obligationBox">
-    <h1>待付款</h1>
     <wuMsg></wuMsg>
   </div>
 </template>

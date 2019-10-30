@@ -28,11 +28,14 @@
           <em style="font-size:0.25rem;color:#f3ad58">假一赔十</em>
         </van-tag>
         <div
-          style="font-size:0.31rem;box-sizing: border-box;padding: 0rem 0.7rem;width:4.4rem;height:0.85rem;overflow: hidden;"
+          style="font-size:0.31rem;box-sizing:border-box;padding: 0rem 0.35rem;width:4.4rem;overflow: hidden;marigin-bottom:0.3rem;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;"
         >{{item.name}}</div>
         <div style="width:100%;height:0.8rem">
           <div
-            style="font-size:0.33rem;margin-left:0.7rem;color:#ff6a00;display: inline-block;float:left"
+            style="font-size:0.33rem;margin-left:0.35rem;color:#ff6a00;display: inline-block;float:left"
           >月付</div>&nbsp;
           <div style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left">￥</div>
           <div

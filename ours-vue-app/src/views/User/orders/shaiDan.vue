@@ -1,7 +1,6 @@
 <template>
   <!-- 可晒单 -->
   <div class="shaiDanBox">
-    <h1>可晒单</h1>
     <wuMsg></wuMsg>
   </div>
 </template>

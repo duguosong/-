@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'InputADD'
+  name: "InputADD"
 }
 </script>
 <style  scoped>

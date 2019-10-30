@@ -48,3 +48,5 @@ export const post = (url, data) => instance.post(url, data)
 export const put = (url, data) => instance.put(url, data)
 
 export const del = (url, data) => instance.delete(url, data)
+
+export default instance

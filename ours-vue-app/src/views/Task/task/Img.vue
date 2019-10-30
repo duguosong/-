@@ -8,15 +8,31 @@
     </p>
 
     <div
+      @click="showPopup"
       style="color:white;font-size:0.34rem;text-align:center;line-height:0.6rem; border-radius: 0.1rem;width:2.16rem;height:0.6rem;border:white solid 0.04rem;;position:absolute;top:0.32rem;right:0.54rem"
     >
       <van-icon name="eye" style="font-size:0.36rem;line-height:0.1rem;" />奖励明细
     </div>
+    <!-- 去取现 -->
+    <van-popup v-model="show">该功能正在研发</van-popup>
   </div>
 </template>
 
 <script>
+import { Popup } from "vant"
+
 export default {
-  name: "navTop"
+  name: "navTop",
+  data() {
+    return {
+      show: false
+    }
+  },
+  methods: {
+    showPopup() {
+      this.show = true
+      console.log(1)
+    }
+  }
 }
 </script>

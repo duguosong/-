@@ -4,7 +4,7 @@
     <div class="userMsg2">
       <div class="common">
         <p>原密码</p>
-        <input type="text" placeholder="请输入原登陆密码" />
+        <input type="text" placeholder="请输入原登陆密码" v-model="oldPwd" />
       </div>
       <div class="common">
         <p>新密码</p>
@@ -16,14 +16,30 @@
       </div>
 
       <div class="loginBtn">
-        <button @click>确定</button>
+        <button>确定</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { getInfo } from "../../../api/user"
+import { getToken } from "../../../utils/auth"
+import { Dialog } from "vant"
 export default {
-  name: 'changePwd'
+  name: "changePwd",
+  data() {
+    return {
+      oldPwd: "",
+      token: ""
+    }
+  },
+  created: function() {
+    Dialog.alert({
+      message: "该功能正在开发中,敬请期待!"
+    }).then(() => {
+      this.$router.push({ path: "/user/Setting" })
+    })
+  }
 }
 </script>
 
