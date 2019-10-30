@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <van-nav-bar title="曲线倒挂！经济衰退预警指标全面..." left-arrow @click-left="onClickLeft" class="biaoti" />
+    <van-nav-bar title="曲线倒挂！经济衰退预警指标全面..." left-arrow @click-left="onClickLeft" />
     <h2>曲线倒挂！经济衰退预警指标全面出现黄金再飙升</h2>
     <span class="time">2019-08-13&nbsp;&nbsp;07:11&nbsp;&nbsp;&nbsp;&nbsp;券商中国</span>
     <div id="news">
@@ -159,14 +159,6 @@ export default {
   flex-direction: column;
 }
 
-#main .biaoti {
-  height: 1.4rem;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
 #main h2 {
   height: 2rem;
   font-size: 0.7rem;
@@ -221,5 +213,22 @@ export default {
   height: 1.94rem;
   background: url(../../assets/discover/discovery.png) no-repeat;
   background-size: cover;
+}
+</style>
+<style>
+.van-nav-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
 }
 </style>

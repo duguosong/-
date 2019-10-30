@@ -1,11 +1,6 @@
 <template>
   <div id="main">
-    <van-nav-bar
-      title="万股皆下品唯有黄金高！金价突破千五或指日可待？"
-      left-arrow
-      @click-left="onClickLeft"
-      class="biaoti"
-    />
+    <van-nav-bar title="万股皆下品唯有黄金高！金价突破千五或指日可待？" left-arrow @click-left="onClickLeft" />
     <h2>万股皆下品唯有黄金高！金价突破千五或指日可待？</h2>
     <span class="time">2019-08-16&nbsp;&nbsp;08:17:19&nbsp;&nbsp;&nbsp;&nbsp;环球外汇官网</span>
     <div id="news">
@@ -97,14 +92,6 @@ export default {
   flex-direction: column;
 }
 
-#main .biaoti {
-  height: 1.4rem;
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
-
 #main h2 {
   height: 2rem;
   font-size: 0.7rem;
@@ -159,5 +146,22 @@ export default {
   height: 1.94rem;
   background: url(../../assets/discover/discovery.png) no-repeat;
   background-size: cover;
+}
+</style>
+<style>
+.van-nav-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
 }
 </style>
