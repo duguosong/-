@@ -45,33 +45,8 @@
             indicator-color="white"
             style="height:4.16rem;border-radius:0.35rem"
           >
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
+            <van-swipe-item v-for="(item,index) in list" :key="index">
+              <img :src="item.coverImg" alt style="width:100%" />
             </van-swipe-item>
           </van-swipe>
         </van-col>
@@ -81,7 +56,7 @@
         <van-col span="20" offset="2">
           <van-grid :border="false" :column-num="4">
             <van-grid-item
-              :to="{name:'Hot',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
+              :to="{name:'NewPhone',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
             >
               <div class="app" style="background:orange;color:white">
                 <van-icon name="gold-coin" size="0.76rem" />
@@ -91,7 +66,7 @@
               >{{list[0]?list[0].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'Hot',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
+              :to="{name:'NewPhone',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
             >
               <div class="app" style="background:#76beee;color:white">
                 <van-icon name="gift-card" size="0.76rem" />
@@ -101,7 +76,7 @@
               >{{list[1]?list[1].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'Hot',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
+              :to="{name:'NewPhone',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
             >
               <div class="app" style="background:#f96561;color:white">
                 <van-icon name="hot" size="0.76rem" />
@@ -115,7 +90,11 @@
               <div class="app" style="background:#d6b159;color:white">
                 <van-icon name="graphic" size="0.76rem" />
               </div>
-              <span style="font-size:0.33rem;width:100%;text-align:center">3万额度</span>
+
+              <span
+                style="font-size:0.33rem;width:100%;text-align:center"
+                @click="$router.push({name:'Limit'})"
+              >3万额度</span>
             </van-grid-item>
           </van-grid>
         </van-col>
@@ -137,6 +116,7 @@ import productsList from "./productsList"
 import product from "./product"
 import Products from "./products"
 import dibu from "../../components/dibu"
+import { products } from "@/services/service"
 export default {
   name: "home",
   data() {
@@ -189,5 +169,9 @@ export default {
 }
 .section {
   flex: 1;
+}
+.van-swipe__track img {
+  width: 9.6rem;
+  height: 4.18rem;
 }
 </style>

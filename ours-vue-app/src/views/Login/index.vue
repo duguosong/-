@@ -6,19 +6,17 @@
       </div>
       <p>登录</p>
     </div>
-    <userMsgs v-if="false"></userMsgs>
-    <userMsgs2></userMsgs2>
+    <userMsgs></userMsgs>
   </div>
 </template>
    
 <script>
 import userMsgs from './userMsg'
-import userMsgs2 from './userMsg2'
+
 export default {
   name: 'login',
   components: {
-    userMsgs,
-    userMsgs2
+    userMsgs
   },
   methods: {
     lastStep() {
@@ -29,10 +27,15 @@ export default {
 </script>
 
 <style scoped>
+.login {
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+}
 .title {
   width: 100%;
   height: 1.38rem;
-  background: #efefef;
+  background: #fff;
   font-size: 0.48rem;
   display: flex;
   justify-content: center;

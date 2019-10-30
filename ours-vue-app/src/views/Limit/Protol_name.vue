@@ -128,3 +128,21 @@ export default {
   }
 }
 </script>
+<style>
+.van-nav-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  border-bottom: 1px solid #ccc;
+}
+.van-nav-bar .van-icon {
+  font-size: 0.5rem;
+  color: #6e6e6e;
+}
+.van-nav-bar__title {
+  font-size: 0.5rem;
+}
+</style>

@@ -1,30 +1,59 @@
 <template>
-  <div class="userMsg">
-    <div class="userMsg-top common">
-      <p>手机号</p>
-      <input type="text" placeholder="请输入手机号" />
+  <div>
+    <div class="userMsg" v-if="show">
+      <div class="userMsg-top common">
+        <p>手机号</p>
+        <input type="text" placeholder="请输入手机号" />
+      </div>
+      <div class="userMsg-btm common">
+        <p>验证码</p>
+        <input type="text" placeholder="请输入验证码" @change="changeIn($event)" ref="txt" />
+        <button @click="sendCode">发送验证码</button>
+      </div>
+      <div class="protocol">
+        <span class="iconfont icon-choosehandle"></span>
+        <p>我已阅读并同意</p>
+        <div class="protocol-btm" @click="xieYi">《产品服务协议》</div>
+      </div>
+      <div class="loginBtn">
+        <button @click="loginBtn" ref="loginBtn">登陆</button>
+      </div>
+      <div class="handover" @click="qieHuan">
+        <p>切换至密码登录</p>
+      </div>
     </div>
-    <div class="userMsg-btm common">
-      <p>验证码</p>
-      <input type="text" placeholder="请输入验证码" />
-      <button @click="sendCode">发送验证码</button>
-    </div>
-    <div class="protocol">
-      <span class="iconfont icon-choosehandle"></span>
-      <p>我已阅读并同意</p>
-      <div class="protocol-btm" @click="xieYi">《产品服务协议》</div>
-    </div>
-    <div class="loginBtn">
-      <button @click="loginBtn">登陆</button>
-    </div>
-    <div class="handover">
-      <p>切换至密码登录</p>
+
+    <div class="userMsg2" v-else>
+      <div class="userMsg-top common">
+        <p>手机号</p>
+        <input type="text" placeholder="请输入手机号" />
+      </div>
+      <div class="userMsg-btm common">
+        <p>登录密码</p>
+        <input type="text" placeholder="请输入登录密码" @change="changeIn($event)" ref="txt" />
+      </div>
+      <div class="protocol">
+        <span class="iconfont icon-choosehandle"></span>
+        <p>我已阅读并同意</p>
+        <div class="protocol-btm" @click="xieYi">《产品服务协议》</div>
+      </div>
+      <div class="loginBtn">
+        <button @click="loginBtn" ref="loginBtn">登陆</button>
+      </div>
+      <div class="handover" @click="qieHuan">
+        <p>切换至验证码登录</p>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
   name: 'userMsgs',
+  data() {
+    return {
+      show: true
+    }
+  },
   methods: {
     sendCode() {
       console.log(1111111)
@@ -34,6 +63,13 @@ export default {
     },
     xieYi() {
       this.$router.push({ path: '/protocol' })
+    },
+    qieHuan() {
+      this.show = !this.show
+      this.$refs.txt.value = ''
+    },
+    changeIn(e) {
+      this.$refs.loginBtn.style.backgroundColor = '#ff6c00'
     }
   }
 }
@@ -50,7 +86,7 @@ export default {
   box-sizing: border-box;
   font-size: 0.44rem;
   padding: 0 0.48rem;
-  background: #efefef;
+  background: #fff;
 }
 .common p {
   box-sizing: border-box;
@@ -60,7 +96,7 @@ export default {
 .common input {
   border: 0;
   height: 1.4rem;
-  background: #efefef;
+  background: #fff;
 }
 .userMsg-top {
   border-bottom: 0.02rem solid #ccc;
@@ -76,7 +112,7 @@ export default {
   width: 2.4rem;
   border: 0;
   height: 1.42rem;
-  background: #efefef;
+  background: #fff;
   color: #ff6c00;
 }
 

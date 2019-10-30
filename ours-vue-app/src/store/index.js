@@ -11,6 +11,11 @@ import categoriesList from "./modules/categoriesList"
 // import shouzhuo from "./modules/Fenlei/shouzhuo"
 // import xianglian from "./modules/Fenlei/xianglian"
 // import zhuanyunzhu from "./modules/Fenlei/zhuanyunzhu"
+
+// 地址模块
+import addressList from "./modules/address/index"
+import addressnew from "./modules/address/addressnew"
+import addressOneByID from "./modules/address/addressOneByID"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -22,11 +27,14 @@ export default new Vuex.Store({
     products,
     product,
     detail,
-    categoriesList
+    categoriesList,
     // hot,
     // jiezhi,
     // shouzhuo,
     // xianglian,
     // zhuanyunzhu
+    addressList,
+    addressnew,
+    addressOneByID
   }
 })

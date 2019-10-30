@@ -1,20 +1,25 @@
 <template>
-  <div>
+  <div class="afterSaleBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>产品服务协议</p>
+      <p>售后服务</p>
     </div>
-    <protocolTxt></protocolTxt>
+    <div style="display: flex;
+  flex-direction: column;
+    align-items: center;
+  ">
+      <wuMsg></wuMsg>
+    </div>
   </div>
 </template>
 <script>
-import protocolTxt from '../components/protocolTxt'
+import wuMsg from "../components/wuMsg"
 export default {
-  name: 'protocol',
+  name: "afterSale",
   components: {
-    protocolTxt
+    wuMsg
   },
   methods: {
     lastStep() {
@@ -24,10 +29,17 @@ export default {
 }
 </script>
 <style scoped>
+.afterSaleBox {
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+  display: flex;
+  flex-direction: column;
+}
 .title {
   width: 100%;
   height: 1.38rem;
-  background: #efefef;
+  background: #fff;
   font-size: 0.48rem;
   display: flex;
   justify-content: center;
@@ -35,7 +47,6 @@ export default {
   position: relative;
   box-sizing: border-box;
   padding: 0 0.48rem;
-  margin-bottom: 0.3rem;
 }
 .van-icon-arrow-left {
   position: absolute;

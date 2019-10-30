@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios"
 
 const instance = axios.create({
-  baseURL: 'http://192.168.17.65:3000',
+  baseURL: "http://192.168.17.65:3000",
   timeout: 5000 //全局超时时间
 })
 
@@ -13,7 +13,7 @@ instance.interceptors.request.use(
   function(config) {
     // Do something before request is sent
     // 为config设置一个属性 这个属性表示 为全局的网络请求设置一个请求头
-    config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+    config.headers.authorization = `Bearer ${localStorage.getItem("token")}`
     return config
   },
   function(error) {
@@ -35,7 +35,7 @@ instance.interceptors.response.use(
     // Do something with response error
     // 服务器端返回了一个结果(有响应)并且服务器端返回给我的状态码是401的时候 跳转到登录页
     if (error.response && error.response.status === 401) {
-      window.location.href = '#/login'
+      window.location.href = "#/login"
     }
     return Promise.reject(error)
   }

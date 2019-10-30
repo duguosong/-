@@ -18,12 +18,7 @@
           </div>
           <div class="name_right">
             <span>{{isShow?"已完善":"未完善"}}</span>
-            <van-icon
-              class="arrow"
-              name="arrow"
-              size="0.42rem"
-              @click="$router.push({name:'protol'})"
-            />
+            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show=!isShow" />
             <van-overlay :show="show" @click="show=false">
               <div class="ceng">
                 <div class="title">
@@ -86,7 +81,12 @@
       </ul>
       <div id="read">
         <van-icon name="passed" size="0.4rem" style="margin: 0.7rem 0.3rem 0 0.6rem;" />
-        <p>我已阅读并同意《个人信息使用授权书》《个人征信查询授权书》《数字证书服务协议》</p>
+        <p>
+          我已阅读并同意
+          <a @click="$router.push({name:'Information'})">《个人信息使用授权书》</a>
+          <a @click="$router.push({name:'Search'})">《个人征信查询授权书》</a>
+          <a @click="$router.push({name:'Number'})">《数字证书服务协议》</a>
+        </p>
       </div>
     </div>
     <dibu></dibu>
@@ -129,11 +129,10 @@ export default {
 
 <style scoped>
 #total {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
-  flex: 1;
-  overflow: auto;
-  display: flex;
 }
 .ceng {
   position: absolute;
@@ -179,10 +178,7 @@ export default {
 .ceng .tiaozhuan p:last-child {
   color: #ff7633;
 }
-#total {
-  display: flex;
-  flex-direction: column;
-}
+
 .limit-top {
   width: 10.8rem;
   height: 6.19rem;
@@ -201,6 +197,7 @@ export default {
 }
 #total .total-bottom {
   position: relative;
+  background: #efefef;
 }
 
 #main {

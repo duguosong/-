@@ -4,17 +4,24 @@ import VueRouter from "vue-router"
 
 import Home from "../views/Home/index.vue"
 
-import Cart from "../views/Limit/Cart.vue"
-
 import Information from "../views/Limit/Information.vue"
+import Search from "../views/Limit/Search.vue"
+import Number from "../views/Limit/Number.vue"
 
-import Accredit from "../views/Limit/Accredit.vue"
 import Protol from "../views/Limit/Protol.vue"
 import Protol_name from "../views/Limit/Protol_name"
+import Discover from "../views/Discover/index.vue"
+import NewsOne from "../views/Discover/NewsOne.vue"
+import NewsTwo from "../views/Discover/NewsTwo.vue"
+import NewsThree from "../views/Discover/NewsThree.vue"
+import NewsFour from "../views/Discover/NewsFour.vue"
+import NewsFive from "../views/Discover/NewsFive.vue"
+import NewsSix from "../views/Discover/NewsSix.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
+  // 首页
   {
     path: "/",
 
@@ -22,12 +29,19 @@ const routes = [
 
     component: Home
   },
+  // 消息
   {
     path: "/message",
 
     name: "Message",
 
     component: () => import("@/views/Home/message")
+  },
+  // 列表
+  {
+    path: "/newPhone/:product_category/:descriptions",
+    name: "NewPhone",
+    component: () => import("@/views/Home/newPhone")
   },
 
   {
@@ -55,12 +69,35 @@ const routes = [
     name: "Protol_name",
     component: Protol_name
   },
+  // 任务
+  {
+    //额度 个人信息使用授权书
+    path: "/limit/information",
+    name: "Information",
+    component: () => import("@/views/Limit/Information")
+  },
+  {
+    //额度 个人征信查询授权书
+    path: "/limit/search",
+    name: "Search",
+    component: () => import("@/views/Limit/Search")
+  },
+  {
+    //额度 数字证书服务协议
+    path: "/limit/number",
+    name: "Number",
+    component: () => import("@/views/Limit/Number")
+  },
   {
     path: "/task",
-
     name: "Task",
-
     component: () => import("@/views/Task/index")
+  },
+  {
+    // 任务 -> 活动协议页面
+    path: "/huodong",
+    name: "huodong",
+    component: () => import("@/views/Task/huodong")
   },
 
   {
@@ -73,13 +110,47 @@ const routes = [
   },
 
   {
+    // 发现
     path: "/discover",
-
     name: "Discover",
-
     component: () => import("@/views/Discover/index")
   },
-
+  {
+    // 发现 第1条新闻页面
+    path: "/discover/newsone",
+    name: "NewsOne",
+    component: () => import("@/views/Discover/NewsOne")
+  },
+  {
+    // 发现 第2条新闻页面
+    path: "/discover/newstwo",
+    name: "NewsTwo",
+    component: () => import("@/views/Discover/NewsTwo")
+  },
+  {
+    // 发现 第3条新闻页面
+    path: "/discover/newsthree",
+    name: "NewsThree",
+    component: () => import("@/views/Discover/NewsThree")
+  },
+  {
+    // 发现 第4条新闻页面
+    path: "/discover/newsfour",
+    name: "NewsFour",
+    component: () => import("@/views/Discover/NewsFour")
+  },
+  {
+    // 发现 第5条新闻页面
+    path: "/discover/newsfive",
+    name: "NewsFive",
+    component: () => import("@/views/Discover/NewsFive")
+  },
+  {
+    // 发现 第6条新闻页面
+    path: "/discover/newssix",
+    name: "NewsSix",
+    component: () => import("@/views/Discover/NewsSix")
+  },
   {
     // 登录
     path: "/login",
@@ -96,34 +167,135 @@ const routes = [
 
     name: "Protocol",
 
-    component: () => import("@/components/Protocol")
+    component: () => import("@/views/Login/Protocol")
   },
 
   {
     // 我的 跳转到  设置
 
-    path: "/Setting",
+    path: "/user/Setting",
 
     name: "Setting",
 
-    component: () => import("@/views/User/Setting")
+    component: () => import("@/views/User/Setting/Setting")
   },
+  {
+    // 设置 -> 修改密码页面
+    path: "/user/Setting/changePassword",
 
-  // {
+    name: "changePassword",
 
-  //   path: '/about',
+    component: () => import("@/views/User/Setting/changePassword")
+  },
+  {
+    // 设置 -> 关于我们
+    path: "/user/Setting/aboutUs",
 
-  //   name: 'about',
+    name: "aboutUs",
 
-  //   // route level code-splitting
+    component: () => import("@/views/User/Setting/aboutUs")
+  },
+  {
+    // 我的 -> 我的订单
+    path: "/user/orders/:id",
+    name: "Orders",
+    component: () => import("@/views/User/orders/index")
+  },
+  {
+    // 我的 -> 我的账单
+    path: "/user/bill",
+    //  name: "Bill",
+    // redirect: "/user/bill/allBill",
+    component: () => import("@/views/User/bill/index"),
+    children: [
+      {
+        //  我的账单 -> 全部账单
+        path: "",
+        name: "AllBill",
+        component: () => import("@/views/User/bill/allBill")
+      },
+      {
+        //  我的账单 -> 待还账单
+        path: "daiHBill",
+        name: "DaiHBill",
+        component: () => import("@/views/User/bill/daiHuanBill")
+      },
+      {
+        // 我的账单 -> 已还账单
+        path: "yiHBill",
+        name: "YiHBill",
+        component: () => import("@/views/User/bill/yiHuanBill")
+      }
+    ]
+  },
+  {
+    // 我的 ->  售后
 
-  //   // this generates a separate chunk (about.[hash].js) for this route
+    path: "/user/afterSale",
 
-  //   // which is lazy-loaded when the route is visited.
+    name: "afterSale",
 
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import("@/views/User/afterSale/index")
+  },
+  {
+    // 我的 ->  我的收藏
 
-  // },
+    path: "/user/collect",
+
+    name: "Collect",
+
+    component: () => import("@/views/User/collect/index")
+  },
+  {
+    // 我的 -> 收货地址管理
+
+    path: "/user/address",
+
+    name: "Address",
+
+    component: () => import("@/views/User/address/index"),
+    // 需要登陆才可以进入该页面 Lxh0223
+    meta: { needLogin: true }
+  },
+  {
+    // 收货地址管理 -> 添加收货地址
+
+    path: "/user/address/addAddress",
+
+    name: "addAddress",
+    component: () => import("@/views/User/address/addAddress")
+  },
+  {
+    // 我的 -> 红包
+    path: "/user/redPack",
+    component: () => import("@/views/User/redPack/index"),
+    children: [
+      {
+        // 我的红包-> 未使用
+        path: "",
+        name: "Unused",
+        component: () => import("@/views/User/redPack/unused")
+      },
+      {
+        // 我的红包 -> 已使用
+        path: "used",
+        name: "Used",
+        component: () => import("@/views/User/redPack/used")
+      },
+      {
+        // 我的红包 -> 已过期
+        path: "expired",
+        name: "Expired",
+        component: () => import("@/views/User/redPack/expired")
+      }
+    ]
+  },
+  {
+    // 我的 -> 意见反馈
+    path: "/user/feedback",
+    name: "Feedback",
+    component: () => import("@/views/User/feedback/index")
+  },
   {
     // 详情
     path: "/detail/:id",
@@ -173,6 +345,21 @@ const routes = [
   //   ]
   // }
 ]
+
+// 路由前置守卫 Lxh0223
+// router.beforeEach((to,from,next)=>{
+//   if(to.meta.needLogin==true){
+//     if(){
+//       // 如果登录
+//       next()
+//     }else{
+//       //没登陆路由到登陆页
+//       next({name="Login"})
+//     }
+//   }else{
+//     next()
+//   }
+// })
 
 const router = new VueRouter({
   routes
