@@ -15,7 +15,7 @@ export default {
   },
   mutations: {
     save(state, payload) {
-      state.list = payload.categories
+      state.list = payload.categories.reverse()
       console.log(state.list)
     }
   }

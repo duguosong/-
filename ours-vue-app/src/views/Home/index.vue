@@ -45,33 +45,8 @@
             indicator-color="white"
             style="height:4.16rem;border-radius:0.35rem"
           >
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
-            </van-swipe-item>
-            <van-swipe-item>
-              <img
-                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2350302849,3323337377&fm=26&gp=0.jpg"
-                alt
-                style="width:100%"
-              />
+            <van-swipe-item v-for="(item,index) in list" :key="index">
+              <img :src="item.coverImg" alt style="width:100%" />
             </van-swipe-item>
           </van-swipe>
         </van-col>
@@ -115,7 +90,11 @@
               <div class="app" style="background:#d6b159;color:white">
                 <van-icon name="graphic" size="0.76rem" />
               </div>
-              <span style="font-size:0.33rem;width:100%;text-align:center">3万额度</span>
+
+              <span
+                style="font-size:0.33rem;width:100%;text-align:center"
+                @click="$router.push({name:'Limit'})"
+              >3万额度</span>
             </van-grid-item>
           </van-grid>
         </van-col>
@@ -132,27 +111,28 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import productsList from './productsList'
-import product from './product'
-import Products from './products'
-import dibu from '../../components/dibu'
+import { mapState, mapActions } from "vuex"
+import productsList from "./productsList"
+import product from "./product"
+import Products from "./products"
+import dibu from "../../components/dibu"
+import { products } from "@/services/service"
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       obj: {}
     }
   },
   computed: {
-    ...mapState('categoriesList', ['list'])
+    ...mapState("categoriesList", ["list"])
   },
   created() {
     this.loadData()
   },
   components: { productsList, product, Products, dibu },
   methods: {
-    ...mapActions('categoriesList', ['loadData'])
+    ...mapActions("categoriesList", ["loadData"])
   }
 }
 </script>
@@ -189,5 +169,9 @@ export default {
 }
 .section {
   flex: 1;
+}
+.van-swipe__track img {
+  width: 9.6rem;
+  height: 4.18rem;
 }
 </style>
