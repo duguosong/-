@@ -1,32 +1,25 @@
 <template>
-  <div class="addressBox">
+  <div class="afterSaleBox">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>地址管理</p>
+      <p>售后服务</p>
     </div>
-    <div style="flex:1;overflow:auto;">
-      <addressMsg></addressMsg>
-    </div>
-    <div class="btm">
-      <van-button
-        type="primary"
-        size="large"
-        color="linear-gradient(to right, #fe6d04, #fb9806)"
-        @click="$router.push({path:'/user/address/addAddress'})"
-      >添加地址</van-button>
+    <div style="display: flex;
+  flex-direction: column;
+    align-items: center;
+  ">
+      <wuMsg></wuMsg>
     </div>
   </div>
 </template>
 <script>
-import addAddress from "./addAddress"
-import addressMsg from "./addressMsg"
+import wuMsg from "../components/wuMsg"
 export default {
-  name: "address",
+  name: "afterSale",
   components: {
-    addAddress,
-    addressMsg
+    wuMsg
   },
   methods: {
     lastStep() {
@@ -36,7 +29,7 @@ export default {
 }
 </script>
 <style scoped>
-.addressBox {
+.afterSaleBox {
   width: 100%;
   height: 100%;
   background: #efefef;
@@ -54,15 +47,10 @@ export default {
   position: relative;
   box-sizing: border-box;
   padding: 0 0.48rem;
-  margin-bottom: 0.3rem;
 }
 .van-icon-arrow-left {
   position: absolute;
   left: 0.48rem;
   top: 0.5rem;
-}
-
-.btm {
-  font-size: 0.4rem;
 }
 </style>

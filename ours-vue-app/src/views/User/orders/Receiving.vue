@@ -2,18 +2,17 @@
   <!-- 待收货 -->
   <div class="receivingBox">
     <h1>待收货</h1>
-    <div class="tiShi">
-      <img src="../../../assets/orders1.jpg" alt />
-      <van-button
-        color="linear-gradient(to right, #fe6d04, #fb9806)"
-        @click="$router.push({path:'/'})"
-      >去逛逛</van-button>
-    </div>
+    <wuMsg></wuMsg>
   </div>
 </template>
 <script>
+import wuMsg from "../components/wuMsg"
+
 export default {
-  name: 'receiving'
+  name: "receiving",
+  components: {
+    wuMsg
+  }
 }
 </script>
 <style scoped>

@@ -1,27 +1,18 @@
 <template>
-  <!-- 可晒单 -->
-  <div class="shaiDanBox">
-    <h1>可晒单</h1>
-    <wuMsg></wuMsg>
+  <div class="tiShi">
+    <img src="../../../assets/orders1.jpg" alt />
+    <van-button
+      color="linear-gradient(to right, #fe6d04, #fb9806)"
+      @click="$router.push({path:'/'})"
+    >去逛逛</van-button>
   </div>
 </template>
 <script>
-import wuMsg from "../components/wuMsg"
-
 export default {
-  name: "shaiDan",
-  components: {
-    wuMsg
-  }
+  name: "wuMsg"
 }
 </script>
 <style scoped>
-.shaiDanBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
 .tiShi {
   width: 3.07rem;
   height: 4.57rem;

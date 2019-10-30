@@ -2,18 +2,16 @@
   <!-- 代发货 -->
   <div class="shipmentsBox">
     <h1>代发货</h1>
-    <div class="tiShi">
-      <img src="../../../assets/orders1.jpg" alt />
-      <van-button
-        color="linear-gradient(to right, #fe6d04, #fb9806)"
-        @click="$router.push({path:'/'})"
-      >去逛逛</van-button>
-    </div>
+    <wuMsg></wuMsg>
   </div>
 </template>
 <script>
+import wuMsg from "../components/wuMsg"
 export default {
-  name: 'shipments'
+  name: "shipments",
+  components: {
+    wuMsg
+  }
 }
 </script>
 <style scoped>
