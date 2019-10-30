@@ -142,6 +142,15 @@ const routes = [
 
     component: () => import("@/views/Login/index")
   },
+  ,
+  {
+    // 登录
+    path: "/reg",
+
+    name: "Reg",
+
+    component: () => import("@/views/Login/reg")
+  },
 
   {
     // 登录 跳转到 服务协议

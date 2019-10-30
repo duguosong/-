@@ -8,11 +8,11 @@
           </div>
 
           <div class="userName">
-            <div v-if="false">
-              <p class="tel"></p>
+            <div v-if="isShow">
+              <p class="tel">{{token}}</p>
               <p class="certification">未认证</p>
             </div>
-            <div style="font-size:0.5rem;color:#fff;height:1.22rem;">
+            <div style="font-size:0.5rem;color:#fff;height:1.22rem;" v-else>
               <p style="height:1.22rem;line-height:1.22rem;">未登录</p>
             </div>
           </div>
@@ -24,12 +24,7 @@
       </div>
     </div>
     <div class="user-order">
-      <div
-        class="user-order-top com2"
-        @click="$router.push({path:'/user/orders', name: 'Orders',params:{
-              id:0,
-            }})"
-      >
+      <div class="user-order-top com2" @click="Orders">
         <p>我的订单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
@@ -88,25 +83,25 @@
       </div>
     </div>
     <div class="user-bill">
-      <div class="userCommon com2" @click="$router.push({path:'/user/bill'})">
+      <div class="userCommon com2" @click="bill">
         <p>我的账单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon com2" @click="$router.push({path:'/user/collect'})">
+      <div class="userCommon com2" @click="collect">
         <p>我的收藏</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon com2" @click="$router.push({path:'/user/address'})">
+      <div class="userCommon com2" @click="address">
         <p>地址管理</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
-      <div class="userCommon special com2" @click="$router.push({path:'/user/redPack'})">
+      <div class="userCommon special com2" @click="redPack">
         <p>我的红包</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
     </div>
     <div class="user-feedback">
-      <div class="userCommon com2" @click="$router.push({path:'/user/feedback'})">
+      <div class="userCommon com2" @click="feedback">
         <p>意见反馈</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
@@ -124,20 +119,79 @@
 
 <script>
 import dibu from "../../components/dibu" //../../components/dibu
-import { getToken } from "../../utils/auth"
+import { getToken } from "../../utils/auth" //引入cookie 操作函数
+import { filtration } from "../../utils/user/user"
 export default {
   name: "User",
   data() {
     return {
-      userName: ""
+      userName: "",
+      token: getToken(),
+      isShow: true
     }
   },
   components: {
     dibu
   },
+  created: function() {
+    if (this.token != undefined) {
+      this.token = filtration(this.token)
+    } else {
+      this.isShow = false
+    }
+  },
+
   methods: {
     toSetting() {
       this.$router.push({ path: "/user/Setting" })
+    },
+    Orders() {
+      if (this.token != undefined) {
+        this.$router.push({
+          path: "/user/orders",
+          name: "Orders",
+          params: {
+            id: 0
+          }
+        })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    },
+    bill() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/user/bill" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    },
+    collect() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/user/collect" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    },
+    address() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/user/address" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    },
+    redPack() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/user/redPack" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    },
+    feedback() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/user/feedback" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
     }
   }
 }

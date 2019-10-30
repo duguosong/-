@@ -1,31 +1,33 @@
 <template>
-  <div class="settingBox">
+  <div class="login">
     <div class="title">
       <div @click="lastStep">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
-      <p>设置</p>
+      <p>注册</p>
     </div>
-    <settingCont></settingCont>
+    <userMsgs></userMsgs>
   </div>
 </template>
+   
 <script>
-import settingCont from "./Setting-cont"
+import userMsgs from "./userMsg"
+
 export default {
-  name: "setting",
+  name: "login",
   components: {
-    settingCont
+    userMsgs
   },
   methods: {
     lastStep() {
-      this.$router.push({ path: "/user" })
+      window.history.go(-1)
     }
   }
 }
 </script>
 
 <style scoped>
-.settingBox {
+.login {
   width: 100%;
   height: 100%;
   background: #efefef;

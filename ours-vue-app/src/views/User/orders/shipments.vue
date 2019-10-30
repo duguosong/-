@@ -1,7 +1,6 @@
 <template>
   <!-- 代发货 -->
   <div class="shipmentsBox">
-    <h1>代发货</h1>
     <wuMsg></wuMsg>
   </div>
 </template>

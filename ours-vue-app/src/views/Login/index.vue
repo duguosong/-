@@ -6,21 +6,21 @@
       </div>
       <p>登录</p>
     </div>
-    <userMsgs></userMsgs>
+    <userMsgs2></userMsgs2>
   </div>
 </template>
    
 <script>
-import userMsgs from './userMsg'
+import userMsgs2 from "./userMsg2"
 
 export default {
-  name: 'login',
+  name: "login",
   components: {
-    userMsgs
+    userMsgs2
   },
   methods: {
     lastStep() {
-      window.history.go(-1)
+      this.$router.push({ path: "/user" })
     }
   }
 }
