@@ -88,7 +88,7 @@
       </div>
     </div>
     <div class="user-bill">
-      <div class="userCommon com2" @click="$router.push({path:'/user/bill'})">
+      <div class="userCommon com2" @click="$router.push({path:'/cart'})">
         <p>我的账单</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>

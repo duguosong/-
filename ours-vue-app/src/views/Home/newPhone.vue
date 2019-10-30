@@ -1,25 +1,27 @@
 <template>
-  <div class="newPhone">
-    <van-nav-bar
-      title="新品手机"
-      left-text
-      left-arrow
-      style="width:100%;display:block"
-      @click-left="onClickLeft"
-    />
-    <InputADD style="display:block"></InputADD>
-    <swipe></swipe>
+  <div class="newPhone" style="display:flex;">
+    <div>
+      <van-nav-bar
+        title="新品手机"
+        left-text
+        left-arrow
+        style="width:100%;display:block"
+        @click-left="onClickLeft"
+      />
+      <InputADD style="display:block"></InputADD>
+      <swipe></swipe>
+    </div>
     <tab></tab>
   </div>
 </template>
 
 <script>
-import swipe from './common/swipe'
-import tab from './common/tabs'
-import InputADD from './common/input'
+import swipe from "./common/swipe"
+import tab from "./common/tabs"
+import InputADD from "./common/input"
 
 export default {
-  name: 'NewPhone',
+  name: "NewPhone",
   components: {
     swipe,
     tab,
@@ -40,10 +42,11 @@ export default {
   height: 100%;
   width: 100%;
   background: #efefef;
+  flex-direction: column;
 }
 </style>
 
-<style scoped>
+<style>
 .objADD {
   background: white;
   width: 100%;
@@ -51,5 +54,8 @@ export default {
 }
 .van-row {
   background: white;
+}
+.van-nav-bar {
+  position: relative;
 }
 </style>

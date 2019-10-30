@@ -38,9 +38,12 @@
 
 <script>
 export default {
-  name: 'swipe'
+  name: "swipe"
 }
 </script>
 
 <style scoped>
+img {
+  height: 4.7rem;
+}
 </style>

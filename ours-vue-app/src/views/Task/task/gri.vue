@@ -53,8 +53,8 @@
         <span style="font-size:0.37rem;margin-left:0.7rem;font-weight:600">会员签到</span>
 
         <p style="font-size:0.31rem;margin-left:0.7rem;color:#646464">
-          会员专属，申请即可获得
-          <em>200-1000</em>元永提额奖励，申请越多，奖励越大
+          坚持签到最高可获得
+          <em>196</em>元每月奖额
         </p>
       </van-col>
 
@@ -77,7 +77,7 @@
           <div
             style="width:1.05rem;height:1.05rem;background:#ff5500;line-height:0.9rem; text-align:center;border-radius:50%;margin-top:0.5rem"
           >
-            <van-icon name="volume" style="font-size:0.6rem;" color="white" size="0.6rem" />
+            <van-icon name="friends-o" style="font-size:0.6rem;" color="white" size="0.6rem" />
           </div>
         </div>
       </van-col>
@@ -88,8 +88,8 @@
         <span style="font-size:0.37rem;margin-left:0.7rem;font-weight:600">好友注册</span>
 
         <p style="font-size:0.31rem;margin-left:0.7rem;color:#646464">
-          会员专属，申请即可获得
-          <em>200-1000</em>元永提额奖励，申请越多，奖励越大
+          邀请好友注册,通过认证审核并下 单,邀请人即可获得
+          <em>200</em>元永久提额奖励
         </p>
       </van-col>
 
@@ -112,7 +112,7 @@
           <div
             style="width:1.05rem;height:1.05rem;background:#33bbed;line-height:0.9rem; text-align:center;border-radius:50%;margin-top:0.5rem"
           >
-            <van-icon name="volume" style="font-size:0.6rem;" color="white" size="0.6rem" />
+            <van-icon name="balance-list-o" style="font-size:0.6rem;" color="white" size="0.6rem" />
           </div>
         </div>
       </van-col>
@@ -123,8 +123,8 @@
         <span style="font-size:0.37rem;margin-left:0.7rem;font-weight:600">好友下单</span>
 
         <p style="font-size:0.31rem;margin-left:0.7rem;color:#646464">
-          会员专属，申请即可获得
-          <em>200-1000</em>元永提额奖励，申请越多，奖励越大
+          如好友购买月付订单，并按时还款，邀请人每期可获得
+          <em>300</em>元提额奖励
         </p>
       </van-col>
 
@@ -147,7 +147,7 @@
           <div
             style="width:1.05rem;height:1.05rem;background:#9fd29a;line-height:0.9rem; text-align:center;border-radius:50%;margin-top:0.5rem"
           >
-            <van-icon name="volume" style="font-size:0.6rem;" color="white" size="0.6rem" />
+            <van-icon name="diamond-o" style="font-size:0.6rem;" color="white" size="0.6rem" />
           </div>
         </div>
       </van-col>
@@ -158,8 +158,8 @@
         <span style="font-size:0.37rem;margin-left:0.7rem;font-weight:600">锦鲤好友</span>
 
         <p style="font-size:0.31rem;margin-left:0.7rem;color:#646464">
-          会员专属，申请即可获得
-          <em>200-1000</em>元永提额奖励，申请越多，奖励越大
+          邀请好友为优质用户最高获得
+          <em>8750</em>元奖额
         </p>
       </van-col>
 
@@ -180,7 +180,9 @@
         @click="$router.push({name:'huodong'})"
       >《邀请好友任务活动规则协议》</em>
     </p>
+    <!-- 去取现 -->
     <van-popup v-model="show">该功能正在研发</van-popup>
+    <!-- 微信邀请 -->
     <van-popup
       v-model="f"
       style="display:flex;box-sizing: border-box;padding:1rem 3rem"
@@ -189,23 +191,25 @@
       :style="{ height: '20%' }"
     >
       <div
-        style="width:1.05rem;height:1.05rem;background:#9fd29a;line-height:0.9rem; text-align:center;border-radius:50%;margin-top:0.5rem"
+        style="width:1.35rem;height:1.35rem;background:#9fd29a;line-height:1.7rem; text-align:center;border-radius:50%;margin-top:0.5rem"
       >
         <van-icon
-          name="volume"
-          style="font-size:0.8rem;line-height:1.05rem"
+          @click="fns($event)"
+          name="chat"
+          style="font-size:0.8rem;"
           color="white"
-          size="0.6rem"
+          size="0.9rem"
         />
       </div>
       <div
-        style="width:1.05rem;height:1.05rem;background:#9fd29a;line-height:0.9rem; text-align:center;border-radius:50%;margin-top:0.5rem"
+        style="width:1.35rem;height:1.35rem;background:#9fd29a;line-height:1.7rem; text-align:center;border-radius:50%;margin-top:0.5rem"
       >
         <van-icon
-          name="volume"
-          style="font-size:0.8rem;line-height:1.05rem"
+          @click="fns($event)"
+          name="smile-comment"
+          style="font-size:0.8rem;"
           color="white"
-          size="0.6rem"
+          size="0.9rem"
         />
       </div>
     </van-popup>
@@ -228,6 +232,8 @@ export default {
     fn(event) {
       event.currentTarget.style.background = "#cccccc"
       this.qe = "已签到"
+    },
+    fns(event) {
       window.location.href =
         "https://open.weixin.qq.com/connect/oauth2/authorize?appid=公众号appid&redirect_uri=http%3A%2F%2Fdev.spbcn.org%2Fwechat-vote-phone?type=weixin&scope=snsapi_userinfo&response_type=code&state=STATE#wechat_redirect"
     },
@@ -257,5 +263,8 @@ export default {
   width: 100%;
   border-radius: 0.3rem 0.3rem 0 0;
   justify-content: space-around;
+}
+em {
+  color: #f66804;
 }
 </style>

@@ -25,17 +25,17 @@
 </template>
 <script>
 // import { mapState, mapActions } from 'vuex'
-import { products } from '../../../services/service'
+import { products } from "../../../services/service"
 
 export default {
-  name: 'Tabs',
+  name: "Tabs",
   data() {
     return {
       list: [],
       oee: [],
       text: [],
-      descriptions: '',
-      product_category: ''
+      descriptions: "",
+      product_category: ""
     }
   },
   created() {
@@ -45,7 +45,7 @@ export default {
     this.descriptions = this.$route.params.descriptions
     console.log(this.descriptions)
     console.log(this.product_category)
-    const one = this.descriptions.split('&')
+    const one = this.descriptions.split("&")
     // console.log(one)
     this.oee = one
     console.log(this.list)
