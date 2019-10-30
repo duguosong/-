@@ -48,17 +48,17 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from "vuex"
 export default {
-  name: 'Products',
+  name: "Products",
   created() {
     this.loadData()
   },
   methods: {
-    ...mapActions('products', ['loadData'])
+    ...mapActions("products", ["loadData"])
   },
   computed: {
-    ...mapState('products', ['list'])
+    ...mapState("products", ["list"])
   }
 }
 </script>

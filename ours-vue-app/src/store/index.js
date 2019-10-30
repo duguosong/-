@@ -1,10 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import productsList from './modules/productsList'
-import products from './modules/products'
-import product from './modules/product'
-import detail from './modules/detail'
-import categoriesList from './modules/categoriesList'
+import Vue from "vue"
+import Vuex from "vuex"
+import productsList from "./modules/productsList"
+import products from "./modules/products"
+import product from "./modules/product"
+import detail from "./modules/detail"
+import categoriesList from "./modules/categoriesList"
+// 分类模块
+// import hot from "./modules/Fenlei/hot"
+// import jiezhi from "./modules/Fenlei/jiezhi"
+// import shouzhuo from "./modules/Fenlei/shouzhuo"
+// import xianglian from "./modules/Fenlei/xianglian"
+// import zhuanyunzhu from "./modules/Fenlei/zhuanyunzhu"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,5 +23,10 @@ export default new Vuex.Store({
     product,
     detail,
     categoriesList
+    // hot,
+    // jiezhi,
+    // shouzhuo,
+    // xianglian,
+    // zhuanyunzhu
   }
 })

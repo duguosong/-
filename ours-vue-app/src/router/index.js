@@ -1,112 +1,112 @@
-import Vue from 'vue'
+import Vue from "vue"
 
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router"
 
-import Home from '../views/Home/index.vue'
+import Home from "../views/Home/index.vue"
 
-import Cart from '../views/Limit/Cart.vue'
+import Cart from "../views/Limit/Cart.vue"
 
-import Information from '../views/Limit/Information.vue'
+import Information from "../views/Limit/Information.vue"
 
-import Accredit from '../views/Limit/Accredit.vue'
-import Protol from '../views/Limit/Protol.vue'
-import Protol_name from '../views/Limit/Protol_name'
+import Accredit from "../views/Limit/Accredit.vue"
+import Protol from "../views/Limit/Protol.vue"
+import Protol_name from "../views/Limit/Protol_name"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: "/",
 
-    name: 'home',
+    name: "home",
 
     component: Home
   },
   {
-    path: '/message',
+    path: "/message",
 
-    name: 'Message',
+    name: "Message",
 
-    component: () => import('@/views/Home/message')
+    component: () => import("@/views/Home/message")
   },
 
   {
-    path: '/limit',
+    path: "/limit",
 
-    name: 'Limit',
+    name: "Limit",
 
-    component: () => import('@/views/Limit/index')
+    component: () => import("@/views/Limit/index")
   },
   {
     //额度协议
-    path: '/protol',
-    name: 'protol',
+    path: "/protol",
+    name: "protol",
     component: Protol
   },
   {
     //额度
-    path: '/limit',
-    name: 'Limit',
-    component: () => import('@/views/Limit/index')
+    path: "/limit",
+    name: "Limit",
+    component: () => import("@/views/Limit/index")
   },
   {
     //额度同意协议后，跳转至实名拍照认证
-    path: '/protol_name',
-    name: 'Protol_name',
+    path: "/protol_name",
+    name: "Protol_name",
     component: Protol_name
   },
   {
-    path: '/task',
+    path: "/task",
 
-    name: 'Task',
+    name: "Task",
 
-    component: () => import('@/views/Task/index')
+    component: () => import("@/views/Task/index")
   },
 
   {
     // 我的
-    path: '/user',
+    path: "/user",
 
-    name: 'User',
+    name: "User",
 
-    component: () => import('@/views/User/index')
+    component: () => import("@/views/User/index")
   },
 
   {
-    path: '/discover',
+    path: "/discover",
 
-    name: 'Discover',
+    name: "Discover",
 
-    component: () => import('@/views/Discover/index')
+    component: () => import("@/views/Discover/index")
   },
 
   {
     // 登录
-    path: '/login',
+    path: "/login",
 
-    name: 'Login',
+    name: "Login",
 
-    component: () => import('@/views/Login/index')
+    component: () => import("@/views/Login/index")
   },
 
   {
     // 登录 跳转到 服务协议
 
-    path: '/protocol',
+    path: "/protocol",
 
-    name: 'Protocol',
+    name: "Protocol",
 
-    component: () => import('@/components/Protocol')
+    component: () => import("@/components/Protocol")
   },
 
   {
     // 我的 跳转到  设置
 
-    path: '/Setting',
+    path: "/Setting",
 
-    name: 'Setting',
+    name: "Setting",
 
-    component: () => import('@/views/User/Setting')
+    component: () => import("@/views/User/Setting")
   },
 
   // {
@@ -126,12 +126,52 @@ const routes = [
   // },
   {
     // 详情
-    path: '/detail/:id',
+    path: "/detail/:id",
 
-    name: 'Detail',
+    name: "Detail",
 
-    component: () => import('@/views/Detail/detail')
+    component: () => import("@/views/Detail/detail")
   }
+
+  // 分类
+  // {
+  //   path: "/fenlei/index/:product_category/:descriptions",
+  //   //name: "NewPhone",
+  //   //redirect: "fenlei/index/:product_category/:descriptions/hot", // redirect重定向 当访问/fenlei默认跳转到hot页
+  //   component: () => import("@/views/Fenlei/index"),
+  //   children: [
+  //     {
+  //       path: "",
+  //       name: "Hot",
+  //       component: () => import("@/views/Fenlei/hot"),
+  //       meta: { title: "商品列表", icon: "tree" }
+  //     },
+  //     {
+  //       path: "jiezhi/:name",
+  //       name: "Jiezhi",
+  //       component: () => import("@/views/Fenlei/jiezhi"),
+  //       meta: { title: "商品新增", icon: "tree" }
+  //     },
+  //     {
+  //       path: "shoulian/:name",
+  //       name: "Shouzhuo",
+  //       component: () => import("@/views/Fenlei/shouzhuo")
+  //       // meta: { title: '商品新增', icon: 'tree' }
+  //     },
+  //     {
+  //       path: "xianglian/:name",
+  //       name: "Xianglian",
+  //       component: () => import("@/views/Fenlei/xianglian")
+  //       // meta: { title: '商品新增', icon: 'tree' }
+  //     },
+  //     {
+  //       path: "zhuanyunzhu/:name",
+  //       name: "Zhuanyunzhu",
+  //       component: () => import("@/views/Fenlei/zhuanyunzhu")
+  //       // meta: { title: '商品新增', icon: 'tree' }
+  //     }
+  //   ]
+  // }
 ]
 
 const router = new VueRouter({

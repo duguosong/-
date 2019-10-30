@@ -81,7 +81,7 @@
         <van-col span="20" offset="2">
           <van-grid :border="false" :column-num="4">
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
             >
               <div class="app" style="background:orange;color:white">
                 <van-icon name="gold-coin" size="0.76rem" />
@@ -91,7 +91,7 @@
               >{{list[0]?list[0].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
             >
               <div class="app" style="background:#76beee;color:white">
                 <van-icon name="gift-card" size="0.76rem" />
@@ -101,7 +101,7 @@
               >{{list[1]?list[1].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
             >
               <div class="app" style="background:#f96561;color:white">
                 <van-icon name="hot" size="0.76rem" />
@@ -132,27 +132,27 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import productsList from './productsList'
-import product from './product'
-import Products from './products'
-import dibu from '../../components/dibu'
+import { mapState, mapActions } from "vuex"
+import productsList from "./productsList"
+import product from "./product"
+import Products from "./products"
+import dibu from "../../components/dibu"
 export default {
-  name: 'home',
+  name: "home",
   data() {
     return {
       obj: {}
     }
   },
   computed: {
-    ...mapState('categoriesList', ['list'])
+    ...mapState("categoriesList", ["list"])
   },
   created() {
     this.loadData()
   },
   components: { productsList, product, Products, dibu },
   methods: {
-    ...mapActions('categoriesList', ['loadData'])
+    ...mapActions("categoriesList", ["loadData"])
   }
 }
 </script>

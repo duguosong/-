@@ -1,4 +1,4 @@
-import { categoriesList } from "../../services/service"
+import { products } from "../../../services/service"
 export default {
   namespaced: true,
   state: {
@@ -6,14 +6,15 @@ export default {
   },
   actions: {
     async loadData({ commit }, payload) {
-      const result = await categoriesList()
+      console.log(payload)
+      const result = await products(payload)
+      console.log(result.data)
       commit("save", result.data)
     }
   },
   mutations: {
     save(state, payload) {
-      state.list = payload.categories.reverse()
-      console.log(state.list)
+      state.list = payload.products
     }
   }
 }
