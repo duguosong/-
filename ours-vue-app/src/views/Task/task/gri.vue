@@ -248,7 +248,7 @@ export default {
 </script>
 
 <style>
-.van-popup {
+.van-popup--center {
   width: 8rem;
   height: 2.5rem;
   line-height: 2.5rem;

@@ -1,5 +1,11 @@
 <template>
-  <van-submit-bar style="font-size:0.31rem" :price="3050" button-text="提交订单" @click="onSubmit">
+  <van-submit-bar
+    style="font-size:0.31rem"
+    :price="3050"
+    currency="￥"
+    button-text="提交订单"
+    @click="onSubmit"
+  >
     <van-checkbox v-model="checked">全选</van-checkbox>
     <span slot="tip" style="font-size:0.31rem">
       你的收货地址不支持同城送,
@@ -18,11 +24,7 @@ export default {
       checked: false
     }
   },
-  methods: {
-    onSubmit() {
-      console.log(11)
-    }
-  }
+  methods: {}
 }
 </script>
 <style >

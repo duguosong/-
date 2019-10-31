@@ -26,7 +26,7 @@
           offset="9"
           class="iconfont icon-talk"
           style="font-size:0.58rem;font-weight:500;color:white;line-height:0.84rem"
-          @click="$router.push({name:'Message'})"
+          @click="message"
         ></van-col>
       </van-row>
       <van-row>
@@ -116,11 +116,15 @@ import product from "./product"
 import Products from "./products"
 import dibu from "../../components/dibu"
 import { products } from "@/services/service"
+import { getToken } from "../../utils/auth" //引入cookie 操作函数
+import { filtration } from "../../utils/user/user"
+
 export default {
   name: "home",
   data() {
     return {
-      obj: {}
+      obj: {},
+      token: getToken()
     }
   },
   computed: {
@@ -128,10 +132,22 @@ export default {
   },
   created() {
     this.loadData()
+    if (this.token != undefined) {
+      this.token = filtration(this.token)
+    } else {
+      this.isShow = false
+    }
   },
   components: { productsList, product, Products, dibu },
   methods: {
-    ...mapActions("categoriesList", ["loadData"])
+    ...mapActions("categoriesList", ["loadData"]),
+    message() {
+      if (this.token != undefined) {
+        this.$router.push({ path: "/message" })
+      } else {
+        this.$router.push({ path: "/login" })
+      }
+    }
   }
 }
 </script>

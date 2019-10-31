@@ -18,6 +18,8 @@ import NewsFour from "../views/Discover/NewsFour.vue"
 import NewsFive from "../views/Discover/NewsFive.vue"
 import NewsSix from "../views/Discover/NewsSix.vue"
 
+// import { getToken } from "../utils/auth" //获取token
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -91,7 +93,10 @@ const routes = [
   {
     path: "/task",
     name: "Task",
-    component: () => import("@/views/Task/index")
+    component: () => import("@/views/Task/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 任务 -> 活动协议页面
@@ -106,7 +111,10 @@ const routes = [
 
     name: "User",
 
-    component: () => import("@/views/User/index")
+    component: () => import("@/views/User/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
 
   {
@@ -156,7 +164,6 @@ const routes = [
     path: "/login",
 
     name: "Login",
-
     component: () => import("@/views/Login/index")
   },
   ,
@@ -321,5 +328,23 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+// // 路由守卫
+// router.beforeEach((to, from, next) => {
+//   // next()
+//   // console.group(to)
+//   // console.group(from)
+//   // console.group(next)
+//   if (to.meta.needLoginIn) {
+//     if (getToken()) {
+//       console.log(1)
+//       next()
+//     } else {
+//       next({ name: "Login" })
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 export default router

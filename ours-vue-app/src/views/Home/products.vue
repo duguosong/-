@@ -37,7 +37,7 @@ overflow: hidden;"
         >{{item.name}}</div>
         <div style="width:100%;height:0.8rem">
           <div
-            style="font-size:0.33rem;margin-left:0.35rem;color:#ff6a00;display: inline-block;float:left"
+            style="font-size:0.33rem;margin-left:0.55rem;color:#ff6a00;display: inline-block;float:left"
           >月付</div>&nbsp;
           <div style="font-size:0.33rem;color:#ff6a00;display: inline-block;float:left">￥</div>
           <div
@@ -71,6 +71,9 @@ export default {
 <style>
 .van-tag {
   background: white;
+}
+.van-grid-item__content {
+  width: 100%;
 }
 </style>
 

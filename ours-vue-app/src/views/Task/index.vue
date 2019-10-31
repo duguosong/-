@@ -16,27 +16,27 @@
               <van-icon name="checked" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="clear" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="checked" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="clear" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="checked" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="clear" size="0.6rem" color="orange" />
             </p>
             <p style="font-size:0.32rem;text-align:center;width:0.9rem;margin-left:0.29rem">
-              {{months}}.{{datas}}
+              10.30
               <van-icon name="clear" size="0.6rem" color="orange" />
             </p>
           </van-steps>
@@ -65,17 +65,7 @@ export default {
       months: "",
       datas: ""
     }
-  },
-  created() {
-    const date = new Date()
-    // clearInterval(timeer)
-    const timeer = setInterval(() => {
-      this.months = date.getMonth() + 1
-      this.datas = date.getDate()
-      console.log(this.months, this.datas)
-    }, 1000)
-  },
-  methods: {}
+  }
 }
 </script>
 

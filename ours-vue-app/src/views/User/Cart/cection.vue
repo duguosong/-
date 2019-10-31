@@ -1,5 +1,5 @@
 <template>
-  <van-row>
+  <van-row class="varT">
     <van-col span="2" offset="1" style="margin-top:1.3rem">
       <van-checkbox v-model="checked"></van-checkbox>
     </van-col>
@@ -26,3 +26,11 @@ export default {
 }
 </script>
 
+<style>
+.varT {
+  width: 95%;
+  border-radius: 0.3rem;
+  margin: 0.3rem auto;
+  box-shadow: -0rem 0.01rem 0.3rem #b3e0d1;
+}
+</style>
