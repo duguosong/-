@@ -48,7 +48,6 @@ export default {
     delHandle(i) {
       console.log("你点击了删除按钮！")
       this.loadDel(i._id)
-      this.loadData()
     },
     ...mapActions("addressList", ["loadDel", "loadData"])
   },

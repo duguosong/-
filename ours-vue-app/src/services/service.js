@@ -109,6 +109,6 @@ export function addressDelByID(id) {
 /**
  * 根据地址id修改地址
  */
-export function addressputByID(id) {
-  return put(`/api/v1/addresses/${id}`)
+export function addressputByID(id, model) {
+  return put(`/api/v1/addresses/${id}`, model)
 }

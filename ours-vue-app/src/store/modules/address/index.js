@@ -6,12 +6,15 @@ export default {
   },
   actions: {
     async loadData({ commit }, payload) {
+      console.log(payload)
       const result = await addressesList(payload)
       commit("save", result.data.addresses)
     },
     async loadDel({ commit }, payload) {
+      console.log(payload)
       const result = await addressDelByID(payload)
-      console.log(result)
+      const res = await addressesList()
+      commit("save", res.data.addresses)
     }
   },
   mutations: {
@@ -19,5 +22,10 @@ export default {
       console.log(payload)
       state.list = payload
     }
+    // ss(state, payload) {
+    //   console.log(payload)
+    //   state.sss = payload
+    //   console.log(state.sss)
+    // }
   }
 }

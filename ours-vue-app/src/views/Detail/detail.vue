@@ -32,10 +32,10 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
-import lunbo from './lunbo'
+import { mapState, mapActions } from "vuex"
+import lunbo from "./lunbo"
 export default {
-  name: 'detail',
+  name: "detail",
   created() {
     const id = this.$route.params.id
     console.log(id)
@@ -43,10 +43,10 @@ export default {
     console.log(this.list)
   },
   methods: {
-    ...mapActions('detail', ['loadData'])
+    ...mapActions("detail", ["loadData"])
   },
   computed: {
-    ...mapState('detail', ['list'])
+    ...mapState("detail", ["list"])
   },
   components: { lunbo }
 }

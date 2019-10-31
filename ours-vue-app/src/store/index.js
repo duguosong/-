@@ -19,8 +19,15 @@ import addressOneByID from "./modules/address/addressOneByID"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    str: ""
+  },
+  mutations: {
+    ss(state, payload) {
+      state.str = payload
+      console.log(payload)
+    }
+  },
   actions: {},
   modules: {
     productsList,
