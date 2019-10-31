@@ -2,52 +2,54 @@
   <div id="discover">
     <header id="discImg"></header>
     <section>
-      <ul id="main">
-        <li @click="$router.push({name:'NewsOne'})">
-          <div>
-            <h4>正常运营数量跌破800家，成交量同比下降62.19%</h4>
-            <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
-          </div>
-          <p>
-            <img src="../../assets/discover/disc01.jpg" alt />
-          </p>
-        </li>
-        <li @click="$router.push({name:'NewsTwo'})">
-          <div>
-            <h4>曲线倒挂！经济衰退预警指标全面出现 黄金再飙升</h4>
-            <p>黄金价格 涨势如虹</p>
-          </div>
-          <img src="../../assets/discover/disc02.jpg" alt />
-        </li>
-        <li @click="$router.push({name:'NewsThree'})">
-          <div>
-            <h4>聪明人在买黄金，你知道吗?美元崩盘时它们将大放异彩</h4>
-            <p>一旦市场认清这个事实，黄金还飙涨数百美元</p>
-          </div>
-          <img src="../../assets/discover/disc03.jpg" alt />
-        </li>
-        <li @click="$router.push({name:'NewsFour'})">
-          <div>
-            <h4>万股皆下品唯有黄金高！</h4>
-            <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
-          </div>
-          <img src="../../assets/discover/disc04.jpg" alt />
-        </li>
-        <li @click="$router.push({name:'NewsFive'})">
-          <div>
-            <h4>黄金现回调信号？不会止步</h4>
-            <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
-          </div>
-          <img src="../../assets/discover/disc05.jpg" alt />
-        </li>
-        <li @click="$router.push({name:'NewsSix'})">
-          <div>
-            <h4>疯狂！黄金狂飙超40美元</h4>
-            <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
-          </div>
-          <img src="../../assets/discover/disc06.jpg" alt />
-        </li>
-      </ul>
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <ul id="main">
+          <li @click="$router.push({name:'NewsOne'})">
+            <div>
+              <h4>正常运营数量跌破800家，成交量同比下降62.19%</h4>
+              <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
+            </div>
+            <p>
+              <img src="../../assets/discover/disc01.jpg" alt />
+            </p>
+          </li>
+          <li @click="$router.push({name:'NewsTwo'})">
+            <div>
+              <h4>曲线倒挂！经济衰退预警指标全面出现 黄金再飙升</h4>
+              <p>黄金价格 涨势如虹</p>
+            </div>
+            <img src="../../assets/discover/disc02.jpg" alt />
+          </li>
+          <li @click="$router.push({name:'NewsThree'})">
+            <div>
+              <h4>聪明人在买黄金，你知道吗?美元崩盘时它们将大放异彩</h4>
+              <p>一旦市场认清这个事实，黄金还飙涨数百美元</p>
+            </div>
+            <img src="../../assets/discover/disc03.jpg" alt />
+          </li>
+          <li @click="$router.push({name:'NewsFour'})">
+            <div>
+              <h4>万股皆下品唯有黄金高！</h4>
+              <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
+            </div>
+            <img src="../../assets/discover/disc04.jpg" alt />
+          </li>
+          <li @click="$router.push({name:'NewsFive'})">
+            <div>
+              <h4>黄金现回调信号？不会止步</h4>
+              <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
+            </div>
+            <img src="../../assets/discover/disc05.jpg" alt />
+          </li>
+          <li @click="$router.push({name:'NewsSix'})">
+            <div>
+              <h4>疯狂！黄金狂飙超40美元</h4>
+              <p>正常运营数量跌破800家，成交量同比下降62.19%</p>
+            </div>
+            <img src="../../assets/discover/disc06.jpg" alt />
+          </li>
+        </ul>
+      </van-pull-refresh>
     </section>
     <dibu id="footer"></dibu>
   </div>
@@ -60,6 +62,20 @@ export default {
   name: "Discover",
   components: {
     dibu
+  },
+  data() {
+    return {
+      count: 0,
+      isLoading: false
+    }
+  },
+  methods: {
+    onRefresh() {
+      setTimeout(() => {
+        this.isLoading = false
+        this.count++
+      }, 500)
+    }
   }
 }
 </script>
