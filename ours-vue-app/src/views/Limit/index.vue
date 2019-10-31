@@ -1,93 +1,95 @@
 <template>
   <div id="total">
     <div class="limit-top"></div>
-    <div class="tips">
-      <p>完成以下四项认证，5分钟内即出额度</p>
-      <p>全款购买商品无需完成以下认证</p>
-    </div>
     <div class="total-bottom">
-      <ul id="main">
-        <li class="main_name">
-          <div class="name_left">
-            <em class="iconfont icon-shimingyanzheng"></em>
-            <div class="news">
-              <h4>实名认证</h4>
-              <span>必选</span>
-              <p>验证身份证</p>
-            </div>
-          </div>
-          <div class="name_right">
-            <span>{{isShow?"已完善":"未完善"}}</span>
-            <van-icon class="arrow" name="arrow" size="0.42rem" @click="show=!isShow" />
-            <van-overlay :show="show" @click="show=false">
-              <div class="ceng">
-                <div class="title">
-                  <h4>授权提醒</h4>
-                  <p>
-                    你必须同意《个人信息使用授权书》才可以进行下一步操作，如果你已经阅读协议请
-                    点击同意授权按钮后提交资料。
-                  </p>
-                </div>
-                <div class="tiaozhuan">
-                  <p @click="$router.push({name:'protol'})">阅读协议</p>
-                  <p @click="$router.push({name:'Protol_name'})">同意</p>
-                </div>
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <div class="tips">
+          <p>完成以下四项认证，5分钟内即出额度</p>
+          <p>全款购买商品无需完成以下认证</p>
+        </div>
+        <ul id="main">
+          <li class="main_name">
+            <div class="name_left">
+              <em class="iconfont icon-shimingyanzheng"></em>
+              <div class="news">
+                <h4>实名认证</h4>
+                <span>必选</span>
+                <p>验证身份证</p>
               </div>
-            </van-overlay>
-          </div>
-        </li>
-        <li class="main_name main_do">
-          <div class="name_left">
-            <em class="iconfont icon-wanshanziliao"></em>
-            <div class="news">
-              <h4>完善资料</h4>
-              <span>必选</span>
-              <p>完善个人信息</p>
             </div>
-          </div>
-          <div class="name_right">
-            <span>{{data?"已完善":"未完善"}}</span>
-            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
-          </div>
-        </li>
-        <li class="main_name main_cart">
-          <div class="name_left">
-            <em class="iconfont icon-xinyongqiarenzheng"></em>
-            <div class="news">
-              <h4>信用卡认证</h4>
-              <span>必选</span>
-              <p>验证信用卡信息</p>
+            <div class="name_right">
+              <span>{{isShow?"已完善":"未完善"}}</span>
+              <van-icon class="arrow" name="arrow" size="0.42rem" @click="show=!isShow" />
+              <van-overlay :show="show" @click="show=false">
+                <div class="ceng">
+                  <div class="title">
+                    <h4>授权提醒</h4>
+                    <p>
+                      你必须同意《个人信息使用授权书》才可以进行下一步操作，如果你已经阅读协议请
+                      点击同意授权按钮后提交资料。
+                    </p>
+                  </div>
+                  <div class="tiaozhuan">
+                    <p class="read" @click="$router.push({name:'protol'})">阅读协议</p>
+                    <p class="tongyi" @click="$router.push({name:'Protol_name'})">同意</p>
+                  </div>
+                </div>
+              </van-overlay>
             </div>
-          </div>
-          <div class="name_right">
-            <span>{{credit?"已完善":"未完善"}}</span>
-            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
-          </div>
-        </li>
-        <li class="main_name main_shouquan">
-          <div class="name_left">
-            <em class="iconfont icon-shouquanguanli"></em>
-            <div class="news">
-              <h4>授权协议</h4>
-              <span>必选</span>
-              <p>签订征信授权协议</p>
+          </li>
+          <li class="main_name main_do">
+            <div class="name_left">
+              <em class="iconfont icon-wanshanziliao"></em>
+              <div class="news">
+                <h4>完善资料</h4>
+                <span>必选</span>
+                <p>完善个人信息</p>
+              </div>
             </div>
-          </div>
-          <div class="name_right">
-            <span>{{empower?"已完善":"未完善"}}</span>
-            <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
-          </div>
-        </li>
-      </ul>
-      <div id="read">
-        <van-icon name="passed" size="0.4rem" style="margin: 0.7rem 0.3rem 0 0.6rem;" />
-        <p>
-          我已阅读并同意
-          <a @click="$router.push({name:'Information'})">《个人信息使用授权书》</a>
-          <a @click="$router.push({name:'Search'})">《个人征信查询授权书》</a>
-          <a @click="$router.push({name:'Number'})">《数字证书服务协议》</a>
-        </p>
-      </div>
+            <div class="name_right">
+              <span>{{data?"已完善":"未完善"}}</span>
+              <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
+            </div>
+          </li>
+          <li class="main_name main_cart">
+            <div class="name_left">
+              <em class="iconfont icon-xinyongqiarenzheng"></em>
+              <div class="news">
+                <h4>信用卡认证</h4>
+                <span>必选</span>
+                <p>验证信用卡信息</p>
+              </div>
+            </div>
+            <div class="name_right">
+              <span>{{credit?"已完善":"未完善"}}</span>
+              <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
+            </div>
+          </li>
+          <li class="main_name main_shouquan">
+            <div class="name_left">
+              <em class="iconfont icon-shouquanguanli"></em>
+              <div class="news">
+                <h4>授权协议</h4>
+                <span>必选</span>
+                <p>签订征信授权协议</p>
+              </div>
+            </div>
+            <div class="name_right">
+              <span>{{empower?"已完善":"未完善"}}</span>
+              <van-icon class="arrow" name="arrow" size="0.42rem" @click="getNews" />
+            </div>
+          </li>
+        </ul>
+        <div id="read">
+          <van-icon name="passed" size="0.4rem" style="margin: 0.7rem 0.3rem 0 0.6rem;" />
+          <p>
+            我已阅读并同意
+            <a @click="$router.push({name:'Information'})">《个人信息使用授权书》</a>
+            <a @click="$router.push({name:'Search'})">《个人征信查询授权书》</a>
+            <a @click="$router.push({name:'Number'})">《数字证书服务协议》</a>
+          </p>
+        </div>
+      </van-pull-refresh>
     </div>
     <dibu></dibu>
   </div>
@@ -104,7 +106,9 @@ export default {
       alive: false,
       data: false,
       credit: false,
-      empower: false
+      empower: false,
+      count: 0,
+      isLoading: false
     }
   },
   components: {
@@ -122,6 +126,12 @@ export default {
         this.isShow = false
         this.$toast({ message: "你的身份未验证" })
       }
+    },
+    onRefresh() {
+      setTimeout(() => {
+        this.isLoading = false
+        this.count++
+      }, 500)
     }
   }
 }
@@ -170,13 +180,14 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.ceng .tiaozhuan p:first-child {
+.ceng .tiaozhuan .read {
   border-right: 1px solid #ccc;
-  padding-right: 0.5rem;
+  padding-right: 0.4rem;
 }
 
-.ceng .tiaozhuan p:last-child {
+.ceng .tiaozhuan .tongyi {
   color: #ff7633;
+  padding-right: 0.5rem;
 }
 
 .limit-top {
@@ -185,7 +196,7 @@ export default {
   background: url(../../assets/limit.png) no-repeat;
   background-size: cover;
 }
-#total .tips {
+.total-bottom .tips {
   width: 10.3rem;
   height: 1.28rem;
   padding-top: 0.32rem;
