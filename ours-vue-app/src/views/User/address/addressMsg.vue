@@ -1,44 +1,59 @@
 <template>
-  <div class="addressMsgBox">
-    <div class="cont">
-      <div class="msg">
-        <p>收件人</p>
-        <span>收件人电话</span>
-      </div>
-      <div class="msgAddress">
-        <p>数据的粉红色</p>
-      </div>
-    </div>
-    <!--  操作 -->
-    <div class="operate">
-      <div class="operate-left">
-        <van-icon name="checked" size="0.37rem" color="#31c442" />
-        <p>设为默认地址</p>
-      </div>
-
-      <div class="operate-right">
-        <div class="operate-right-l" @click="editHandle">
-          <van-icon name="add" size="0.37rem" />
-          <p>编辑</p>
+  <div>
+    <div class="addressMsgBox" v-for="i in list" :key="i._id">
+      <div class="cont">
+        <div class="msg">
+          <p>{{i.receiver}}</p>
+          <span>{{i.mobile}}</span>
         </div>
-        <div class="operate-right-r" @click="delHandle">
-          <van-icon name="clear" size="0.37rem" />
-          <p>删除</p>
+        <div class="msgAddress">
+          <p>{{i.regions}} {{i.address}}</p>
+        </div>
+      </div>
+      <!--  操作 -->
+      <div class="operate">
+        <div class="operate-left">
+          <van-icon name="checked" size="0.37rem" :class="{moren:i.isDefault}" />
+          <p>设为默认地址</p>
+        </div>
+
+        <div class="operate-right">
+          <div class="operate-right-l" @click="editHandle(i)">
+            <van-icon name="add" size="0.37rem" />
+            <p>编辑</p>
+          </div>
+          <div class="operate-right-r" @click="delHandle(i)">
+            <van-icon name="clear" size="0.37rem" />
+            <p>删除</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex"
 export default {
-  name: 'addressMsg',
+  name: "addressMsg",
   methods: {
-    editHandle() {
-      console.log('你点击了编辑按钮！')
+    editHandle(i) {
+      console.log(i._id)
+      this.$router.push({
+        name: "addAddress",
+        query: {
+          id: i._id
+        }
+      })
     },
-    delHandle() {
-      console.log('你点击了删除按钮！')
-    }
+    delHandle(i) {
+      console.log("你点击了删除按钮！")
+      this.loadDel(i._id)
+    },
+    ...mapActions("addressList", ["loadDel", "loadData"])
+  },
+  // lxh
+  computed: {
+    ...mapState("addressList", ["list"])
   }
 }
 </script>
@@ -116,5 +131,18 @@ export default {
   height: 1.42rem;
   align-items: center;
   justify-content: center;
+}
+
+/* lxh 是否默认 */
+.moren {
+  color: "#000";
+}
+</style>
+<style >
+.van-icon-checked {
+  color: #ccc;
+}
+.moren {
+  color: red;
 }
 </style>

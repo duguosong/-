@@ -1,11 +1,11 @@
-import { get, post, put, del } from '../utils/request'
+import { get, post, put, del } from "../utils/request"
 
 /**
  * 根据参数获取商品列表
  * @param {*} params
  */
 export function products(params) {
-  return get('/api/v1/products', params)
+  return get("/api/v1/products", params)
 }
 
 // export const products = function(params) {
@@ -49,7 +49,7 @@ export function getProductById(id) {
  * @param {*} model
  */
 export function userReg(model) {
-  return post('/api/v1/auth/reg', model)
+  return post("/api/v1/auth/reg", model)
 }
 
 /**
@@ -57,7 +57,7 @@ export function userReg(model) {
  * @param {*} model
  */
 export function userLogin(model) {
-  return post('/api/v1/auth/login', model)
+  return post("/api/v1/auth/login", model)
 }
 
 /**
@@ -72,5 +72,43 @@ export function detailById(id) {
  * 用户获取商品分类id
  */
 export function categoriesList() {
-  return get('api/v1/product_categories')
+  return get("api/v1/product_categories")
+}
+
+/**
+ * 根据参数获取用户地址列表Lxh
+ */
+export function addressesList(param) {
+  return get("api/v1/addresses", param)
+}
+
+/**
+ * 新增用户地址
+ * @param {*} modle
+ */
+export function addressesNew(modle) {
+  return post("api/v1/addresses", modle)
+}
+
+/**
+ * 根据地址id获取单条收货地址
+ * @param {*} id
+ */
+export function addressOneByID(id) {
+  return get(`/api/v1/addresses/${id}`)
+}
+
+/**
+ * 根据地址id删除
+ * @param {*} id
+ */
+export function addressDelByID(id) {
+  return del(`/api/v1/addresses/${id}`)
+}
+
+/**
+ * 根据地址id修改地址
+ */
+export function addressputByID(id, model) {
+  return put(`/api/v1/addresses/${id}`, model)
 }

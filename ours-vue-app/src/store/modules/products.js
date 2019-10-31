@@ -1,4 +1,4 @@
-import { products } from '../../services/service'
+import { products } from "../../services/service"
 export default {
   namespaced: true,
   state: {
@@ -7,9 +7,9 @@ export default {
   actions: {
     async loadData({ commit }, payload) {
       const result = await products({
-        product_category: '5db29f6ee6d9ba15f812611c'
+        product_category: "5db29f6ee6d9ba15f812611c"
       })
-      commit('save', result.data.products)
+      commit("save", result.data.products)
     }
   },
   mutations: {

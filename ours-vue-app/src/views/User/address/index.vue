@@ -22,16 +22,27 @@
 <script>
 import addAddress from "./addAddress"
 import addressMsg from "./addressMsg"
+import { mapActions } from "vuex"
 export default {
-  name: "address",
+  // lxh 它不让名字是address
+  name: "addresss",
   components: {
     addAddress,
     addressMsg
   },
   methods: {
     lastStep() {
-      window.history.go(-1)
-    }
+      //window.history.go(-1)
+      this.$router.push({
+        name: "User"
+      })
+    },
+    // lxh
+    ...mapActions("addressList", ["loadData"])
+  },
+  //发起请求 拿到用户所有的的收货地址 Lxh0223
+  created() {
+    this.loadData(1)
   }
 }
 </script>
