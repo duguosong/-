@@ -6,11 +6,11 @@ import product from "./modules/product"
 import detail from "./modules/detail"
 import categoriesList from "./modules/categoriesList"
 // 分类模块
-// import hot from "./modules/Fenlei/hot"
-// import jiezhi from "./modules/Fenlei/jiezhi"
-// import shouzhuo from "./modules/Fenlei/shouzhuo"
-// import xianglian from "./modules/Fenlei/xianglian"
-// import zhuanyunzhu from "./modules/Fenlei/zhuanyunzhu"
+import hot from "./modules/Fenlei/hot"
+import jiezhi from "./modules/Fenlei/jiezhi"
+import shouzhuo from "./modules/Fenlei/shouzhuo"
+import xianglian from "./modules/Fenlei/xianglian"
+import zhuanyunzhu from "./modules/Fenlei/zhuanyunzhu"
 
 // 地址模块
 import addressList from "./modules/address/index"
@@ -21,12 +21,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    str: ""
+    str: "",
+    st: ""
   },
   mutations: {
     ss(state, payload) {
       state.str = payload
       console.log(payload)
+    },
+    sav(state, payload) {
+      state.st = payload
     }
   },
   actions: {},
@@ -36,11 +40,11 @@ export default new Vuex.Store({
     product,
     detail,
     categoriesList,
-    // hot,
-    // jiezhi,
-    // shouzhuo,
-    // xianglian,
-    // zhuanyunzhu
+    hot,
+    jiezhi,
+    shouzhuo,
+    xianglian,
+    zhuanyunzhu,
     addressList,
     addressnew,
     addressOneByID,

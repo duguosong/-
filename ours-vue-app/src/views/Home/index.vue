@@ -56,7 +56,8 @@
         <van-col span="20" offset="2">
           <van-grid :border="false" :column-num="4">
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[0]?list[0]._id:'',descriptions:list[0]?list[0].descriptions:''}}"
+              @click="clickhandle(list[0]?list[0].name:'')"
             >
               <div class="app" style="background:orange;color:white">
                 <van-icon name="gold-coin" size="0.76rem" />
@@ -66,7 +67,8 @@
               >{{list[0]?list[0].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[1]?list[1]._id:'',descriptions:list[1]?list[1].descriptions:''}}"
+              @click="clickhandle(list[1]?list[1].name:'')"
             >
               <div class="app" style="background:#76beee;color:white">
                 <van-icon name="gift-card" size="0.76rem" />
@@ -76,7 +78,8 @@
               >{{list[1]?list[1].name:''}}</span>
             </van-grid-item>
             <van-grid-item
-              :to="{name:'NewPhone',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
+              :to="{name:'Hot',params:{product_category:list[2]?list[2]._id:'',descriptions:list[2]?list[2].descriptions:''}}"
+              @click="clickhandle(list[2]?list[2].name:'')"
             >
               <div class="app" style="background:#f96561;color:white">
                 <van-icon name="hot" size="0.76rem" />
@@ -140,6 +143,10 @@ export default {
     ...mapActions("categoriesList", ["loadData"]),
     message() {
       this.$router.push({ path: "/message" })
+    },
+    clickhandle(v) {
+      console.log(v)
+      this.$store.commit("sav", v)
     },
     onRefresh() {
       setTimeout(() => {

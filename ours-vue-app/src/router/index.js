@@ -43,11 +43,11 @@ const routes = [
     }
   },
   // 列表
-  {
-    path: "/newPhone/:product_category/:descriptions",
-    name: "NewPhone",
-    component: () => import("@/views/Home/newPhone")
-  },
+  // {
+  //   path: "/newPhone/:product_category/:descriptions",
+  //   name: "NewPhone",
+  //   component: () => import("@/views/Home/newPhone")
+  // },
 
   {
     path: "/limit",
@@ -321,7 +321,7 @@ const routes = [
   {
     // 我的 -> 红包
     path: "/user/redPack",
-    name: "redPack",
+    //name: "redPack",
     component: () => import("@/views/User/redPack/index"),
 
     children: [
@@ -364,47 +364,47 @@ const routes = [
     name: "Detail",
 
     component: () => import("@/views/Detail/detail")
-  }
+  },
 
   // 分类
-  // {
-  //   path: "/fenlei/index/:product_category/:descriptions",
-  //   //name: "NewPhone",
-  //   //redirect: "fenlei/index/:product_category/:descriptions/hot", // redirect重定向 当访问/fenlei默认跳转到hot页
-  //   component: () => import("@/views/Fenlei/index"),
-  //   children: [
-  //     {
-  //       path: "",
-  //       name: "Hot",
-  //       component: () => import("@/views/Fenlei/hot"),
-  //       meta: { title: "商品列表", icon: "tree" }
-  //     },
-  //     {
-  //       path: "jiezhi/:name",
-  //       name: "Jiezhi",
-  //       component: () => import("@/views/Fenlei/jiezhi"),
-  //       meta: { title: "商品新增", icon: "tree" }
-  //     },
-  //     {
-  //       path: "shoulian/:name",
-  //       name: "Shouzhuo",
-  //       component: () => import("@/views/Fenlei/shouzhuo")
-  //       // meta: { title: '商品新增', icon: 'tree' }
-  //     },
-  //     {
-  //       path: "xianglian/:name",
-  //       name: "Xianglian",
-  //       component: () => import("@/views/Fenlei/xianglian")
-  //       // meta: { title: '商品新增', icon: 'tree' }
-  //     },
-  //     {
-  //       path: "zhuanyunzhu/:name",
-  //       name: "Zhuanyunzhu",
-  //       component: () => import("@/views/Fenlei/zhuanyunzhu")
-  //       // meta: { title: '商品新增', icon: 'tree' }
-  //     }
-  //   ]
-  // }
+  {
+    path: "/fenlei/index/:product_category/:descriptions",
+    //name: "NewPhone",
+    //redirect: "fenlei/index/:product_category/:descriptions/hot", // redirect重定向 当访问/fenlei默认跳转到hot页
+    component: () => import("@/views/Fenlei/index"),
+    children: [
+      {
+        path: "",
+        name: "Hot",
+        component: () => import("@/views/Fenlei/hot"),
+        meta: { title: "商品列表", icon: "tree" }
+      },
+      {
+        path: "jiezhi/:name",
+        name: "Jiezhi",
+        component: () => import("@/views/Fenlei/jiezhi"),
+        meta: { title: "商品新增", icon: "tree" }
+      },
+      {
+        path: "shoulian/:name",
+        name: "Shouzhuo",
+        component: () => import("@/views/Fenlei/shouzhuo")
+        // meta: { title: '商品新增', icon: 'tree' }
+      },
+      {
+        path: "xianglian/:name",
+        name: "Xianglian",
+        component: () => import("@/views/Fenlei/xianglian")
+        // meta: { title: '商品新增', icon: 'tree' }
+      },
+      {
+        path: "zhuanyunzhu/:name",
+        name: "Zhuanyunzhu",
+        component: () => import("@/views/Fenlei/zhuanyunzhu")
+        // meta: { title: '商品新增', icon: 'tree' }
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
