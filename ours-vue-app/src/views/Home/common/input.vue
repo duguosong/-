@@ -16,11 +16,8 @@ export default {
   methods: {
     searchNames() {
       const name = this.name
-<<<<<<< HEAD
       searchName(name).then(res => console.log(res))
-=======
       searchName({ params: name }).then(res => console.log(res))
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55
     }
   }
 }

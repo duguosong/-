@@ -270,11 +270,7 @@ const routes = [
     name: "Cart",
     component: () => import("@/views/User/Cart/index"),
     meta: {
-<<<<<<< HEAD
       needLoginIn: true
-=======
-      needLogin: true
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55
     }
   },
   {
@@ -415,7 +411,6 @@ const router = new VueRouter({
   routes
 })
 
-<<<<<<< HEAD
 // 路由守卫
 router.beforeEach((to, from, next) => {
   // next()
@@ -423,20 +418,9 @@ router.beforeEach((to, from, next) => {
   // console.group(from)
   // console.group(next)
   if (to.meta.needLoginIn) {
-    if (getToken()) {
+    if (getToken() || localStorage.getItem("token")) {
       next()
     } else {
-=======
-// // 路由前置守卫 Lxh0223
-router.beforeEach((to, from, next) => {
-  if (to.meta.needLogin == true) {
-    if (localStorage.getItem("token")) {
-      // 如果登录
-      next()
-    } else {
-      //没登陆路由到登陆页
-      console.log(375)
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55
       next({ name: "Login" })
     }
   } else {

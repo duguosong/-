@@ -1,21 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <van-row class="varT">
-    <van-col span="2" offset="1" style="margin-top:1.3rem">
-      <van-checkbox v-model="checked"></van-checkbox>
-    </van-col>
-    <van-col span="20">
-      <van-card
-        num="2"
-        price="2.00"
-        desc="描述信息"
-        title="商品标题"
-        thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-      />
-    </van-col>
-  </van-row>
-</template>
-=======
   <div class="myCart">
     <header>
       <van-nav-bar title="购物车" class="cart">
@@ -23,7 +6,6 @@
         <van-icon name="delete" slot="right" />
       </van-nav-bar>
     </header>
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55
 
     <div class="had">
       <div class="container" v-for="item in list" :key="item._id">
@@ -127,16 +109,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-<style>
-.varT {
-  width: 95%;
-  border-radius: 0.3rem;
-  margin: 0.3rem auto;
-  box-shadow: -0rem 0.01rem 0.3rem #b3e0d1;
-}
-</style>
-=======
 <style type='text/css'>
 /* * {
   margin: 0;
@@ -271,4 +243,3 @@ export default {
 </style>
 
 
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55

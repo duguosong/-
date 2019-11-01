@@ -116,14 +116,6 @@ export function addressputByID(id, model) {
 }
 
 /**
-<<<<<<< HEAD
- * 根据商品名查询商品
- *
- * @param {*} name
- */
-export function searchName(name) {
-  return get("/api/v1/products", name)
-=======
  * 加入购物车
  * @param {*} model
  */
@@ -136,5 +128,4 @@ export function addCart(model) {
  */
 export function getCartList() {
   return get("/api/v1/shop_carts")
->>>>>>> b2cf73464f3dd31bce08ebd685138dbafbcfea55
 }
