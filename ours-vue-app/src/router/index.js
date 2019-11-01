@@ -240,7 +240,10 @@ const routes = [
   {
     path: "/cart",
     name: "Cart",
-    component: () => import("@/views/User/Cart/index")
+    component: () => import("@/views/User/Cart/index"),
+    meta: {
+      needLogin: true
+    }
   },
   {
     // 我的 ->  售后
@@ -360,23 +363,24 @@ const routes = [
   // }
 ]
 
-// 路由前置守卫 Lxh0223
-// router.beforeEach((to,from,next)=>{
-//   if(to.meta.needLogin==true){
-//     if(){
-//       // 如果登录
-//       next()
-//     }else{
-//       //没登陆路由到登陆页
-//       next({name="Login"})
-//     }
-//   }else{
-//     next()
-//   }
-// })
-
 const router = new VueRouter({
   routes
+})
+
+// // 路由前置守卫 Lxh0223
+router.beforeEach((to, from, next) => {
+  if (to.meta.needLogin == true) {
+    if (localStorage.getItem("token")) {
+      // 如果登录
+      next()
+    } else {
+      //没登陆路由到登陆页
+      console.log(375)
+      next({ name: "Login" })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

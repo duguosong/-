@@ -29,24 +29,48 @@
         <van-tag plain color="#000" size="large">黑色</van-tag>
       </div>
     </div>
+    <van-goods-action>
+      <van-goods-action-icon icon="chat-o" text="客服" />
+      <van-goods-action-icon icon="cart-o" text="购物车" :info="cartCount" :to="{name:'Cart'}" />
+      <van-goods-action-icon icon="shop-o" text="店铺" info="12" />
+      <van-goods-action-button type="warning" text="加入购物车" @click="clickhandle" />
+      <van-goods-action-button type="danger" text="立即购买" />
+    </van-goods-action>
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex"
+import { mapState, mapActions, mapGetters } from "vuex"
 import lunbo from "./lunbo"
 export default {
   name: "detail",
+  data() {
+    return {
+      ID: ""
+    }
+  },
   created() {
     const id = this.$route.params.id
+    this.ID = id
     console.log(id)
     this.loadData(id)
     console.log(this.list)
+    if (localStorage.getItem("token")) {
+      this.loadCartList()
+    }
   },
   methods: {
-    ...mapActions("detail", ["loadData"])
+    ...mapActions("detail", ["loadData"]),
+    ...mapActions("addCart", {
+      loadCart: "loadData",
+      loadCartList: "loadCartList"
+    }),
+    clickhandle() {
+      this.loadCart({ product: this.ID })
+    }
   },
   computed: {
-    ...mapState("detail", ["list"])
+    ...mapState("detail", ["list"]),
+    ...mapGetters("addCart", ["cartCount"])
   },
   components: { lunbo }
 }
