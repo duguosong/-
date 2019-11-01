@@ -359,8 +359,8 @@ export default {
 }
 </style>
 
-<style>
-.van-icon {
+<style >
+.van-grid-item__icon {
   font-size: 0.75rem;
   color: #fe6d02;
 }

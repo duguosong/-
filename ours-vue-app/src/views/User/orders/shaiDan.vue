@@ -1,5 +1,5 @@
 <template>
-  <!-- 可晒单 -->
+  <!-- 可晒单 订单-->
   <div class="shaiDanBox">
     <wuMsg></wuMsg>
   </div>

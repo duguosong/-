@@ -1,5 +1,5 @@
 <template>
-  <!-- 待付款  -->
+  <!-- 待付款订单  -->
   <div class="obligationBox">
     <wuMsg></wuMsg>
   </div>

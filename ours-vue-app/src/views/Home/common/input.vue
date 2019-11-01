@@ -1,33 +1,50 @@
 <template>
-  <div
-    style="width:100%;height:1.92rem;background:white;box-sizing: border-box;
-  padding: 0.3rem 0.2rem;
-  position: relative;"
-  >
-    <input type="text" class="sousuo" placeholder="请输入商品名称" />
-    <van-icon
-      name="search"
-      style="position: absolute;top:0.6rem;right:1rem;font-size:0.75rem;font-weight:900;"
-    />
+  <div class="searchBox">
+    <van-icon name="search" size="1rem" color="#ee5b16" @click="searchNames" />
+    <input type="text" v-model="name" placeholder="请输入搜索关键字" />
   </div>
 </template>
-
 <script>
+import { searchName } from "../../../services/service"
 export default {
-  name: "InputADD"
+  name: "search",
+  data() {
+    return {
+      name: ""
+    }
+  },
+  methods: {
+    searchNames() {
+      const name = this.name
+      searchName({ params: name }).then(res => console.log(res))
+    }
+  }
 }
 </script>
-<style  scoped>
-.sousuo {
-  width: 90%;
-  height: 1.35rem;
-  border: none;
-  display: block;
-  margin: auto auto;
+<style scoped>
+.searchBox {
+  width: 100%;
   font-size: 0.44rem;
-  background: #efefef;
-  border-radius: 0.2rem;
+  height: 1.8rem;
+  background: white;
   box-sizing: border-box;
-  padding: 0.6rem;
+  padding: 0.2rem 0.5rem;
+}
+input {
+  height: 1.35rem;
+  width: 9.82rem;
+  box-sizing: border-box;
+  padding: 0 1.5rem 0 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative;
+  background: #efefef;
+}
+.van-icon-search {
+  position: absolute;
+  right: 0.8rem;
+  top: 1.6rem;
+  z-index: 10000;
+  font-weight: 900;
 }
 </style>
