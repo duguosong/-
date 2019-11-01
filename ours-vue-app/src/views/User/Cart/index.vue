@@ -1,15 +1,19 @@
 <template>
   <div class="cart">
     <tops></tops>
-    <cection></cection>
-    <fote></fote>
+    <div class="sec">
+      <cection></cection>
+    </div>
+    <!-- <div class="fote">
+      <fote></fote>
+    </div>-->
   </div>
 </template>
 
 <script>
 import tops from "./top"
 import cection from "./cection"
-import fote from "./footer"
+// import fote from "./footer"
 
 export default {
   name: "Cart",
@@ -20,9 +24,19 @@ export default {
   },
   components: {
     tops,
-    fote,
+
     cection
   }
 }
 </script>
+<style>
+.cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sec {
+  flex: 1;
+}
+</style>
 
