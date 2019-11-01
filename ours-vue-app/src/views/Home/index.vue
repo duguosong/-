@@ -101,10 +101,13 @@
       </van-row>
     </div>
     <div style="flex:1;overflow: auto;">
-      <productsList></productsList>
-      <product></product>
-      <Products></Products>
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <productsList></productsList>
+        <product></product>
+        <Products></Products>
+      </van-pull-refresh>
     </div>
+
     <dibu></dibu>
   </div>
 </template>
@@ -116,15 +119,14 @@ import product from "./product"
 import Products from "./products"
 import dibu from "../../components/dibu"
 import { products } from "@/services/service"
-import { getToken } from "../../utils/auth" //引入cookie 操作函数
-import { filtration } from "../../utils/user/user"
 
 export default {
   name: "home",
   data() {
     return {
       obj: {},
-      token: getToken()
+      // count: 0,
+      isLoading: false
     }
   },
   computed: {
@@ -132,21 +134,20 @@ export default {
   },
   created() {
     this.loadData()
-    if (this.token != undefined) {
-      this.token = filtration(this.token)
-    } else {
-      this.isShow = false
-    }
   },
   components: { productsList, product, Products, dibu },
   methods: {
     ...mapActions("categoriesList", ["loadData"]),
     message() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/message" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({ path: "/message" })
+    },
+    onRefresh() {
+      setTimeout(() => {
+        // this.$toast("刷新成功")
+        this.isLoading = false
+        // this.count++
+      }, 1000)
+      this.loadData()
     }
   }
 }

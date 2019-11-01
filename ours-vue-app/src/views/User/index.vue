@@ -34,12 +34,12 @@
             icon="balance-pay"
             text="待付款"
             @click="$router.push({
-            path:'/user/orders',
-            name: 'Orders',
-            params:{
-              id:1,
-            }
-          })"
+              path:'/user/orders',
+              name: 'Orders',
+              params:{
+                id:1,
+              }
+            })"
           ></van-grid-item>
           <van-grid-item
             icon="logistics"
@@ -146,52 +146,25 @@ export default {
       this.$router.push({ path: "/user/Setting" })
     },
     Orders() {
-      if (this.token != undefined) {
-        this.$router.push({
-          path: "/user/orders",
-          name: "Orders",
-          params: {
-            id: 0
-          }
-        })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
-    },
-    bill() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/user/bill" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({
+        path: "/user/orders",
+        name: "Orders",
+        params: {
+          id: 0
+        }
+      })
     },
     collect() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/user/collect" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({ path: "/user/collect" })
     },
     address() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/user/address" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({ path: "/user/address" })
     },
     redPack() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/user/redPack" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({ path: "/user/redPack" })
     },
     feedback() {
-      if (this.token != undefined) {
-        this.$router.push({ path: "/user/feedback" })
-      } else {
-        this.$router.push({ path: "/login" })
-      }
+      this.$router.push({ path: "/user/feedback" })
     }
   }
 }

@@ -18,7 +18,7 @@ import NewsFour from "../views/Discover/NewsFour.vue"
 import NewsFive from "../views/Discover/NewsFive.vue"
 import NewsSix from "../views/Discover/NewsSix.vue"
 
-// import { getToken } from "../utils/auth" //获取token
+import { getToken } from "../utils/auth" //获取token
 
 Vue.use(VueRouter)
 
@@ -37,7 +37,10 @@ const routes = [
 
     name: "Message",
 
-    component: () => import("@/views/Home/message")
+    component: () => import("@/views/Home/message"),
+    meta: {
+      needLoginIn: true
+    }
   },
   // 列表
   {
@@ -111,10 +114,7 @@ const routes = [
 
     name: "User",
 
-    component: () => import("@/views/User/index"),
-    meta: {
-      needLoginIn: true
-    }
+    component: () => import("@/views/User/index")
   },
 
   {
@@ -127,37 +127,55 @@ const routes = [
     // 发现 第1条新闻页面
     path: "/discover/newsone",
     name: "NewsOne",
-    component: () => import("@/views/Discover/NewsOne")
+    component: () => import("@/views/Discover/NewsOne"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 发现 第2条新闻页面
     path: "/discover/newstwo",
     name: "NewsTwo",
-    component: () => import("@/views/Discover/NewsTwo")
+    component: () => import("@/views/Discover/NewsTwo"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 发现 第3条新闻页面
     path: "/discover/newsthree",
     name: "NewsThree",
-    component: () => import("@/views/Discover/NewsThree")
+    component: () => import("@/views/Discover/NewsThree"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 发现 第4条新闻页面
     path: "/discover/newsfour",
     name: "NewsFour",
-    component: () => import("@/views/Discover/NewsFour")
+    component: () => import("@/views/Discover/NewsFour"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 发现 第5条新闻页面
     path: "/discover/newsfive",
     name: "NewsFive",
-    component: () => import("@/views/Discover/NewsFive")
+    component: () => import("@/views/Discover/NewsFive"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 发现 第6条新闻页面
     path: "/discover/newssix",
     name: "NewsSix",
-    component: () => import("@/views/Discover/NewsSix")
+    component: () => import("@/views/Discover/NewsSix"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 登录
@@ -215,7 +233,10 @@ const routes = [
     // 我的 -> 我的订单
     path: "/user/orders/:id",
     name: "Orders",
-    component: () => import("@/views/User/orders/index")
+    component: () => import("@/views/User/orders/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   // {
   //   // 我的 -> 我的账单
@@ -247,7 +268,10 @@ const routes = [
   {
     path: "/cart",
     name: "Cart",
-    component: () => import("@/views/User/Cart/index")
+    component: () => import("@/views/User/Cart/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 我的 ->  售后
@@ -256,7 +280,10 @@ const routes = [
 
     name: "afterSale",
 
-    component: () => import("@/views/User/afterSale/index")
+    component: () => import("@/views/User/afterSale/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 我的 ->  我的收藏
@@ -265,7 +292,10 @@ const routes = [
 
     name: "Collect",
 
-    component: () => import("@/views/User/collect/index")
+    component: () => import("@/views/User/collect/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 我的 -> 收货地址管理
@@ -276,7 +306,9 @@ const routes = [
 
     component: () => import("@/views/User/address/index"),
     // 需要登陆才可以进入该页面 Lxh0223
-    meta: { needLogin: true }
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 收货地址管理 -> 添加收货地址
@@ -289,13 +321,18 @@ const routes = [
   {
     // 我的 -> 红包
     path: "/user/redPack",
+    name: "redPack",
     component: () => import("@/views/User/redPack/index"),
+
     children: [
       {
         // 我的红包-> 未使用
         path: "",
         name: "Unused",
-        component: () => import("@/views/User/redPack/unused")
+        component: () => import("@/views/User/redPack/unused"),
+        meta: {
+          needLoginIn: true
+        }
       },
       {
         // 我的红包 -> 已使用
@@ -315,7 +352,10 @@ const routes = [
     // 我的 -> 意见反馈
     path: "/user/feedback",
     name: "Feedback",
-    component: () => import("@/views/User/feedback/index")
+    component: () => import("@/views/User/feedback/index"),
+    meta: {
+      needLoginIn: true
+    }
   },
   {
     // 详情
@@ -386,22 +426,21 @@ const router = new VueRouter({
   routes
 })
 
-// // 路由守卫
-// router.beforeEach((to, from, next) => {
-//   // next()
-//   // console.group(to)
-//   // console.group(from)
-//   // console.group(next)
-//   if (to.meta.needLoginIn) {
-//     if (getToken()) {
-//       console.log(1)
-//       next()
-//     } else {
-//       next({ name: "Login" })
-//     }
-//   } else {
-//     next()
-//   }
-// })
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  // next()
+  // console.group(to)
+  // console.group(from)
+  // console.group(next)
+  if (to.meta.needLoginIn) {
+    if (getToken()) {
+      next()
+    } else {
+      next({ name: "Login" })
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

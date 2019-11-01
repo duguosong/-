@@ -112,3 +112,12 @@ export function addressDelByID(id) {
 export function addressputByID(id, model) {
   return put(`/api/v1/addresses/${id}`, model)
 }
+
+/**
+ * 根据商品名查询商品
+ *
+ * @param {*} name
+ */
+export function searchName(name) {
+  return get("/api/v1/products", name)
+}
