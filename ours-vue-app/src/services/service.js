@@ -129,3 +129,11 @@ export function addCart(model) {
 export function getCartList() {
   return get("/api/v1/shop_carts")
 }
+
+/**
+ * 根据商品id删除购物车该商品
+ * @param {*} id
+ */
+export function delCartOne(id) {
+  return del(`/api/v1/shop_carts/${id}`)
+}

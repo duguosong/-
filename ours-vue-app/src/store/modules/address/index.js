@@ -18,6 +18,12 @@ export default {
   mutations: {
     save(state, payload) {
       console.log(payload)
+      payload.forEach(i => {
+        i.regions = i.regions
+          .split("-")
+          .splice(0, 3)
+          .join("-")
+      })
       state.list = payload
     }
   }

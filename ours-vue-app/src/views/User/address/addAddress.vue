@@ -34,7 +34,9 @@ export default {
     if (this.$route.query.id) {
       const id = this.$route.query.id
       this.addressOne(id)
+      console.log(this.list)
       this.list1 = this.list
+
       this.$store.commit("ss", "修改地址")
     } else {
       this.list1 = this.listnew
@@ -52,6 +54,7 @@ export default {
       })
     },
     onSave(p) {
+      console.log(p)
       if (this.$route.query.id) {
         // 编辑
         console.log("编辑")
@@ -59,7 +62,8 @@ export default {
         const obj1 = {
           receiver: p.name,
           mobile: p.tel,
-          regions: p.province + "-" + p.city + "-" + p.county,
+          regions:
+            p.province + "-" + p.city + "-" + p.county + "-" + p.areaCode,
           address: p.addressDetail,
           isDefault: p.isDefault
         }
@@ -70,7 +74,8 @@ export default {
         this.loadData({
           receiver: p.name,
           mobile: p.tel,
-          regions: p.province + "-" + p.city + "-" + p.county,
+          regions:
+            p.province + "-" + p.city + "-" + p.county + "-" + p.areaCode,
           address: p.addressDetail,
           isDefault: p.isDefault
         })
