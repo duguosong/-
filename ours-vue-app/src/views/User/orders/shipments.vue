@@ -1,5 +1,5 @@
 <template>
-  <!-- 代发货 -->
+  <!-- 代发货订单-->
   <div class="shipmentsBox">
     <wuMsg></wuMsg>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <!-- 待收货 -->
+  <!-- 待收货订单 -->
   <div class="receivingBox">
     <wuMsg></wuMsg>
   </div>

@@ -34,8 +34,10 @@ instance.interceptors.response.use(
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     // 服务器端返回了一个结果(有响应)并且服务器端返回给我的状态码是401的时候 跳转到登录页
+    console.log(error)
     if (error.response && error.response.status === 401) {
       window.location.href = "#/login"
+      console.log("执行了")
     }
     return Promise.reject(error)
   }

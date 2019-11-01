@@ -7,23 +7,21 @@
       <p>订单</p>
     </div>
 
-    <van-tabs v-model="active" title-active-color="#ff7f00" color="#fff">
-      <van-tab title="全部" class="active">
-        <allorder></allorder>
-      </van-tab>
-      <van-tab title="代付款">
-        <obligation></obligation>
-      </van-tab>
-      <van-tab title="代发货">
-        <shipments></shipments>
-      </van-tab>
-      <van-tab title="待收货">
-        <receiving></receiving>
-      </van-tab>
-      <van-tab title="可晒单">
-        <shaiDan></shaiDan>
-      </van-tab>
+    <van-tabs v-model="active" title-active-color="#ff7f00" color="orgin">
+      <van-tab title="全部"></van-tab>
+      <van-tab title="代付款"></van-tab>
+      <van-tab title="代发货"></van-tab>
+      <van-tab title="待收货"></van-tab>
+      <van-tab title="可晒单"></van-tab>
     </van-tabs>
+
+    <div style="flex: 1; overflow: auto; ">
+      <allorder v-if="active==0?true:false"></allorder>
+      <obligation v-if="active==1?true:false"></obligation>
+      <shipments v-if="active==2?true:false"></shipments>
+      <receiving v-if="active==3?true:false"></receiving>
+      <shaiDan v-if="active==4?true:false"></shaiDan>
+    </div>
   </div>
 </template>
 <script>
@@ -61,6 +59,8 @@ export default {
   width: 100%;
   height: 100%;
   background: #efefef;
+  display: flex;
+  flex-direction: column;
 }
 .title {
   width: 100%;
@@ -78,39 +78,5 @@ export default {
   position: absolute;
   left: 0.48rem;
   top: 0.5rem;
-}
-.van-tab {
-  color: red !important;
-}
-</style>
-<style>
-.van-tabs--line .van-tabs__wrap {
-  height: 1.68rem;
-  box-sizing: border-box;
-}
-.van-tab {
-  font-size: 0.4rem;
-  box-sizing: border-box;
-  padding-top: 0.38rem;
-  margin: 0 0.3rem;
-}
-.van-ellipsis {
-  width: 2.16rem;
-  height: 0.9rem;
-  line-height: 0.9rem;
-  border-radius: 0.4rem;
-  box-sizing: border-box;
-  border: 0.03rem solid #b2b2b2;
-}
-
-/* .active {
-  background-image: linear-gradient(to right, #fe6d04, #fb9806);
-  color: #fff;
-  border: 0;
-} */
-.van-ellipsis:hover {
-  background-image: linear-gradient(to right, #fe6d04, #fb9806);
-  color: #fff;
-  border: 0;
 }
 </style>

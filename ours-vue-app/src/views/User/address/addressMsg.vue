@@ -49,7 +49,7 @@ export default {
       console.log("你点击了删除按钮！")
       this.loadDel(i._id)
     },
-    ...mapActions("addressList", ["loadDel", "loadData"])
+    ...mapActions("addressList", ["loadDel"])
   },
   // lxh
   computed: {
