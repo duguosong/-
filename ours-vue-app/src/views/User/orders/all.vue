@@ -56,10 +56,9 @@
         </div>
       </div>
     </div>-->
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
+    <div v-for="(items,index) in length" :key="index">
+      <orderDetails></orderDetails>
+    </div>
   </div>
 </template>
 <script>
@@ -67,6 +66,11 @@ import wuMsg from "../components/wuMsg" // 无订单时显示
 import orderDetails from "./components/orderDetalis"
 export default {
   name: "allorder",
+  data() {
+    return {
+      length: 3
+    }
+  },
   components: {
     wuMsg,
     orderDetails

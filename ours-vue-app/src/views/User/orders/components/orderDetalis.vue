@@ -33,25 +33,31 @@
           </div>
         </div>
 
-        <div class="cont-r"></div>
+        <div class="cont-r">
+          <p>
+            ¥
+            <b>{{price}}</b>
+          </p>
+          <span>× {{num}}</span>
+        </div>
       </div>
       <div class="heji">
         <div class="hejiCont">
           <div class="hejiCont-l">
-            <p>共1件商品</p>
+            <p>共{{num}} 件商品</p>
           </div>
           <div class="hejiCont-r">
             <p>合计:</p>
             <p>
-              <span>¥ 19.99</span>
+              <span>¥ {{num*price}}</span>
             </p>
           </div>
         </div>
       </div>
       <div class="btns">
-        <button class="common" v-if="isShow">查看物流</button>
-        <button class="common" v-if="isShow">卖了换钱</button>
-        <button class="common">{{ isShow?'评价':'删除订单'}}</button>
+        <button class="common" v-if="isShow" @click="logistics">查看物流</button>
+        <button class="common" v-if="isShow" @click="sell">卖了换钱</button>
+        <button class="common" @click="btnHandle">{{ isShow?'评价':'删除订单'}}</button>
       </div>
     </div>
   </div>
@@ -61,7 +67,24 @@ export default {
   name: "orderDetails",
   data() {
     return {
-      isShow: false
+      isShow: false,
+      price: 19.99,
+      num: 1
+    }
+  },
+  methods: {
+    btnHandle() {
+      if (this.isShow) {
+        console.log("你点击了评价按钮!")
+      } else {
+        console.log("你点击了删除按钮!")
+      }
+    },
+    logistics() {
+      console.log('你点击了"查看物流"按钮')
+    },
+    sell() {
+      console.log('你点击了"卖了换钱"按钮')
     }
   }
 }
@@ -119,6 +142,7 @@ export default {
   font-size: 0.36rem;
   color: #e7570e;
 }
+
 .cont {
   width: 100%;
   height: 3.6rem;
@@ -181,9 +205,23 @@ export default {
 .cont-r {
   min-width: 1.73rem;
   height: 2.6rem;
-  background: peru;
-}
 
+  display: flex;
+  flex-direction: column;
+}
+.cont-r p {
+  font-size: 0.4rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: flex-end;
+}
+.cont-r p b {
+  font-size: 0.5rem;
+  font-weight: 100;
+}
+.cont-r span {
+  font-size: 0.28rem;
+}
 .heji {
   width: 100%;
   height: 1.32rem;
