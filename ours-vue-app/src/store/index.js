@@ -17,6 +17,9 @@ import addressList from "./modules/address/index"
 import addressnew from "./modules/address/addressnew"
 import addressOneByID from "./modules/address/addressOneByID"
 import addCart from "./modules/cart/cart"
+
+// 订单模块
+import orderList from "./modules/Orders/orderList"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -48,6 +51,7 @@ export default new Vuex.Store({
     addressList,
     addressnew,
     addressOneByID,
-    addCart
+    addCart,
+    orderList
   }
 })

@@ -137,3 +137,26 @@ export function getCartList() {
 export function delCartOne(id) {
   return del(`/api/v1/shop_carts/${id}`)
 }
+
+/**
+ * 获取订单列表
+ */
+export function getOrderList() {
+  return get("/api/v1/orders")
+}
+
+/**
+ * 根据id获取订单详情
+ * @param {*} id
+ */
+export function getOrderDetailById(id) {
+  return get(`/api/v1/orders/${id}`)
+}
+
+/**
+ * 根据id删除订单
+ * @param {*} id
+ */
+export function delOrderById(id) {
+  return del(`/api/v1/orders/${id}`)
+}

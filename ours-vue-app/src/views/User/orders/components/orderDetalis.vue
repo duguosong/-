@@ -7,7 +7,7 @@
             <van-icon name="shopping-cart" size="0.50rem" />
           </div>
           <div class="top-l-r">
-            <p>阿达所发生的asdasd</p>
+            <p>优品商城</p>
             <van-icon name="arrow" size="0.34rem" />
           </div>
         </div>
@@ -17,15 +17,15 @@
       </div>
       <div class="cont">
         <div class="cont-l">
-          <img src="../../../../assets/discover/disc03.jpg" alt />
+          <img :src="item.product.coverImg" title="这是一张图片" />
         </div>
         <div class="cont-c">
           <div class="prdName">
-            <p>阿萨德按时 阿萨德蒂芬卡士大夫</p>
+            <p>{{item.product.name}}</p>
           </div>
           <div class="prdDesc">
-            <p>asdsadf;</p>
-            <span>asdfasd</span>
+            <p style="color:red">满199包邮🚚--></p>
+            <span style="color:green  ">{{item.quantity*item.price>=199?'已包邮':'未包邮'}}</span>
           </div>
 
           <div class="prdAlt">
@@ -36,20 +36,20 @@
         <div class="cont-r">
           <p>
             ¥
-            <b>{{price}}</b>
+            <b>{{item.price}}</b>
           </p>
-          <span>× {{num}}</span>
+          <span>× {{item.quantity}}</span>
         </div>
       </div>
       <div class="heji">
         <div class="hejiCont">
           <div class="hejiCont-l">
-            <p>共{{num}} 件商品</p>
+            <p>共{{item.quantity}} 件商品</p>
           </div>
           <div class="hejiCont-r">
             <p>合计:</p>
             <p>
-              <span>¥ {{num*price}}</span>
+              <span>¥ {{item.quantity*item.price}}</span>
             </p>
           </div>
         </div>
@@ -57,12 +57,13 @@
       <div class="btns">
         <button class="common" v-if="isShow" @click="logistics">查看物流</button>
         <button class="common" v-if="isShow" @click="sell">卖了换钱</button>
-        <button class="common" @click="btnHandle">{{ isShow?'评价':'删除订单'}}</button>
+        <button class="common" @click="btnHandle(item.order)">{{ isShow?'评价':'删除订单'}}</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from "vuex"
 export default {
   name: "orderDetails",
   data() {
@@ -72,12 +73,15 @@ export default {
       num: 1
     }
   },
+  props: ["item"],
   methods: {
-    btnHandle() {
+    btnHandle(id) {
       if (this.isShow) {
         console.log("你点击了评价按钮!")
       } else {
         console.log("你点击了删除按钮!")
+        // console.log(id)
+        this.delOrderById(id)
       }
     },
     logistics() {
@@ -85,7 +89,8 @@ export default {
     },
     sell() {
       console.log('你点击了"卖了换钱"按钮')
-    }
+    },
+    ...mapActions("orderList", ["delOrderById"])
   }
 }
 </script>

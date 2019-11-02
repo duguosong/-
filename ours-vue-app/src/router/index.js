@@ -421,6 +421,7 @@ router.beforeEach((to, from, next) => {
     if (getToken() || localStorage.getItem("token")) {
       next()
     } else {
+      console.log(1)
       next({ name: "Login" })
     }
   } else {
