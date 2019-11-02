@@ -122,6 +122,7 @@ export default {
       console.log(cart, cartName, cartImg)
       if (cart && cartName && cartImg !== "") {
         this.isShow = true
+        this.empower = true
       } else {
         this.isShow = false
         this.$toast({ message: "你的身份未验证" })

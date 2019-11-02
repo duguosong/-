@@ -99,26 +99,27 @@ export default {
     finshCart() {
       var cart = document.getElementById("cart").value
       var cartName = document.getElementById("cartName").value
-      if (cart == "" && cartName == "") {
-        alert("请完善个人信息！")
+      if (cart == "" || cartName == "") {
+        this.$toast({ message: "请完善个人信息！" })
       } else {
         if (cart !== "" && cartName !== "") {
           var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
           if (reg.test(cart) === false) {
-            alert("身份证输入不合法")
+            this.$toast({ message: "身份证输入不合法" })
             return false
           } else {
             localStorage.setItem("cart", JSON.stringify(cart))
           }
-          var regExp = /[^\u4e00-\u9fa5]/g
-          if (regExp.test(cartName)) {
-            alert("请输入中文")
+          var regExp =  /[\u4e00-\u9fa5]/
+          if (!regExp.test(cartName)) {
+            this.$toast({ message: "请输入中文" })
           } else {
             localStorage.setItem("cartName", JSON.stringify(cartName))
+            var cartImg = document.getElementById("cartImg").src
+            localStorage.setItem("cartImg", JSON.stringify(cartImg));
+            this.$router.push({ name: "Limit" });
           }
-          var cartImg = document.getElementById("cartImg").src
-          localStorage.setItem("cartImg", JSON.stringify(cartImg))
-          alert("验证成功！点击<按钮返回上一页")
+
         }
       }
     },
