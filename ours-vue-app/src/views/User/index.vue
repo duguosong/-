@@ -13,7 +13,7 @@
               <p class="certification">未认证</p>
             </div>
             <div style="font-size:0.5rem;color:#fff;height:1.22rem;" v-else>
-              <p style="height:1.22rem;line-height:1.22rem;">未登录</p>
+              <p style="height:1.22rem;line-height:1.22rem;" @click="$router.push({path:'/login'})">未登录</p>
             </div>
           </div>
 

@@ -17,6 +17,7 @@
       <div class="userMsg-pwd common">
         <p>用户密码</p>
         <input
+          ref="pwd"
           type="password"
           @blur="changeIn($event)"
           v-model="pwd"
@@ -27,8 +28,8 @@
       </div>
 
       <div class="eye" @click="eye">
-        <van-icon name="closed-eye" size="0.8rem" v-if="eyeOpen" />
-        <van-icon name="eye-o" size="0.8rem" v-else />
+        <van-icon name="closed-eye" size="0.8rem" v-if="eyeOpen" color="#aaa" />
+        <van-icon name="eye-o" size="0.8rem" v-else color="#aaa" />
       </div>
 
       <div class="protocol">
@@ -105,6 +106,8 @@ export default {
         })
         console.log("点击了发送验证码")
         //console.log(this.yanZ)
+      } else {
+        Toast("请输入正确的手机号")
       }
     },
     regBtn() {
@@ -162,9 +165,18 @@ export default {
         this.$refs.loginBtn.style.backgroundColor = "#f4c897"
       }
     },
+    // 密码的显示和隐藏 没有输入密码时点击无效果
     eye() {
-      this.eyeOpen = !this.eyeOpen
-      console.log(this.eyeOpen)
+      //  onsole.log(this.eyeOpen)
+      // console.log(this.pwd)
+      if (this.pwd) {
+        this.eyeOpen = !this.eyeOpen
+        if (!this.eyeOpen) {
+          this.$refs.pwd.type = "text"
+        } else {
+          this.$refs.pwd.type = "password"
+        }
+      }
     }
   }
 }
