@@ -158,7 +158,7 @@ export default {
       this.$router.push({ path: "/user/collect" })
     },
     address() {
-      this.$router.push({ path: "/user/address" })
+      this.$router.push({ path: "/user/address:goSubOrder" })
     },
     redPack() {
       this.$router.push({ path: "/user/redPack" })

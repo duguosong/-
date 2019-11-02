@@ -238,6 +238,15 @@ const routes = [
       needLoginIn: true
     }
   },
+  {
+    // 我的 -> 我的订单
+    path: "/submitOrder",
+    name: "submitOrder",
+    component: () => import("@/views/User/orders/submitOrder"),
+    meta: {
+      needLoginIn: true
+    }
+  },
   // {
   //   // 我的 -> 我的账单
   //   path: "/user/bill",
@@ -300,7 +309,7 @@ const routes = [
   {
     // 我的 -> 收货地址管理
 
-    path: "/user/address",
+    path: "/user/address:goSubOrder",
 
     name: "Address",
 

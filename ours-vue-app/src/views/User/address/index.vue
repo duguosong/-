@@ -32,10 +32,18 @@ export default {
   },
   methods: {
     lastStep() {
+      console.log(this.$route.params.goSubOrder)
+      if (this.$route.params.goSubOrder == "1") {
+        this.$router.push({
+          name: "submitOrder"
+        })
+      } else {
+        this.$router.push({
+          name: "User"
+        })
+      }
+
       //window.history.go(-1)
-      this.$router.push({
-        name: "User"
-      })
     },
     // lxh
     ...mapActions("addressList", ["loadData"])
