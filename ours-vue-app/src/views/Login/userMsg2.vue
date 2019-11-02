@@ -15,7 +15,7 @@
     <div class="userMsg-btm common">
       <p>登录密码</p>
       <input
-        type="text"
+        type="password"
         v-model="pwd"
         minlength="6"
         maxlength="20"

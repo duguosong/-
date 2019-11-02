@@ -17,13 +17,18 @@
       <div class="userMsg-pwd common">
         <p>用户密码</p>
         <input
-          type="text"
+          type="password"
           @blur="changeIn($event)"
           v-model="pwd"
           minlength="6"
           maxlength="20"
           placeholder="请输入6~20位密码"
         />
+      </div>
+
+      <div class="eye" @click="eye">
+        <van-icon name="closed-eye" size="0.8rem" v-if="eyeOpen" />
+        <van-icon name="eye-o" size="0.8rem" v-else />
       </div>
 
       <div class="protocol">
@@ -80,7 +85,8 @@ export default {
     return {
       tel: "",
       pwd: "",
-      yanZ: ""
+      yanZ: "",
+      eyeOpen: true
     }
   },
   methods: {
@@ -117,6 +123,9 @@ export default {
             }, 800)
           } else {
             Toast(res.data.message)
+            setTimeout(() => {
+              this.$router.push({ path: "/login" })
+            }, 1000)
           }
         })
       }
@@ -152,6 +161,10 @@ export default {
       } else {
         this.$refs.loginBtn.style.backgroundColor = "#f4c897"
       }
+    },
+    eye() {
+      this.eyeOpen = !this.eyeOpen
+      console.log(this.eyeOpen)
     }
   }
 }
@@ -188,6 +201,7 @@ export default {
 }
 .userMsg-pwd input {
   width: 100%;
+  position: relative;
 }
 .userMsg-btm input {
   width: 7.3rem;
@@ -201,6 +215,16 @@ export default {
   height: 1.4rem;
   background: #fff;
   color: #ff6c00;
+}
+.eye {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 7.6rem;
+  right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .protocol {
