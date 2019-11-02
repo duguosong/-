@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="top-r">
-          <p>{{isShow?'交易完成':'交易终止'}}</p>
+          <p>{{item?'交易完成':'交易终止'}}</p>
         </div>
       </div>
       <div class="cont">
@@ -55,9 +55,9 @@
         </div>
       </div>
       <div class="btns">
-        <button class="common" v-if="isShow" @click="logistics">查看物流</button>
-        <button class="common" v-if="isShow" @click="sell">卖了换钱</button>
-        <button class="common" @click="btnHandle(item.order)">{{ isShow?'评价':'删除订单'}}</button>
+        <button class="common" v-if="item" @click="logistics">查看物流</button>
+        <button class="common" v-if="item" @click="sell">卖了换钱</button>
+        <button class="common" @click="btnHandle(item.order)">{{ !item?'评价':'删除订单'}}</button>
       </div>
     </div>
   </div>
@@ -68,7 +68,6 @@ export default {
   name: "orderDetails",
   data() {
     return {
-      isShow: false,
       price: 19.99,
       num: 1
     }

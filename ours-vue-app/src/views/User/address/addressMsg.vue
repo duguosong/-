@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="addressMsgBox" v-for="i in list" :key="i._id">
+    <div class="addressMsgBox" v-for="i in list" :key="i._id" @click="clickhandle(i)">
       <div class="cont">
         <div class="msg">
           <p>{{i.receiver}}</p>
@@ -44,6 +44,13 @@ export default {
           id: i._id
         }
       })
+    },
+    clickhandle(i) {
+      this.$router.push({
+        name: "submitOrder"
+      })
+      console.log(i)
+      this.$store.commit("address", i)
     },
     delHandle(i) {
       console.log("你点击了删除按钮！")

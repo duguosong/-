@@ -1,7 +1,7 @@
 <template>
   <div class="subOrderBox">
     <div class="title">
-      <div @click="lastStep">
+      <div @click="lastStep(plist)">
         <van-icon name="arrow-left" size="0.44rem" color="#555" />
       </div>
       <p>订单信息</p>
@@ -12,34 +12,36 @@
           <van-icon name="location-o" size="1.1rem" />
         </div>
         <div class="c-t-r">
-          <p>{{isShow?'':'请填写收货信息'}}</p>
-          <p>{{isShow?'':'请输入详细的收货地址和门牌号'}}</p>
+          <p>{{add.receiver?add.receiver+' '+add.mobile:'请填写收货信息'}}</p>
+          <p>{{add.regions?add.regions+' '+add.address:'请输入详细的收货地址和门牌号'}}</p>
         </div>
         <van-icon name="arrow" size="0.6rem" color="#ccc" />
       </div>
-      <div class="cont-cent">
-        <div class="c-c-l">
-          <img src alt />
-        </div>
-        <div class="c-c-r">
-          <div class="name">
-            <p>阿萨斯看来房价快速,是的咖啡机爱仕达,适得府君书杜,asdjk卡上的大幅开始暗示健康的很符合时代发生的回复收到收到</p>
+      <div v-for="i in plist" :key="i._id">
+        <div class="cont-cent">
+          <div class="c-c-l">
+            <img :src="i.product?i.product.coverImg:i.coverImg" alt />
           </div>
-          <div class="desc">
-            <p>阿卡丽时代峰</p>
-            <span>× 1</span>
-          </div>
-          <div class="price">
-            <p>¥ 3188.00</p>
+          <div class="c-c-r">
+            <div class="name">
+              <p>{{i.product?i.product.name:i.name}}</p>
+            </div>
+            <div class="desc">
+              <p>阿卡丽时代峰</p>
+              <span>× {{i.product?i.quantity:1}}</span>
+            </div>
+            <div class="price">
+              <p>¥ {{i.product?i.product.price:i.price}}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="cont-btm">
-        <div class="c-b-l">
-          <p>商品金额</p>
-        </div>
-        <div class="c-b-r">
-          <p>￥ 3188.00</p>
+        <div class="cont-btm">
+          <div class="c-b-l">
+            <p>商品金额</p>
+          </div>
+          <div class="c-b-r">
+            <p>¥ {{i.product?i.product.price*i.quantity:i.price}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -47,26 +49,47 @@
       <div class="footer-l">
         <p>
           ¥
-          <b>3188.00</b>
+          <b>{{plist[0].product?zongjia:plist[0].price}}</b>
         </p>
       </div>
       <div class="footer-r">
-        <button @click="nextStep">下一步</button>
+        <button @click="nextStep(add,plist)">下一步</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapGetters, mapActions } from "vuex"
+import { Toast } from "vant"
 export default {
   name: "submitOrder",
   data() {
     return {
-      isShow: false
+      name: ""
     }
   },
+  created() {},
+  computed: {
+    ...mapState(["plist", "add"]),
+    ...mapState("orderList", ["obj"]),
+    ...mapGetters("addCart", ["zongjia"])
+  },
   methods: {
-    lastStep() {
-      window.history.go(-1)
+    lastStep(p) {
+      if (this.name == "Detail") {
+        console.log(11111)
+        console.log(p)
+        this.$router.push({
+          name: this.name,
+          params: {
+            id: p[0]._id
+          }
+        })
+      } else {
+        this.$router.push({
+          name: this.name
+        })
+      }
     },
     toAddress() {
       this.$router.push({
@@ -76,9 +99,65 @@ export default {
         }
       })
     },
-    nextStep() {
+    nextStep(add, plist) {
       console.log("你点击了下一步")
-    }
+      console.log(add, plist)
+      let orderDetails = []
+      if (plist[0].product) {
+        plist.forEach(i => {
+          orderDetails.push({
+            quantity: i.quantity,
+            product: i.product._id,
+            price: i.product.price
+          })
+        })
+      } else {
+        orderDetails.push({
+          quantity: 1,
+          product: plist[0]._id,
+          price: plist[0].price
+        })
+      }
+      console.log({
+        receiver: add.receiver,
+        regions: add.regions,
+        address: add.address,
+        orderDetails
+      })
+      Toast.setDefaultOptions({
+        duration: 700
+      })
+      if (add.receiver && add.regions && add.address) {
+        this.createOrder({
+          receiver: add.receiver,
+          regions: add.regions,
+          address: add.address,
+          orderDetails
+        })
+
+        setTimeout(() => {
+          if (this.obj.code && this.obj.code == "success") {
+            Toast.success("订单保存成功")
+            this.$router.push({
+              name: "Orders"
+            })
+          } else if (this.obj.code && this.obj.code !== "success") {
+            Toast.fail("用户地址输入有误")
+          }
+        }, 50)
+      } else {
+        Toast("请输入收货地址")
+      }
+    },
+    ...mapActions("orderList", ["createOrder"])
+  },
+  beforeRouteEnter: (to, from, next) => {
+    next(vm => {
+      if (from.name != "Address") {
+        localStorage.setItem("name", JSON.stringify(from.name))
+      }
+      vm.name = JSON.parse(localStorage.getItem("name"))
+    })
   }
 }
 </script>

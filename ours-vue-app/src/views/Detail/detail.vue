@@ -34,7 +34,12 @@
       <van-goods-action-icon icon="cart-o" text="购物车" :info="cartCount" :to="{name:'Cart'}" />
       <van-goods-action-icon icon="shop-o" text="店铺" info="12" />
       <van-goods-action-button type="warning" text="加入购物车" @click="clickhandle" />
-      <van-goods-action-button type="danger" text="立即购买" />
+      <van-goods-action-button
+        type="danger"
+        text="立即购买"
+        :to="{name:'submitOrder'}"
+        @click="buyHandle(list[0])"
+      />
     </van-goods-action>
   </div>
 </template>
@@ -66,6 +71,11 @@ export default {
     }),
     clickhandle() {
       this.loadCart({ product: this.ID })
+    },
+    buyHandle(i) {
+      console.log(i)
+
+      this.$store.commit("product", [i])
     }
   },
   computed: {

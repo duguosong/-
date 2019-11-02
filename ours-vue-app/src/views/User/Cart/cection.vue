@@ -27,7 +27,12 @@
       </div>
     </div>
     <div class="fote">
-      <van-submit-bar style="font-size:0.31rem" :price="zongjia*100" button-text="提交订单">
+      <van-submit-bar
+        style="font-size:0.31rem"
+        :price="zongjia*100"
+        button-text="提交订单"
+        @submit="onSubmit"
+      >
         <!--@change="quanclick" checked -->
         <van-checkbox v-model="checkAll">全选</van-checkbox>
         <!-- <input type="checkbox" v-model="checkAll" /> -->
@@ -41,6 +46,7 @@
 </template>
 <script>
 import { mapState, mapActions, mapGetters } from "vuex"
+import { Toast } from "vant"
 export default {
   name: "Carts",
   data() {
@@ -63,7 +69,10 @@ export default {
     },
     addOne(id, quantity, kucun, item) {
       if (quantity >= kucun) {
-        alert("亲亲😙😙 超过库存了呢")
+        Toast.setDefaultOptions({
+          duration: 800
+        })
+        Toast("亲亲😙😙 超过库存了呢")
       } else {
         this.loadData({ product: id })
       }
@@ -72,7 +81,7 @@ export default {
       if (quantity > 1) {
         this.loadData({ product: id, quantity: -1 })
       } else {
-        alert("亲亲😙😙不能再减了呢")
+        Toast("亲亲😙😙不能再减了呢")
       }
     },
     // 删除购物车商品
@@ -82,6 +91,17 @@ export default {
           this.delCartOne(i._id)
         }
       })
+    },
+    onSubmit() {
+      let pL = this.list.filter(person => person.isCheck == true)
+      if (pL.length > 0) {
+        this.$store.commit("product", pL)
+        this.$router.push({
+          name: "submitOrder"
+        })
+      } else {
+        Toast("请您选择商品哦！")
+      }
     }
     // 单选
     // danclick(i, list) {
