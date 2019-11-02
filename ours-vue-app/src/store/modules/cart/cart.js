@@ -8,9 +8,10 @@ export default {
     async loadData({ commit, dispatch }, payload) {
       const result = await addCart(payload)
       console.log("加入购物车", result)
-      dispatch("loadCartList")
+      dispatch("loadCartList", 1)
     },
     async loadCartList({ commit }, payload) {
+      console.log(payload)
       const result = await getCartList()
       console.log(result.data)
       commit("save", result.data)

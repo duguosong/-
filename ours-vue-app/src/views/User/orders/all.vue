@@ -56,20 +56,29 @@
         </div>
       </div>
     </div>-->
-    <div v-for="(items,index) in length" :key="index">
-      <orderDetails></orderDetails>
+    <div v-for="(items,index) in list" :key="index">
+      <orderDetails :item="items"></orderDetails>
     </div>
   </div>
 </template>
 <script>
 import wuMsg from "../components/wuMsg" // 无订单时显示
 import orderDetails from "./components/orderDetalis"
+import { mapActions, mapState } from "vuex"
 export default {
   name: "allorder",
   data() {
-    return {
-      length: 3
-    }
+    return {}
+  },
+  created() {
+    this.getOrderList()
+    console.log(this.list)
+  },
+  methods: {
+    ...mapActions("orderList", ["getOrderList"])
+  },
+  computed: {
+    ...mapState("orderList", ["list"])
   },
   components: {
     wuMsg,
