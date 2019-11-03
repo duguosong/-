@@ -49,13 +49,13 @@ const routes = [
   //   component: () => import("@/views/Home/newPhone")
   // },
 
-  {
-    path: "/limit",
+  // {
+  //   path: "/limit",
 
-    name: "Limit",
+  //   name: "Limit",
 
-    component: () => import("@/views/Limit/index")
-  },
+  //   component: () => import("@/views/Limit/index")
+  // },
   {
     //额度协议
     path: "/protol",

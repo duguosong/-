@@ -45,7 +45,11 @@
             indicator-color="white"
             style="height:4.16rem;border-radius:0.35rem"
           >
-            <van-swipe-item v-for="(item,index) in list" :key="index">
+            <van-swipe-item
+              v-for="(item,index) in list"
+              :key="index"
+              @click="clickhandle22(list[index]?list[index].name:'',{name:'Hot',params:{product_category:list[index]?list[index]._id:'',descriptions:list[index]?list[index].descriptions:''}})"
+            >
               <img :src="item.coverImg" alt style="width:100%" />
             </van-swipe-item>
           </van-swipe>
@@ -89,15 +93,12 @@
               >{{list[2]?list[2].name:''}}</span>
             </van-grid-item>
 
-            <van-grid-item>
+            <van-grid-item @click="$router.push({name:'Limit'})">
               <div class="app" style="background:#d6b159;color:white">
                 <van-icon name="graphic" size="0.76rem" />
               </div>
 
-              <span
-                style="font-size:0.33rem;width:100%;text-align:center"
-                @click="$router.push({name:'Limit'})"
-              >3万额度</span>
+              <span style="font-size:0.33rem;width:100%;text-align:center">3万额度</span>
             </van-grid-item>
           </van-grid>
         </van-col>
@@ -144,13 +145,21 @@ export default {
     message() {
       this.$router.push({ path: "/message" })
     },
+    clickhandle22(v, i) {
+      console.log(v)
+      this.$store.commit("sav", v)
+      this.$router.push(i)
+    },
     clickhandle(v) {
       console.log(v)
       this.$store.commit("sav", v)
     },
     onRefresh() {
       setTimeout(() => {
-        // this.$toast("刷新成功")
+        this.$toast.setDefaultOptions({
+          duration: 800
+        })
+        this.$toast("刷新成功")
         this.isLoading = false
         // this.count++
       }, 1000)
