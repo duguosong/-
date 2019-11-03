@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <!-- <keep-alive> -->
     <router-view />
+    <!-- </keep-alive> -->
     <!-- <van-tabbar route>
       <van-tabbar-item class="iconfont icon-shouye2" :to="{name:'home'}">首页</van-tabbar-item>
       <van-tabbar-item class="iconfont icon-edu" :to="{name:'Limit'}">额度</van-tabbar-item>

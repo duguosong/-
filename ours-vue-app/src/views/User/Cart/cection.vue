@@ -65,7 +65,20 @@ export default {
   methods: {
     ...mapActions("addCart", ["loadCartList", "loadData", "delCartOne"]),
     clickhandle() {
-      window.history.go(-1)
+      if (
+        JSON.parse(localStorage.getItem("cartname")).split("-")[0] == "Detail"
+      ) {
+        this.$router.push({
+          name: JSON.parse(localStorage.getItem("cartname")).split("-")[0],
+          params: {
+            id: JSON.parse(localStorage.getItem("cartname")).split("-")[1]
+          }
+        })
+      } else {
+        this.$router.push({
+          name: JSON.parse(localStorage.getItem("cartname"))
+        })
+      }
     },
     addOne(id, quantity, kucun, item) {
       if (quantity >= kucun) {

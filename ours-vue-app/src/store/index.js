@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import createPersistedState from "vuex-persistedstate"
 import productsList from "./modules/productsList"
 import products from "./modules/products"
 import product from "./modules/product"
@@ -24,6 +25,7 @@ import { stat } from "fs"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     str: "",
     st: "",

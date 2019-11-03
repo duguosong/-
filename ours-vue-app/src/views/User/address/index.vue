@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     lastStep() {
-      console.log(this.$route.params.goSubOrder)
       if (this.$route.params.goSubOrder == "1") {
         this.$router.push({
           name: "submitOrder"
@@ -42,7 +41,7 @@ export default {
           name: "User"
         })
       }
-
+      localStorage.removeItem("addressname")
       //window.history.go(-1)
     },
     // lxh
@@ -51,6 +50,13 @@ export default {
   //发起请求 拿到用户所有的的收货地址 Lxh0223
   created() {
     this.loadData(1)
+  },
+  beforeRouteEnter: (to, from, next) => {
+    next(vm => {
+      if (from.name == "submitOrder") {
+        localStorage.setItem("addressname", JSON.stringify(from.name))
+      }
+    })
   }
 }
 </script>

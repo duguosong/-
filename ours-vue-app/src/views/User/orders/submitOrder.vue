@@ -154,9 +154,9 @@ export default {
   beforeRouteEnter: (to, from, next) => {
     next(vm => {
       if (from.name != "Address") {
-        localStorage.setItem("name", JSON.stringify(from.name))
+        localStorage.setItem("ordername", JSON.stringify(from.name))
       }
-      vm.name = JSON.parse(localStorage.getItem("name"))
+      vm.name = JSON.parse(localStorage.getItem("ordername"))
     })
   }
 }

@@ -18,11 +18,11 @@
         </div>
 
         <div class="operate-right">
-          <div class="operate-right-l" @click="editHandle(i)">
+          <div class="operate-right-l" @click.stop="editHandle(i)">
             <van-icon name="add" size="0.37rem" />
             <p>编辑</p>
           </div>
-          <div class="operate-right-r" @click="delHandle(i)">
+          <div class="operate-right-r" @click.stop="delHandle(i)">
             <van-icon name="clear" size="0.37rem" />
             <p>删除</p>
           </div>
@@ -33,11 +33,13 @@
 </template>
 <script>
 import { mapState, mapActions } from "vuex"
+import { Toast } from "vant"
 export default {
   name: "addressMsg",
   methods: {
     editHandle(i) {
       console.log(i._id)
+      //event.stopPropagation()
       this.$router.push({
         name: "addAddress",
         query: {
@@ -46,15 +48,33 @@ export default {
       })
     },
     clickhandle(i) {
-      this.$router.push({
-        name: "submitOrder"
-      })
-      console.log(i)
-      this.$store.commit("address", i)
+      console.log(1)
+      if (JSON.parse(localStorage.getItem("addressname")) == "submitOrder") {
+        this.$router.push({
+          name: "submitOrder"
+        })
+        this.$store.commit("address", i)
+        localStorage.removeItem("addressname")
+      }
     },
     delHandle(i) {
-      console.log("你点击了删除按钮！")
-      this.loadDel(i._id)
+      // if (JSON.parse(localStorage.getItem("addressname")) == "submitOrder") {
+      //   console.log("你点击了删除按钮！")
+      //   let obj2 = JSON.parse(localStorage.getItem("vuex"))
+      //   console.log(obj2)
+      //   obj2.add = {}
+      //   console.log(obj2)
+      //   localStorage.setItem("vuex", JSON.stringify(obj2))
+      //   console.log(JSON.parse(localStorage.getItem("vuex")))
+      // }
+      if (this.list.length > 1) {
+        this.loadDel(i._id)
+      } else {
+        Toast.setDefaultOptions({
+          duration: 800
+        })
+        Toast("亲亲😙😙只有一个地址了 您可以选择修改地址的呢!")
+      }
     },
     ...mapActions("addressList", ["loadDel"])
   },

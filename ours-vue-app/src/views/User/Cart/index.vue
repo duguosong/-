@@ -17,15 +17,34 @@ import cection from "./cection"
 
 export default {
   name: "Cart",
-  methods: {
-    onClickLeft() {
-      window.history.go(-1)
+  data() {
+    return {
+      name: ""
     }
+  },
+  methods: {
+    onClickLeft() {}
   },
   components: {
     tops,
 
     cection
+  },
+  beforeRouteEnter: (to, from, next) => {
+    console.log(from)
+    next(vm => {
+      if (from.name != "submitOrder") {
+        if (from.name == "Detail") {
+          localStorage.setItem(
+            "cartname",
+            JSON.stringify(from.name + "-" + from.params.id)
+          )
+        } else {
+          localStorage.setItem("cartname", JSON.stringify(from.name))
+        }
+      }
+      // vm.name = JSON.parse(localStorage.getItem("cartname"))
+    })
   }
 }
 </script>
