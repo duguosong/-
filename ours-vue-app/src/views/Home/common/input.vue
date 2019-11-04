@@ -5,19 +5,11 @@
   </div>
 </template>
 <script>
-import { searchName } from "../../../services/service"
 export default {
   name: "search",
   data() {
     return {
       name: ""
-    }
-  },
-  methods: {
-    searchNames() {
-      const name = this.name
-      searchName(name).then(res => console.log(res))
-      searchName({ params: name }).then(res => console.log(res))
     }
   }
 }

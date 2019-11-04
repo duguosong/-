@@ -89,15 +89,12 @@
               >{{list[2]?list[2].name:''}}</span>
             </van-grid-item>
 
-            <van-grid-item>
+            <van-grid-item @click="$router.push({name:'Limit'})">
               <div class="app" style="background:#d6b159;color:white">
                 <van-icon name="graphic" size="0.76rem" />
               </div>
 
-              <span
-                style="font-size:0.33rem;width:100%;text-align:center"
-                @click="$router.push({name:'Limit'})"
-              >3万额度</span>
+              <span style="font-size:0.33rem;width:100%;text-align:center">3万额度</span>
             </van-grid-item>
           </van-grid>
         </van-col>
