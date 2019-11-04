@@ -15,7 +15,8 @@
     <div class="userMsg-btm common">
       <p>登录密码</p>
       <input
-        type="text"
+        ref="pwd"
+        type="password"
         v-model="pwd"
         minlength="6"
         maxlength="20"
@@ -23,6 +24,13 @@
         @blur="changIn($event)"
       />
     </div>
+
+    <!--密码的显示和隐藏 -->
+    <div class="eye" @click="eye">
+      <van-icon name="closed-eye" size="0.8rem" v-if="eyeOpen" color="#aaa" />
+      <van-icon name="eye-o" size="0.8rem" v-else color="#aaa" />
+    </div>
+
     <div class="protocol">
       <span class="iconfont icon-choosehandle"></span>
       <p>我已阅读并同意</p>
@@ -46,7 +54,8 @@ export default {
     return {
       tel: "",
       pwd: "",
-      yanzheng: false
+      yanzheng: false,
+      eyeOpen: true
     }
   },
   methods: {
@@ -58,6 +67,8 @@ export default {
         )
       ) {
         this.yanzheng = true
+      } else {
+        Toast("请输入正确的手机号")
       }
     },
     loginBtn() {
@@ -95,6 +106,17 @@ export default {
       } else {
         Toast("请输入正确的账户和密码!")
         this.$refs.loginBtn.style.backgroundColor = "#f4c897"
+      }
+    },
+    // 密码的显示和隐藏 没有输入密码时点击无效果
+    eye() {
+      if (this.pwd) {
+        this.eyeOpen = !this.eyeOpen
+        if (!this.eyeOpen) {
+          this.$refs.pwd.type = "text"
+        } else {
+          this.$refs.pwd.type = "password"
+        }
       }
     }
   }
@@ -141,7 +163,16 @@ export default {
   background: #efefef;
   color: #ff6c00;
 }
-
+.eye {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 5.2rem;
+  right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .protocol {
   width: 100%;
   height: 1.16rem;

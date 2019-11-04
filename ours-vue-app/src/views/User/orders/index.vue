@@ -47,7 +47,10 @@ export default {
   },
   methods: {
     lastStep() {
-      window.history.go(-1)
+      // window.history.go(-1)
+      this.$router.push({
+        name: "User"
+      })
       console.log(this.$route.params.id)
       console.log(this.active)
     }

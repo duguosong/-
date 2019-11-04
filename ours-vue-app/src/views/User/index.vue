@@ -13,7 +13,7 @@
               <p class="certification">未认证</p>
             </div>
             <div style="font-size:0.5rem;color:#fff;height:1.22rem;" v-else>
-              <p style="height:1.22rem;line-height:1.22rem;">未登录</p>
+              <p style="height:1.22rem;line-height:1.22rem;" @click="$router.push({path:'/login'})">未登录</p>
             </div>
           </div>
 
@@ -84,7 +84,7 @@
     </div>
     <div class="user-bill">
       <div class="userCommon com2" @click="$router.push({path:'/cart'})">
-        <p>我的账单</p>
+        <p>我的购物车</p>
         <van-icon name="arrow" color="#cecece" size="0.4rem" />
       </div>
       <div class="userCommon com2" @click="collect">
@@ -158,7 +158,7 @@ export default {
       this.$router.push({ path: "/user/collect" })
     },
     address() {
-      this.$router.push({ path: "/user/address" })
+      this.$router.push({ path: "/user/address:goSubOrder" })
     },
     redPack() {
       this.$router.push({ path: "/user/redPack" })

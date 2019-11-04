@@ -7,25 +7,25 @@
             <van-icon name="shopping-cart" size="0.50rem" />
           </div>
           <div class="top-l-r">
-            <p>阿达所发生的asdasd</p>
+            <p>优品商城</p>
             <van-icon name="arrow" size="0.34rem" />
           </div>
         </div>
         <div class="top-r">
-          <p>{{isShow?'交易完成':'交易终止'}}</p>
+          <p>{{item?'交易完成':'交易终止'}}</p>
         </div>
       </div>
       <div class="cont">
         <div class="cont-l">
-          <img src="../../../../assets/discover/disc03.jpg" alt />
+          <img :src="item.product.coverImg" title="这是一张图片" />
         </div>
         <div class="cont-c">
           <div class="prdName">
-            <p>阿萨德按时 阿萨德蒂芬卡士大夫</p>
+            <p>{{item.product.name}}</p>
           </div>
           <div class="prdDesc">
-            <p>asdsadf;</p>
-            <span>asdfasd</span>
+            <p style="color:red">满199包邮🚚--></p>
+            <span style="color:green  ">{{item.quantity*item.price>=199?'已包邮':'未包邮'}}</span>
           </div>
 
           <div class="prdAlt">
@@ -33,36 +33,63 @@
           </div>
         </div>
 
-        <div class="cont-r"></div>
+        <div class="cont-r">
+          <p>
+            ¥
+            <b>{{item.price}}</b>
+          </p>
+          <span>× {{item.quantity}}</span>
+        </div>
       </div>
       <div class="heji">
         <div class="hejiCont">
           <div class="hejiCont-l">
-            <p>共1件商品</p>
+            <p>共{{item.quantity}} 件商品</p>
           </div>
           <div class="hejiCont-r">
             <p>合计:</p>
             <p>
-              <span>¥ 19.99</span>
+              <span>¥ {{item.quantity*item.price}}</span>
             </p>
           </div>
         </div>
       </div>
       <div class="btns">
-        <button class="common" v-if="isShow">查看物流</button>
-        <button class="common" v-if="isShow">卖了换钱</button>
-        <button class="common">{{ isShow?'评价':'删除订单'}}</button>
+        <button class="common" v-if="item" @click="logistics">查看物流</button>
+        <button class="common" v-if="item" @click="sell">卖了换钱</button>
+        <button class="common" @click="btnHandle(item.order)">{{ !item?'评价':'删除订单'}}</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from "vuex"
 export default {
   name: "orderDetails",
   data() {
     return {
-      isShow: false
+      price: 19.99,
+      num: 1
     }
+  },
+  props: ["item"],
+  methods: {
+    btnHandle(id) {
+      if (this.isShow) {
+        console.log("你点击了评价按钮!")
+      } else {
+        console.log("你点击了删除按钮!")
+        // console.log(id)
+        this.delOrderById(id)
+      }
+    },
+    logistics() {
+      console.log('你点击了"查看物流"按钮')
+    },
+    sell() {
+      console.log('你点击了"卖了换钱"按钮')
+    },
+    ...mapActions("orderList", ["delOrderById"])
   }
 }
 </script>
@@ -119,6 +146,7 @@ export default {
   font-size: 0.36rem;
   color: #e7570e;
 }
+
 .cont {
   width: 100%;
   height: 3.6rem;
@@ -181,9 +209,23 @@ export default {
 .cont-r {
   min-width: 1.73rem;
   height: 2.6rem;
-  background: peru;
-}
 
+  display: flex;
+  flex-direction: column;
+}
+.cont-r p {
+  font-size: 0.4rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: flex-end;
+}
+.cont-r p b {
+  font-size: 0.5rem;
+  font-weight: 100;
+}
+.cont-r span {
+  font-size: 0.28rem;
+}
 .heji {
   width: 100%;
   height: 1.32rem;

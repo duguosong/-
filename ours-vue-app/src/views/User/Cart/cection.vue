@@ -3,15 +3,14 @@
     <header>
       <van-nav-bar title="购物车" class="cart">
         <van-icon name="arrow-left" slot="left" @click="clickhandle" />
-        <van-icon name="delete" slot="right" />
+        <van-icon name="delete" slot="right" @click="shanchu" />
       </van-nav-bar>
     </header>
-
     <div class="had">
       <div class="container" v-for="item in list" :key="item._id">
         <!-- 单选 -->
         <!--  @change="danclick(item,list)" -->
-        <input class="check" type="checkbox" v-model="item.isCheck" />
+        <input class="check" ref="m" type="checkbox" v-model="item.isCheck" />
         <img :src="item.product.coverImg" alt />
         <div class="item">
           <p class="ipp">{{item.product.name}}</p>
@@ -21,14 +20,19 @@
             <div class="add">
               <span @click="subOne(item.product._id,item.quantity)">-</span>
               <span>{{item.quantity}}</span>
-              <span @click="addOne(item.product._id,item.quantity,item.product.quantity)">+</span>
+              <span @click="addOne(item.product._id,item.quantity,item.product.quantity,item)">+</span>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="fote">
-      <van-submit-bar style="font-size:0.31rem" :price="3050" button-text="提交订单">
+      <van-submit-bar
+        style="font-size:0.31rem"
+        :price="zongjia*100"
+        button-text="提交订单"
+        @submit="onSubmit"
+      >
         <!--@change="quanclick" checked -->
         <van-checkbox v-model="checkAll">全选</van-checkbox>
         <!-- <input type="checkbox" v-model="checkAll" /> -->
@@ -41,7 +45,8 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex"
+import { mapState, mapActions, mapGetters } from "vuex"
+import { Toast } from "vant"
 export default {
   name: "Carts",
   data() {
@@ -58,13 +63,29 @@ export default {
     console.log(this.list)
   },
   methods: {
-    ...mapActions("addCart", ["loadCartList", "loadData"]),
+    ...mapActions("addCart", ["loadCartList", "loadData", "delCartOne"]),
     clickhandle() {
-      window.history.go(-1)
+      if (
+        JSON.parse(localStorage.getItem("cartname")).split("-")[0] == "Detail"
+      ) {
+        this.$router.push({
+          name: JSON.parse(localStorage.getItem("cartname")).split("-")[0],
+          params: {
+            id: JSON.parse(localStorage.getItem("cartname")).split("-")[1]
+          }
+        })
+      } else {
+        this.$router.push({
+          name: JSON.parse(localStorage.getItem("cartname"))
+        })
+      }
     },
-    addOne(id, quantity, kucun) {
+    addOne(id, quantity, kucun, item) {
       if (quantity >= kucun) {
-        alert("亲亲😙😙 超过库存了呢")
+        Toast.setDefaultOptions({
+          duration: 800
+        })
+        Toast("亲亲😙😙 超过库存了呢")
       } else {
         this.loadData({ product: id })
       }
@@ -73,7 +94,26 @@ export default {
       if (quantity > 1) {
         this.loadData({ product: id, quantity: -1 })
       } else {
-        alert("亲亲😙😙不能再减了呢")
+        Toast("亲亲😙😙不能再减了呢")
+      }
+    },
+    // 删除购物车商品
+    shanchu() {
+      this.list.forEach(i => {
+        if (i.isCheck == true) {
+          this.delCartOne(i._id)
+        }
+      })
+    },
+    onSubmit() {
+      let pL = this.list.filter(person => person.isCheck == true)
+      if (pL.length > 0) {
+        this.$store.commit("product", pL)
+        this.$router.push({
+          name: "submitOrder"
+        })
+      } else {
+        Toast("请您选择商品哦！")
       }
     }
     // 单选
@@ -104,7 +144,8 @@ export default {
         console.log(val)
         this.list.forEach(person => (person.isCheck = val))
       }
-    }
+    },
+    ...mapGetters("addCart", ["zongjia"])
   }
 }
 </script>

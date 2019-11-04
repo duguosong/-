@@ -32,10 +32,17 @@ export default {
   },
   methods: {
     lastStep() {
+      if (this.$route.params.goSubOrder == "1") {
+        this.$router.push({
+          name: "submitOrder"
+        })
+      } else {
+        this.$router.push({
+          name: "User"
+        })
+      }
+      localStorage.removeItem("addressname")
       //window.history.go(-1)
-      this.$router.push({
-        name: "User"
-      })
     },
     // lxh
     ...mapActions("addressList", ["loadData"])
@@ -43,6 +50,13 @@ export default {
   //发起请求 拿到用户所有的的收货地址 Lxh0223
   created() {
     this.loadData(1)
+  },
+  beforeRouteEnter: (to, from, next) => {
+    next(vm => {
+      if (from.name == "submitOrder") {
+        localStorage.setItem("addressname", JSON.stringify(from.name))
+      }
+    })
   }
 }
 </script>

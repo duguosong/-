@@ -17,13 +17,19 @@
       <div class="userMsg-pwd common">
         <p>用户密码</p>
         <input
-          type="text"
+          ref="pwd"
+          type="password"
           @blur="changeIn($event)"
           v-model="pwd"
           minlength="6"
           maxlength="20"
           placeholder="请输入6~20位密码"
         />
+      </div>
+
+      <div class="eye" @click="eye">
+        <van-icon name="closed-eye" size="0.8rem" v-if="eyeOpen" color="#aaa" />
+        <van-icon name="eye-o" size="0.8rem" v-else color="#aaa" />
       </div>
 
       <div class="protocol">
@@ -80,7 +86,8 @@ export default {
     return {
       tel: "",
       pwd: "",
-      yanZ: ""
+      yanZ: "",
+      eyeOpen: true
     }
   },
   methods: {
@@ -99,6 +106,8 @@ export default {
         })
         console.log("点击了发送验证码")
         //console.log(this.yanZ)
+      } else {
+        Toast("请输入正确的手机号")
       }
     },
     regBtn() {
@@ -117,6 +126,9 @@ export default {
             }, 800)
           } else {
             Toast(res.data.message)
+            setTimeout(() => {
+              this.$router.push({ path: "/login" })
+            }, 1000)
           }
         })
       }
@@ -151,6 +163,19 @@ export default {
         this.$refs.loginBtn.style.backgroundColor = "#ff6c00"
       } else {
         this.$refs.loginBtn.style.backgroundColor = "#f4c897"
+      }
+    },
+    // 密码的显示和隐藏 没有输入密码时点击无效果
+    eye() {
+      //  onsole.log(this.eyeOpen)
+      // console.log(this.pwd)
+      if (this.pwd) {
+        this.eyeOpen = !this.eyeOpen
+        if (!this.eyeOpen) {
+          this.$refs.pwd.type = "text"
+        } else {
+          this.$refs.pwd.type = "password"
+        }
       }
     }
   }
@@ -188,6 +213,7 @@ export default {
 }
 .userMsg-pwd input {
   width: 100%;
+  position: relative;
 }
 .userMsg-btm input {
   width: 7.3rem;
@@ -201,6 +227,16 @@ export default {
   height: 1.4rem;
   background: #fff;
   color: #ff6c00;
+}
+.eye {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 7.6rem;
+  right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .protocol {

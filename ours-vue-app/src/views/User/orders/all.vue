@@ -1,7 +1,7 @@
 <template>
   <!-- 全部订单-->
   <div class="allorderBox">
-    <wuMsg v-if="false"></wuMsg>
+    <wuMsg v-if="list.length==0?true:false"></wuMsg>
     <!--  <div class="allordersMsg">
       <div class="PODBCont">
         <div class="top">
@@ -56,17 +56,30 @@
         </div>
       </div>
     </div>-->
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
-    <orderDetails></orderDetails>
+    <div v-for="(items,index) in list" :key="index">
+      <orderDetails :item="items"></orderDetails>
+    </div>
   </div>
 </template>
 <script>
 import wuMsg from "../components/wuMsg" // 无订单时显示
 import orderDetails from "./components/orderDetalis"
+import { mapActions, mapState } from "vuex"
 export default {
   name: "allorder",
+  data() {
+    return {}
+  },
+  created() {
+    this.getOrderList()
+    console.log(this.list)
+  },
+  methods: {
+    ...mapActions("orderList", ["getOrderList"])
+  },
+  computed: {
+    ...mapState("orderList", ["list"])
+  },
   components: {
     wuMsg,
     orderDetails
@@ -80,4 +93,4 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-</style> 
+</style>

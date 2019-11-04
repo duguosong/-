@@ -129,3 +129,42 @@ export function addCart(model) {
 export function getCartList() {
   return get("/api/v1/shop_carts")
 }
+
+/**
+ * 根据商品id删除购物车该商品
+ * @param {*} id
+ */
+export function delCartOne(id) {
+  return del(`/api/v1/shop_carts/${id}`)
+}
+
+/**
+ * 获取订单列表
+ */
+export function getOrderList() {
+  return get("/api/v1/orders")
+}
+
+/**
+ * 根据id获取订单详情
+ * @param {*} id
+ */
+export function getOrderDetailById(id) {
+  return get(`/api/v1/orders/${id}`)
+}
+
+/**
+ * 根据id删除订单
+ * @param {*} id
+ */
+export function delOrderById(id) {
+  return del(`/api/v1/orders/${id}`)
+}
+
+/**
+ * 订单提交
+ * @param {*} model
+ */
+export function createOrder(model) {
+  return post("/api/v1/orders", model)
+}
