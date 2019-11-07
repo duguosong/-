@@ -76,9 +76,13 @@ export default {
   },
   methods: {
     lastStep(p) {
+      console.log(this.name)
+      if (!this.name) {
+        this.$router.push({
+          name: "User"
+        })
+      }
       if (this.name == "Detail") {
-        console.log(11111)
-        console.log(p)
         this.$router.push({
           name: this.name,
           params: {

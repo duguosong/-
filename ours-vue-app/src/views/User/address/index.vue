@@ -41,6 +41,7 @@ export default {
           name: "User"
         })
       }
+      // window.history.go(-1)
       localStorage.removeItem("addressname")
       //window.history.go(-1)
     },
