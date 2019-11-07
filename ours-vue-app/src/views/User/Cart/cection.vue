@@ -65,7 +65,11 @@ export default {
   methods: {
     ...mapActions("addCart", ["loadCartList", "loadData", "delCartOne"]),
     clickhandle() {
-      if (
+      if (!JSON.parse(localStorage.getItem("cartname"))) {
+        this.$router.push({
+          name: "User"
+        })
+      } else if (
         JSON.parse(localStorage.getItem("cartname")).split("-")[0] == "Detail"
       ) {
         this.$router.push({
