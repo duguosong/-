@@ -1,12 +1,14 @@
 import {
   getOrderList,
   getOrderDetailById,
-  delOrderById
+  delOrderById,
+  createOrder
 } from "../../../services/service"
 export default {
   namespaced: true,
   state: {
-    list: []
+    list: [],
+    obj: {}
   },
   actions: {
     async getOrderList({ commit, dispatch }, payload) {
@@ -25,6 +27,11 @@ export default {
       const result = await delOrderById(payload)
       console.log(result)
       dispatch("getOrderList")
+    },
+    async createOrder({ commit }, payload) {
+      const result = await createOrder(payload)
+      console.log(result.data)
+      commit("sss", result.data)
     }
   },
   mutations: {
@@ -35,6 +42,9 @@ export default {
       payload.forEach(i => {
         state.list.push(i)
       })
+    },
+    sss(state, payload) {
+      state.obj = payload
     }
   }
 }

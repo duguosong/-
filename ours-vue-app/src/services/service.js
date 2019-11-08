@@ -160,3 +160,11 @@ export function getOrderDetailById(id) {
 export function delOrderById(id) {
   return del(`/api/v1/orders/${id}`)
 }
+
+/**
+ * 订单提交
+ * @param {*} model
+ */
+export function createOrder(model) {
+  return post("/api/v1/orders", model)
+}

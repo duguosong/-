@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import createPersistedState from "vuex-persistedstate"
 import productsList from "./modules/productsList"
 import products from "./modules/products"
 import product from "./modules/product"
@@ -20,12 +21,16 @@ import addCart from "./modules/cart/cart"
 
 // 订单模块
 import orderList from "./modules/Orders/orderList"
+import { stat } from "fs"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     str: "",
-    st: ""
+    st: "",
+    plist: [],
+    add: {}
   },
   mutations: {
     ss(state, payload) {
@@ -34,6 +39,13 @@ export default new Vuex.Store({
     },
     sav(state, payload) {
       state.st = payload
+    },
+    product(state, payload) {
+      console.log(payload)
+      state.plist = payload
+    },
+    address(state, payload) {
+      state.add = payload
     }
   },
   actions: {},

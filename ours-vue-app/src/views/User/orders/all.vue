@@ -1,7 +1,7 @@
 <template>
   <!-- 全部订单-->
   <div class="allorderBox">
-    <wuMsg v-if="list.length==0?'true':'false'"></wuMsg>
+    <wuMsg v-if="list.length==0?true:false"></wuMsg>
     <!--  <div class="allordersMsg">
       <div class="PODBCont">
         <div class="top">
@@ -93,4 +93,4 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-</style> 
+</style>

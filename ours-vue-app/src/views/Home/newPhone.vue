@@ -1,13 +1,14 @@
 <template>
   <div class="newPhone" style="display:flex;">
     <div>
-      <van-nav-bar
-        title="新品手机"
-        left-text
-        left-arrow
-        style="width:100%;display:block"
-        @click-left="onClickLeft"
-      />
+      <van-row style="margin-bottom:0.3rem">
+        <van-col span="1" offset="1" style="line-height:1rem;" @click="onClickLeft">
+          <van-icon name="arrow-left" />
+        </van-col>
+        <van-col span="2" offset="9" style="line-height:1rem">
+          <p>消息</p>
+        </van-col>
+      </van-row>
       <InputADD style="display:block"></InputADD>
       <swipe></swipe>
     </div>

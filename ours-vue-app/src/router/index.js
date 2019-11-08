@@ -49,13 +49,13 @@ const routes = [
   //   component: () => import("@/views/Home/newPhone")
   // },
 
-  {
-    path: "/limit",
+  // {
+  //   path: "/limit",
 
-    name: "Limit",
+  //   name: "Limit",
 
-    component: () => import("@/views/Limit/index")
-  },
+  //   component: () => import("@/views/Limit/index")
+  // },
   {
     //额度协议
     path: "/protol",
@@ -231,7 +231,7 @@ const routes = [
   },
   {
     // 我的 -> 我的订单
-    path: "/user/orders/:id",
+    path: "/user/orders",
     name: "Orders",
     component: () => import("@/views/User/orders/index"),
     meta: {
@@ -239,7 +239,7 @@ const routes = [
     }
   },
   {
-    // 我的 -> 我的订单
+    // 我的 -> 提交订单
     path: "/submitOrder",
     name: "submitOrder",
     component: () => import("@/views/User/orders/submitOrder"),
@@ -423,9 +423,8 @@ const router = new VueRouter({
 // 路由守卫
 router.beforeEach((to, from, next) => {
   // next()
-  // console.group(to)
-  // console.group(from)
-  // console.group(next)
+
+  console.log(1)
   if (to.meta.needLoginIn) {
     if (getToken() || localStorage.getItem("token")) {
       next()
