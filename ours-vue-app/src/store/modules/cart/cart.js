@@ -24,8 +24,15 @@ export default {
   },
   mutations: {
     save(state, payload) {
+      let bb = JSON.parse(localStorage.getItem("gouwu"))
+      console.log(bb)
       payload.forEach(item => {
-        item.isCheck = false
+        if (bb.indexOf(item._id) > -1) {
+          console.log(3131)
+          item.isCheck = true
+        } else {
+          item.isCheck = false
+        }
       })
       state.list = payload
     }
