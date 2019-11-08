@@ -31,11 +31,23 @@
       </van-row>
       <van-row>
         <van-col
-          span="12"
+          span="2"
           offset="2"
           class="iconfont icon-yinliang"
           style="font-size:0.58rem;font-weight:500;color:white;line-height:1.22rem"
         ></van-col>
+        <van-col span="17">
+          <van-notice-bar
+            style
+            text="自古表白多白表，从来情痴枉痴情。
+笑叹少年多年少，哪知自负终负自。
+悠长情书难书情，誓说长久少久长。
+往昔事故成故事，曾经情人欠人情。
+难有现实能实现，哪来情调益调情。
+佳艳千万叹万千，怎知俗世多世俗。
+莫怨好友不友好，唯与生人道人生。"
+          />
+        </van-col>
       </van-row>
 
       <van-row>
@@ -201,5 +213,12 @@ export default {
 .van-swipe__track img {
   width: 9.6rem;
   height: 4.18rem;
+}
+.van-notice-bar {
+  background: transparent;
+  color: white;
+  height: 1.2rem;
+  margin: auto;
+  padding: 0;
 }
 </style>
