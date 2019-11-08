@@ -7,7 +7,6 @@ import store from "./store"
 import "./assets/icon/iconfont.css" //字体图标引入
 
 import { PullRefresh } from "vant" //下拉刷新
-
 import "./assets/common.js" //自适应引入
 import "./assets/common.css" //自适应引入
 
